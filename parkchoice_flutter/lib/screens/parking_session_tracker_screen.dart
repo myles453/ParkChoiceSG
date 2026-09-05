@@ -206,13 +206,6 @@ class _ParkingSessionTrackerScreenState
       border: Border.all(
         color: context.appColors.primary.withValues(alpha: 0.35),
       ),
-      boxShadow: [
-        BoxShadow(
-          color: context.appColors.primary.withValues(alpha: 0.08),
-          blurRadius: 20,
-          offset: const Offset(0, 8),
-        ),
-      ],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -257,27 +250,30 @@ class _ParkingSessionTrackerScreenState
             ],
           ),
           const SizedBox(height: 18),
-          Row(
-            children: [
-              Expanded(
-                child: AppMetric(
-                  label: 'PARKED DURATION',
-                  value: durationString,
-                  valueColor: context.appColors.ink,
-                  icon: Icons.schedule_rounded,
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: AppMetric(
+                    label: 'Parked duration',
+                    value: durationString,
+                    valueColor: context.appColors.ink,
+                    icon: Icons.schedule_rounded,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: AppMetric(
-                  label: 'RUNNING COST',
-                  value: runningCostString,
-                  subtitle: rateString,
-                  valueColor: context.appColors.primaryDark,
-                  icon: Icons.payments_outlined,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: AppMetric(
+                    label: 'Running cost',
+                    value: runningCostString,
+                    subtitle: rateString,
+                    valueColor: context.appColors.primaryDark,
+                    icon: Icons.payments_outlined,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 16),
           Container(
@@ -299,7 +295,7 @@ class _ParkingSessionTrackerScreenState
                     'Reminder alert is active for this session.',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: context.appColors.success,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -470,7 +466,7 @@ class _ParkingSessionTrackerScreenState
                   (isHighlight
                       ? context.appColors.inkStrong
                       : context.appColors.secondaryText),
-              fontWeight: isHighlight ? FontWeight.w800 : FontWeight.w600,
+              fontWeight: isHighlight ? FontWeight.w600 : FontWeight.w500,
             ),
           ),
         ),

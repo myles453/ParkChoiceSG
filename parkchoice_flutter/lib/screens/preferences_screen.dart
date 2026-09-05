@@ -274,7 +274,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                               ? context.appColors.primaryDark
                               : context.appColors.secondaryText,
                       fontWeight:
-                          isSelected ? FontWeight.w800 : FontWeight.w600,
+                          isSelected ? FontWeight.w600 : FontWeight.w500,
                     ),
                   ),
                 ],
@@ -501,9 +501,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                             isSelected
                                 ? [
                                   BoxShadow(
-                                    color: context.appColors.ink.withValues(
-                                      alpha: 0.07,
-                                    ),
+                                    color: Colors.black.withValues(alpha: 0.07),
                                     blurRadius: 5,
                                     offset: const Offset(0, 2),
                                   ),
@@ -520,7 +518,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                                   ? context.appColors.primaryDark
                                   : context.appColors.secondaryText,
                           fontWeight:
-                              isSelected ? FontWeight.w800 : FontWeight.w600,
+                              isSelected ? FontWeight.w600 : FontWeight.w500,
                         ),
                       ),
                     ),

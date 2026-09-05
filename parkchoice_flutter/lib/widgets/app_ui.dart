@@ -90,12 +90,13 @@ class AppProfileBadge extends StatelessWidget {
       width: 42,
       height: 42,
       decoration: BoxDecoration(
-        color: context.appColors.infoSoft,
-        borderRadius: BorderRadius.circular(15),
+        color: context.appColors.surface,
+        shape: BoxShape.circle,
+        border: Border.all(color: context.appColors.line),
       ),
       child: Icon(
         Icons.person_outline_rounded,
-        color: context.appColors.primary,
+        color: context.appColors.secondaryText,
         size: 21,
       ),
     );
@@ -110,23 +111,16 @@ class AppBrandMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mark = Container(
-      width: 54,
-      height: 54,
+      width: 48,
+      height: 48,
       decoration: BoxDecoration(
         color: context.appColors.brand,
-        borderRadius: BorderRadius.circular(17),
-        boxShadow: [
-          BoxShadow(
-            color: context.appColors.brand.withValues(alpha: 0.18),
-            blurRadius: 14,
-            offset: const Offset(0, 7),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(AppRadii.control),
       ),
       child: Icon(
         Icons.local_parking_rounded,
         color: context.appColors.onBrand,
-        size: 29,
+        size: 27,
       ),
     );
 
@@ -141,17 +135,19 @@ class AppBrandMark extends StatelessWidget {
           'ParkChoiceSG',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             color: context.appColors.ink,
-            fontWeight: FontWeight.w800,
-            letterSpacing: -0.4,
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.7,
           ),
         ),
         const SizedBox(height: 5),
         Text(
-          'SMART PARKING, LESS CIRCLING',
+          'Smart parking, less circling',
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
             color: context.appColors.tertiaryText,
-            letterSpacing: 1.3,
-            fontWeight: FontWeight.w700,
+            letterSpacing: 0.1,
+            fontWeight: FontWeight.w400,
+            fontSize: 12,
           ),
         ),
       ],
@@ -233,8 +229,8 @@ class AppTextField extends StatelessWidget {
             label!,
             style: Theme.of(context).textTheme.labelMedium?.copyWith(
               color: context.appColors.inkStrong,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.2,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0,
             ),
           ),
           const SizedBox(height: 8),
@@ -248,7 +244,7 @@ class AppTextField extends StatelessWidget {
           onChanged: onChanged,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: context.appColors.inkStrong,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             hintText: hint,
@@ -285,10 +281,10 @@ class AppStatusPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
       decoration: BoxDecoration(
         color: backgroundColor ?? color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(AppRadii.pill),
+        borderRadius: BorderRadius.circular(AppRadii.small),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -301,8 +297,8 @@ class AppStatusPill extends StatelessWidget {
             label,
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: color,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.25,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0,
             ),
           ),
         ],
@@ -331,12 +327,12 @@ class AppIconTile extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: backgroundColor ?? context.appColors.infoSoft,
-        borderRadius: BorderRadius.circular(size * 0.34),
+        color: backgroundColor ?? context.appColors.surfaceMuted,
+        borderRadius: BorderRadius.circular(AppRadii.control),
       ),
       child: Icon(
         icon,
-        color: color ?? context.appColors.primary,
+        color: color ?? context.appColors.secondaryText,
         size: size * 0.46,
       ),
     );
@@ -379,11 +375,10 @@ class AppMetric extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     color: context.appColors.secondaryText,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.55,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.25,
                   ),
                 ),
               ),
@@ -394,8 +389,10 @@ class AppMetric extends StatelessWidget {
             value,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
               color: valueColor ?? context.appColors.ink,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.3,
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              letterSpacing: -0.6,
+              fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),
           if (subtitle != null) ...[
@@ -438,9 +435,9 @@ void showAppSnackBar(
             Expanded(
               child: Text(
                 message,
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: foregroundColor ?? context.appColors.onSnackBar,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

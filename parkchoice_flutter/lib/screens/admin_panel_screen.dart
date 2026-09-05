@@ -214,10 +214,9 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
   }
 
   Widget _buildAlertCard(_AdminAlertModel alert) {
-    final statusColor = _alertColor(alert.status);
     return AppSurface(
       padding: const EdgeInsets.all(15),
-      border: Border.all(color: statusColor.withValues(alpha: 0.2)),
+      border: Border.all(color: context.appColors.line),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -226,21 +225,14 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
               Expanded(
                 child: Text(
                   alert.id,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(color: statusColor),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
               _buildStatusBadge(alert.status),
             ],
           ),
           const SizedBox(height: 10),
-          Text(
-            alert.description,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
-          ),
+          Text(alert.description, style: Theme.of(context).textTheme.bodyLarge),
           if (alert.status != AlertStatus.resolved) ...[
             const SizedBox(height: 13),
             Align(
@@ -416,7 +408,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
             color:
                 color ??
                 (isWarning ? context.appColors.warning : context.appColors.ink),
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],
@@ -545,7 +537,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
             overrideItem.overrideStatus,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: context.appColors.danger,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
             ),
           ),
           const SizedBox(height: 4),

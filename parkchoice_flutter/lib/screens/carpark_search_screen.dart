@@ -171,45 +171,27 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
   }
 
   Widget _buildSearchField() {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.appColors.surface,
-        borderRadius: BorderRadius.circular(AppRadii.control),
-        border: Border.all(color: context.appColors.line),
-        boxShadow: [
-          BoxShadow(
-            color: context.appColors.ink.withValues(alpha: 0.035),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: TextField(
-        controller: _searchController,
-        textInputAction: TextInputAction.search,
-        style: Theme.of(context).textTheme.bodyLarge,
-        decoration: InputDecoration(
-          hintText: 'Where are you going?',
-          prefixIcon: Icon(
-            Icons.search_rounded,
-            color: context.appColors.primary,
-            size: 22,
-          ),
-          suffixIcon: IconButton(
-            tooltip: 'Clear destination',
-            icon: Icon(
-              Icons.cancel_outlined,
-              color: context.appColors.tertiaryText,
-              size: 20,
-            ),
-            onPressed: () => setState(_searchController.clear),
-          ),
-          filled: false,
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+    return TextField(
+      controller: _searchController,
+      textInputAction: TextInputAction.search,
+      style: Theme.of(context).textTheme.bodyLarge,
+      decoration: InputDecoration(
+        hintText: 'Where are you going?',
+        prefixIcon: Icon(
+          Icons.search_rounded,
+          color: context.appColors.primary,
+          size: 22,
         ),
+        suffixIcon: IconButton(
+          tooltip: 'Clear destination',
+          icon: Icon(
+            Icons.cancel_outlined,
+            color: context.appColors.tertiaryText,
+            size: 20,
+          ),
+          onPressed: () => setState(_searchController.clear),
+        ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 16),
       ),
     );
   }
@@ -279,7 +261,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
           ),
           child: Row(
             children: [
-              Icon(icon, color: context.appColors.primary, size: 17),
+              Icon(icon, color: context.appColors.secondaryText, size: 17),
               const SizedBox(width: 7),
               Expanded(
                 child: Text(
@@ -443,7 +425,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                                               : context.appColors.inkStrong,
                                       fontWeight:
                                           isSelected
-                                              ? FontWeight.w700
+                                              ? FontWeight.w600
                                               : FontWeight.w500,
                                     ),
                                   ),
@@ -507,7 +489,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
               'Live traffic',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: context.appColors.success,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(width: 8),
@@ -532,7 +514,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
         color: context.appColors.surfaceMuted,
-        borderRadius: BorderRadius.circular(11),
+        borderRadius: BorderRadius.circular(AppRadii.control),
         border: Border.all(color: context.appColors.line),
       ),
       child: Row(
@@ -563,10 +545,10 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
   }) {
     return Material(
       color: isSelected ? context.appColors.surface : Colors.transparent,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(AppRadii.small),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(AppRadii.small),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 7),
           child: Row(
@@ -587,7 +569,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                       isSelected
                           ? context.appColors.primaryDark
                           : context.appColors.secondaryText,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
@@ -612,6 +594,12 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
 
     return AppSurface(
       padding: const EdgeInsets.all(16),
+      border: Border.all(
+        color:
+            cp.rank == 1
+                ? context.appColors.primary.withValues(alpha: 0.45)
+                : context.appColors.line,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -623,13 +611,19 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                 height: 29,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: context.appColors.infoSoft,
-                  borderRadius: BorderRadius.circular(10),
+                  color:
+                      cp.rank == 1
+                          ? context.appColors.primary
+                          : context.appColors.surfaceMuted,
+                  borderRadius: BorderRadius.circular(AppRadii.small),
                 ),
                 child: Text(
                   cp.rank.toString(),
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: context.appColors.primaryDark,
+                    color:
+                        cp.rank == 1
+                            ? context.appColors.onBrand
+                            : context.appColors.secondaryText,
                   ),
                 ),
               ),
@@ -668,8 +662,8 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                           style: Theme.of(
                             context,
                           ).textTheme.bodySmall?.copyWith(
-                            color: context.appColors.success,
-                            fontWeight: FontWeight.w800,
+                            color: context.appColors.inkStrong,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
@@ -862,11 +856,11 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       decoration: BoxDecoration(
         color: context.appColors.surface.withValues(alpha: 0.96),
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: BorderRadius.circular(AppRadii.control),
         border: Border.all(color: accentColor.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: context.appColors.ink.withValues(alpha: 0.12),
+            color: Colors.black.withValues(alpha: 0.12),
             blurRadius: 12,
             offset: const Offset(0, 5),
           ),

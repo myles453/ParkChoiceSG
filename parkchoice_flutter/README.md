@@ -11,6 +11,14 @@ This folder contains the standalone Flutter UI prototype for ParkChoiceSG. It is
 - Persisted System, Light, and Dark appearance modes
 - Admin alerts, data-source health, and carpark overrides
 
+## Visual styling
+
+The app uses bundled Public Sans fonts (400–700), forest green accents, and
+separate light and dark surface palettes. Shared colours and corner radii live
+in `lib/constants.dart`, component themes in `lib/main.dart`, and reusable
+surfaces and typography treatments in `lib/widgets/app_ui.dart`.
+Font source and licences are included in `assets/fonts/public_sans/`.
+
 ## Run locally
 
 ```powershell
