@@ -389,59 +389,138 @@ The objective of Lab 2 is to transform the system requirements into a structured
 
 ## 5. Dynamic Model (Dialog Map / UI State Machine)
 
-```
-+==========================================================================================================+
-|                                          DRIVER INTERFACE FLOW                                         |
-+==========================================================================================================+
-                        +---------------------------+
-                        |  1.0 Search Home Screen   |<-----------------------+
-                        +---------------------------+                        |
-                              |                       ^                          |
-                [Submit Valid Search] |                       | [Tap Back / Clear]       |
-                              v                       |                          |
-                        +---------------------------+                        |
-                        | 2.0 Results List Display  |                        |
-                        +---------------------------+                        |
-                              |                       ^                          |
-                [Select Carpark Card] |                       | [Tap Back]               |
-                              v                       |                          |
-                        +---------------------------+                        |
-                        |  3.0 Carpark Detail View  |                        |
-                        +---------------------------+                        |
-                              |                       |                          |
-        [Select "Report Issue"]    |                       | [Select "Navigate"]      |
-                              v                       v                          |
-                  +---------------------+  +--------------------+               |
-                  | 3.1 Report Modal UI |  | 4.0 Ext Navigation |---------------+
-                  +---------------------+  +--------------------+
-                              |
-                              +--------------------------------------------------+
+The dynamic model represents ParkChoiceSG as state machines of user-interface states. Separate dialog maps are provided for the Anonymous Driver and System Operator because each actor interacts with a distinct set of interfaces and transitions.
 
-+==========================================================================================================+
-|                                      OPERATOR ADMINISTRATION FLOW                                      |
-+==========================================================================================================+
-                        +---------------------------+
-                        | 6.0 Operator Login Screen |
-                        +---------------------------+
-                              |
-                              | [Valid Credentials Over TLS]
-                              v
-                        +---------------------------+
-                        |  7.0 Operator Dashboard   |<-----------------------+
-                        +---------------------------+                        |
-                              |                       |                          |
-                [Select Report Queue] |                       | [Select API Health]      |
-                              v                       v                          |
-                  +--------------------+  +--------------------+               |
-                  | 8.0 Report Action  |  | 9.0 Health & Cache |               |
-                  |   & Override Panel |  |   Telemetry View   |               |
-                  +--------------------+  +--------------------+               |
-                              |                       |                          |
-                  | [Submit Override]     | [Trigger Manual Refresh] |
-                              v                       v                          |
-                  +--------------------+  +--------------------+               |
-                  | 8.1 Confirm Update |  | 9.1 Data Refreshed |---------------+
-                  +--------------------+  +--------------------+
+### 5.1 Driver Interface Dialog Map
+
+```mermaid
+stateDiagram-v2
+    direction TB
+
+    [*] --> SearchHome : Open ParkChoiceSG
+
+    state "Search Home Screen" as SearchHome
+    state "Loading Recommendations" as Loading
+    state "Recommendation Results" as Results
+    state "Recommendation Unavailable" as NoResults
+    state "Carpark Detail View" as Details
+    state "Report Issue Modal" as ReportModal
+    state "Navigation Error Dialog" as NavError
+
+    SearchHome : entry / display destination and parking-duration inputs
+    SearchHome : do / accept search input
+
+    SearchHome --> SearchHome : Submit Search [invalid input] / display validation error
+    SearchHome --> SearchHome : Submit Search [destination unresolved] / request refined destination
+    SearchHome --> Loading : Submit Search [valid input and destination resolved]
+
+    Loading : entry / display loading indicator
+    Loading : do / retrieve required data and rank eligible carparks
+
+    Loading --> Results : [at least 1 suitable carpark found]
+    Loading --> NoResults : [no suitable comparable carparks]
+    Loading --> NoResults : [insufficient required data]
+
+    NoResults : entry / explain why a reliable recommendation cannot be produced
+
+    NoResults --> Loading : Retry
+    NoResults --> SearchHome : Change Search
+
+    Results : entry / display up to 5 ranked recommendations
+    Results : do / show availability, estimated cost, walking distance, timestamp and ranking explanation
+
+    Results --> Details : Select Carpark
+    Results --> Loading : Refresh Recommendations
+    Results --> SearchHome : Back / New Search
+
+    Details : entry / display selected carpark information
+    Details : do / show availability, timestamp, estimated cost, walking distance and ranking explanation
+
+    Details --> Results : Back
+
+    Details --> Details : Information becomes outdated / mark affected data as outdated and show refresh advice
+    Details --> Loading : Select Refresh Recommendation
+
+    Details --> ReportModal : Select Report Issue
+
+    ReportModal : entry / display error-report form
+    ReportModal : do / accept report details
+
+    ReportModal --> Details : Cancel / Close
+    ReportModal --> Details : Submit Report
+
+    Details --> [*] : Select Navigate [handoff successful] / open external navigation
+    Details --> NavError : Select Navigate [destination invalid or handoff fails]
+
+    NavError : entry / display navigation failure message
+
+    NavError --> Details : Dismiss Error / Keep Carpark Details Visible
+```
+
+### 5.2 Operator / Administrator Dialog Map
+
+```mermaid
+stateDiagram-v2
+    direction TB
+
+    [*] --> OperatorLogin : Open Administration Interface
+
+    state "Operator Login Screen" as OperatorLogin
+    state "Authentication Error" as AuthError
+    state "Operator Dashboard" as Dashboard
+    state "Error Report Queue" as ReportQueue
+    state "Report / Carpark Details" as ReportDetails
+    state "Carpark Override Form" as OverrideForm
+    state "Override Validation Error" as OverrideError
+    state "Override Confirmation" as OverrideConfirmation
+    state "API Health & Freshness View" as APIHealth
+    state "Refreshing Data" as Refreshing
+
+    OperatorLogin : entry / display administrator login form
+    OperatorLogin : do / accept username and password
+
+    OperatorLogin --> Dashboard : Login [credentials valid]
+    OperatorLogin --> AuthError : Login [credentials invalid]
+
+    AuthError : entry / display authentication error
+    AuthError --> OperatorLogin : Retry Login
+
+    Dashboard : entry / display administration options
+
+    Dashboard --> ReportQueue : Select Error Reports
+    Dashboard --> APIHealth : Select API Health
+    Dashboard --> [*] : Log Out
+
+    ReportQueue : entry / display submitted error reports
+
+    ReportQueue --> Dashboard : Back
+    ReportQueue --> ReportDetails : Select Report
+
+    ReportDetails : entry / display selected report and related carpark information
+
+    ReportDetails --> ReportQueue : Back
+    ReportDetails --> OverrideForm : Apply Carpark Override
+
+    OverrideForm : entry / display override controls
+    OverrideForm : do / accept override action and justification
+
+    OverrideForm --> ReportDetails : Cancel
+    OverrideForm --> OverrideError : Submit Override [justification missing]
+    OverrideForm --> OverrideConfirmation : Submit Override [justification provided]
+
+    OverrideError : entry / display "Justification required"
+    OverrideError --> OverrideForm : Return to Form / Correct Justification
+
+    OverrideConfirmation : entry / display successful override confirmation
+    OverrideConfirmation --> Dashboard : Continue
+
+    APIHealth : entry / display API health and data freshness status
+
+    APIHealth --> Dashboard : Back
+    APIHealth --> Refreshing : Trigger Manual Refresh
+
+    Refreshing : entry / display refresh progress
+    Refreshing --> APIHealth : Refresh Completed / display updated status
 ```
 
 ---
