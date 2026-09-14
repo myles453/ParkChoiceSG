@@ -16,6 +16,27 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController(text: 'driver@parksmart.io');
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
+  bool _isNavigating = false;
+
+  void _openHome() {
+    if (_isNavigating) return;
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const CarparkSearchScreen()),
+    );
+  }
+
+  void _openRegister() {
+    if (_isNavigating) return;
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterScreen()),
+    );
+  }
 
   @override
   void dispose() {
@@ -105,15 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 52,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => const CarparkSearchScreen(),
-                              ),
-                            );
-                          },
+                          onPressed: _openHome,
                           child: const Text('Sign In'),
                         ),
                       ),
@@ -137,14 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 16),
                       OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RegisterScreen(),
-                            ),
-                          );
-                        },
+                        onPressed: _openRegister,
                         child: const Text('Create an account'),
                       ),
                     ],

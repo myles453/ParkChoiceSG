@@ -20,6 +20,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
+  bool _isNavigating = false;
+
+  void _openHome() {
+    if (_isNavigating) return;
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const CarparkSearchScreen()),
+    );
+  }
+
+  void _openLogin() {
+    if (_isNavigating) return;
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+    );
+  }
 
   @override
   void dispose() {
@@ -141,15 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 52,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => const CarparkSearchScreen(),
-                              ),
-                            );
-                          },
+                          onPressed: _openHome,
                           child: const Text('Create Account'),
                         ),
                       ),
@@ -173,14 +186,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
                       OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
-                        },
+                        onPressed: _openLogin,
                         child: const Text('Sign in instead'),
                       ),
                     ],

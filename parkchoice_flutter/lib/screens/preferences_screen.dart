@@ -33,6 +33,7 @@ class _SavedDestinationModel {
 
 class _PreferencesScreenState extends State<PreferencesScreen> {
   static const int _selectedNavIndex = 2;
+  bool _isNavigating = false;
 
   VehicleType _selectedVehicle = VehicleType.car;
   double _maxWalkingDistance = 400;
@@ -354,11 +355,12 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
     );
   }
 
-  void _showAddLocationModal() {
-    final labelController = TextEditingController();
-    final addressController = TextEditingController();
+  Future<void> _showAddLocationModal() async {
+    var label = '';
+    var address = '';
+    var isClosing = false;
 
-    showModalBottomSheet(
+    final shouldSave = await showModalBottomSheet<bool>(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
@@ -374,27 +376,36 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildSheetHeader(ctx, 'Add custom location'),
+              _buildSheetHeader(
+                ctx,
+                'Add custom location',
+                onClose: () {
+                  if (isClosing) return;
+                  isClosing = true;
+                  FocusScope.of(ctx).unfocus();
+                  Navigator.pop(ctx);
+                },
+              ),
               const SizedBox(height: 5),
               Text(
                 'Save a place you visit often for faster searches.',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(ctx).textTheme.bodyMedium,
               ),
               const SizedBox(height: 18),
               AppTextField(
-                controller: labelController,
                 label: 'Location label',
                 hint: 'e.g. Gym, Parents',
                 prefixIcon: Icons.bookmark_outline_rounded,
                 textInputAction: TextInputAction.next,
+                onChanged: (value) => label = value,
               ),
               const SizedBox(height: 14),
               AppTextField(
-                controller: addressController,
                 label: 'Address or landmark',
                 hint: 'Enter an address',
                 prefixIcon: Icons.place_outlined,
                 textInputAction: TextInputAction.done,
+                onChanged: (value) => address = value,
               ),
               const SizedBox(height: 22),
               SizedBox(
@@ -402,21 +413,12 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    final label = labelController.text.trim();
-                    final address = addressController.text.trim();
-                    if (label.isNotEmpty && address.isNotEmpty) {
-                      setState(() {
-                        _savedDestinations.add(
-                          _SavedDestinationModel(
-                            label: label,
-                            address: address,
-                            icon: Icons.place_outlined,
-                            isCustom: true,
-                          ),
-                        );
-                      });
-                    }
-                    Navigator.pop(ctx);
+                    if (isClosing) return;
+                    isClosing = true;
+                    FocusScope.of(ctx).unfocus();
+                    final canSave =
+                        label.trim().isNotEmpty && address.trim().isNotEmpty;
+                    Navigator.pop(ctx, canSave);
                   },
                   child: const Text('Save location'),
                 ),
@@ -425,22 +427,43 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
           ),
         );
       },
-    ).whenComplete(() {
-      labelController.dispose();
-      addressController.dispose();
+    );
+
+    if (!mounted || shouldSave != true) return;
+    setState(() {
+      _savedDestinations.add(
+        _SavedDestinationModel(
+          label: label.trim(),
+          address: address.trim(),
+          icon: Icons.place_outlined,
+          isCustom: true,
+        ),
+      );
     });
   }
 
-  Widget _buildSheetHeader(BuildContext sheetContext, String title) {
+  Widget _buildSheetHeader(
+    BuildContext sheetContext,
+    String title, {
+    VoidCallback? onClose,
+  }) {
     return Row(
       children: [
         Expanded(
-          child: Text(title, style: Theme.of(context).textTheme.titleLarge),
+          child: Text(
+            title,
+            style: Theme.of(sheetContext).textTheme.titleLarge,
+          ),
         ),
         IconButton(
           tooltip: 'Close',
           icon: const Icon(Icons.close_rounded),
-          onPressed: () => Navigator.pop(sheetContext),
+          onPressed:
+              onClose ??
+              () {
+                FocusScope.of(sheetContext).unfocus();
+                Navigator.pop(sheetContext);
+              },
         ),
       ],
     );
@@ -752,8 +775,8 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
     );
   }
 
-  void _showEraseDataConfirmation() {
-    showDialog(
+  Future<void> _showEraseDataConfirmation() async {
+    final shouldErase = await showDialog<bool>(
       context: context,
       builder:
           (ctx) => AlertDialog(
@@ -761,53 +784,55 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
               children: [
                 Icon(
                   Icons.warning_amber_rounded,
-                  color: context.appColors.danger,
+                  color: ctx.appColors.danger,
                   size: 24,
                 ),
                 const SizedBox(width: 9),
                 Expanded(
                   child: Text(
                     'Erase all local data?',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(ctx).textTheme.titleLarge,
                   ),
                 ),
               ],
             ),
             content: Text(
               'This will permanently delete your saved destinations, vehicle profile, walking tolerance settings, search history, and local preferences.',
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(ctx).textTheme.bodyMedium,
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(ctx),
+                onPressed: () => Navigator.pop(ctx, false),
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(ctx);
-                  setState(() {
-                    _maxWalkingDistance = 400;
-                    _selectedVehicle = VehicleType.car;
-                  });
-                  showAppSnackBar(
-                    context,
-                    'All local preferences and data have been erased.',
-                    backgroundColor: context.appColors.danger,
-                    icon: Icons.delete_sweep_outlined,
-                  );
+                  Navigator.pop(ctx, true);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: context.appColors.danger,
+                  backgroundColor: ctx.appColors.danger,
                 ),
                 child: const Text('Erase data'),
               ),
             ],
           ),
     );
+
+    if (!mounted || shouldErase != true) return;
+    setState(() {
+      _maxWalkingDistance = 400;
+      _selectedVehicle = VehicleType.car;
+    });
+    showAppSnackBar(
+      context,
+      'All local preferences and data have been erased.',
+      backgroundColor: context.appColors.danger,
+      icon: Icons.delete_sweep_outlined,
+    );
   }
 
   void _onNavTap(int index) {
-    if (index == _selectedNavIndex) return;
+    if (_isNavigating || index == _selectedNavIndex) return;
     final Widget destination;
     switch (index) {
       case 0:
@@ -822,6 +847,8 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
       default:
         return;
     }
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(

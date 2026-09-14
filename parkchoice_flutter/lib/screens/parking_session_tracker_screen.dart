@@ -50,6 +50,7 @@ class _ParkingSessionTrackerScreenState
     extends State<ParkingSessionTrackerScreen>
     with SingleTickerProviderStateMixin {
   static const int _selectedNavIndex = 1;
+  bool _isNavigating = false;
   Timer? _timer;
   late AnimationController _livePulseController;
 
@@ -367,14 +368,14 @@ class _ParkingSessionTrackerScreenState
     );
   }
 
-  void _onEndSessionPrompt() {
+  Future<void> _onEndSessionPrompt() async {
     final session = ParkingSessionManager.instance.currentSession;
     if (session == null) return;
 
     final durationString = _formatDuration(session.duration);
     final finalCostString = r'$' + session.runningCost.toStringAsFixed(2);
 
-    showDialog(
+    final shouldEnd = await showDialog<bool>(
       context: context,
       builder:
           (ctx) => AlertDialog(
@@ -382,14 +383,14 @@ class _ParkingSessionTrackerScreenState
               children: [
                 Icon(
                   Icons.flag_outlined,
-                  color: context.appColors.warning,
+                  color: ctx.appColors.warning,
                   size: 24,
                 ),
                 const SizedBox(width: 9),
                 Expanded(
                   child: Text(
                     'End parking session?',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(ctx).textTheme.titleLarge,
                   ),
                 ),
               ],
@@ -400,25 +401,31 @@ class _ParkingSessionTrackerScreenState
               children: [
                 Text(
                   'Your final charge will be calculated and this session will be added to your history.',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(ctx).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 16),
                 AppSurface(
-                  color: context.appColors.surfaceMuted,
+                  color: ctx.appColors.surfaceMuted,
                   padding: const EdgeInsets.all(14),
                   borderRadius: BorderRadius.circular(AppRadii.control),
                   border: null,
                   child: Column(
                     children: [
-                      _buildConfirmRow('Carpark', session.carparkName, true),
+                      _buildConfirmRow(
+                        ctx,
+                        'Carpark',
+                        session.carparkName,
+                        true,
+                      ),
                       const SizedBox(height: 9),
-                      _buildConfirmRow('Duration', durationString, false),
+                      _buildConfirmRow(ctx, 'Duration', durationString, false),
                       const SizedBox(height: 9),
                       _buildConfirmRow(
+                        ctx,
                         'Computed total',
                         finalCostString,
                         true,
-                        context.appColors.primaryDark,
+                        ctx.appColors.primaryDark,
                       ),
                     ],
                   ),
@@ -427,25 +434,28 @@ class _ParkingSessionTrackerScreenState
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(ctx),
+                onPressed: () => Navigator.pop(ctx, false),
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(ctx);
-                  _confirmAndEndSession();
+                  Navigator.pop(ctx, true);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: context.appColors.warning,
+                  backgroundColor: ctx.appColors.warning,
                 ),
                 child: const Text('Confirm end'),
               ),
             ],
           ),
     );
+
+    if (!mounted || shouldEnd != true) return;
+    _confirmAndEndSession();
   }
 
   Widget _buildConfirmRow(
+    BuildContext context,
     String label,
     String value,
     bool isHighlight, [
@@ -504,9 +514,10 @@ class _ParkingSessionTrackerScreenState
     );
   }
 
-  void _showExtendSessionModal() {
+  Future<void> _showExtendSessionModal() async {
     String selectedInterval = '+30 min';
-    showModalBottomSheet(
+    var isClosing = false;
+    final appliedInterval = await showModalBottomSheet<String>(
       context: context,
       useSafeArea: true,
       builder: (ctx) {
@@ -529,7 +540,12 @@ class _ParkingSessionTrackerScreenState
                       IconButton(
                         tooltip: 'Close',
                         icon: const Icon(Icons.close_rounded),
-                        onPressed: () => Navigator.pop(ctx),
+                        onPressed: () {
+                          if (isClosing) return;
+                          isClosing = true;
+                          FocusScope.of(ctx).unfocus();
+                          Navigator.pop(ctx);
+                        },
                       ),
                     ],
                   ),
@@ -585,12 +601,10 @@ class _ParkingSessionTrackerScreenState
                     height: 50,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        Navigator.pop(ctx);
-                        showAppSnackBar(
-                          context,
-                          'Session extended by $selectedInterval. Reminder alert updated.',
-                          icon: Icons.notifications_active_outlined,
-                        );
+                        if (isClosing) return;
+                        isClosing = true;
+                        FocusScope.of(ctx).unfocus();
+                        Navigator.pop(ctx, selectedInterval);
                       },
                       icon: const Icon(Icons.check_circle_outline_rounded),
                       label: const Text('Apply extension'),
@@ -602,6 +616,13 @@ class _ParkingSessionTrackerScreenState
           },
         );
       },
+    );
+
+    if (!mounted || appliedInterval == null) return;
+    showAppSnackBar(
+      context,
+      'Session extended by $appliedInterval. Reminder alert updated.',
+      icon: Icons.notifications_active_outlined,
     );
   }
 
@@ -697,7 +718,7 @@ class _ParkingSessionTrackerScreenState
   }
 
   void _onNavTap(int index) {
-    if (index == _selectedNavIndex) return;
+    if (_isNavigating || index == _selectedNavIndex) return;
     final Widget destination;
     switch (index) {
       case 0:
@@ -712,6 +733,8 @@ class _ParkingSessionTrackerScreenState
       default:
         return;
     }
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(

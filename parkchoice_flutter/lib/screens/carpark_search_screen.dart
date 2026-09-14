@@ -50,6 +50,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
   String _sortBy = 'Sort: Best Match';
   String _filterFeature = 'Filter: All Carparks';
   static const int _selectedNavIndex = 0;
+  bool _isNavigating = false;
   bool _isMapView = false;
   late AnimationController _livePulseController;
 
@@ -348,13 +349,14 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
     );
   }
 
-  void _showOptionsPickerModal({
+  Future<void> _showOptionsPickerModal({
     required String title,
     required String currentSelection,
     required List<String> options,
     required ValueChanged<String> onSelected,
-  }) {
-    showModalBottomSheet(
+  }) async {
+    var isClosing = false;
+    final selectedOption = await showModalBottomSheet<String>(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
@@ -374,13 +376,18 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                     Expanded(
                       child: Text(
                         title,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(ctx).textTheme.titleLarge,
                       ),
                     ),
                     IconButton(
                       tooltip: 'Close',
                       icon: const Icon(Icons.close_rounded),
-                      onPressed: () => Navigator.pop(ctx),
+                      onPressed: () {
+                        if (isClosing) return;
+                        isClosing = true;
+                        FocusScope.of(ctx).unfocus();
+                        Navigator.pop(ctx);
+                      },
                     ),
                   ],
                 ),
@@ -403,8 +410,10 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
                         child: InkWell(
                           borderRadius: BorderRadius.circular(AppRadii.control),
                           onTap: () {
-                            onSelected(option);
-                            Navigator.pop(ctx);
+                            if (isClosing) return;
+                            isClosing = true;
+                            FocusScope.of(ctx).unfocus();
+                            Navigator.pop(ctx, option);
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -450,6 +459,9 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
         );
       },
     );
+
+    if (!mounted || selectedOption == null) return;
+    onSelected(selectedOption);
   }
 
   Widget _buildRecommendationsHeader() {
@@ -897,6 +909,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
   }
 
   void _onParkHere(_CarparkModel cp) {
+    if (_isNavigating) return;
     if (ParkingSessionManager.instance.hasActiveSession) {
       showAppSnackBar(
         context,
@@ -907,6 +920,8 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
       return;
     }
 
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     ParkingSessionManager.instance.startSession(
       carparkName: cp.name,
       location: 'Zone A, Lot 145',
@@ -930,7 +945,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
   }
 
   void _onNavTap(int index) {
-    if (index == _selectedNavIndex) return;
+    if (_isNavigating || index == _selectedNavIndex) return;
     final Widget destination;
     switch (index) {
       case 1:
@@ -945,6 +960,8 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen>
       default:
         return;
     }
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(

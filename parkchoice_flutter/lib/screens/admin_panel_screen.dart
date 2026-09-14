@@ -66,6 +66,7 @@ class _CarparkOverrideModel {
 
 class _AdminPanelScreenState extends State<AdminPanelScreen> {
   static const int _selectedNavIndex = 3;
+  bool _isNavigating = false;
   final TextEditingController _carparkSearchController =
       TextEditingController();
 
@@ -582,12 +583,13 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
     );
   }
 
-  void _showAddOverrideModal() {
+  Future<void> _showAddOverrideModal() async {
     String selectedCarpark = 'Orchard Central Terminal';
     String selectedStatus = 'CLOSED (Maintenance)';
-    final reasonController = TextEditingController();
+    var reason = '';
+    var isClosing = false;
 
-    showModalBottomSheet(
+    final shouldApply = await showModalBottomSheet<bool>(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
@@ -606,7 +608,16 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSheetHeader(ctx, 'Apply carpark override'),
+                    _buildSheetHeader(
+                      ctx,
+                      'Apply carpark override',
+                      onClose: () {
+                        if (isClosing) return;
+                        isClosing = true;
+                        FocusScope.of(ctx).unfocus();
+                        Navigator.pop(ctx);
+                      },
+                    ),
                     const SizedBox(height: 5),
                     Text(
                       'Changes are shown to operators immediately and kept in the audit trail.',
@@ -670,8 +681,8 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                     ),
                     const SizedBox(height: 14),
                     TextField(
-                      controller: reasonController,
                       maxLines: 3,
+                      onChanged: (value) => reason = value,
                       decoration: const InputDecoration(
                         labelText: 'Reason for override',
                         hintText: 'Add a short audit note',
@@ -685,29 +696,13 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          final reason = reasonController.text.trim();
-                          setState(() {
-                            _activeOverrides.insert(
-                              0,
-                              _CarparkOverrideModel(
-                                carparkId:
-                                    'CP-${1000 + _activeOverrides.length}',
-                                carparkName: selectedCarpark,
-                                overrideStatus: selectedStatus,
-                                reason:
-                                    reason.isNotEmpty
-                                        ? reason
-                                        : 'Manual operator override',
+                          if (isClosing) return;
+                          isClosing = true;
+                          FocusScope.of(ctx).unfocus();
+                          Navigator.pop(ctx, true);
+                          /*
                                 appliedBy: 'Op-Admin #01  ·  Just now',
-                              ),
-                            );
-                          });
-                          Navigator.pop(ctx);
-                          showAppSnackBar(
-                            context,
-                            'Override applied to $selectedCarpark.',
-                            icon: Icons.check_circle_outline_rounded,
-                          );
+                          */
                         },
                         child: const Text('Apply override'),
                       ),
@@ -719,26 +714,61 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
           },
         );
       },
-    ).whenComplete(reasonController.dispose);
+    );
+
+    if (!mounted || shouldApply != true) return;
+    final trimmedReason = reason.trim();
+    setState(() {
+      _activeOverrides.insert(
+        0,
+        _CarparkOverrideModel(
+          carparkId: 'CP-${1000 + _activeOverrides.length}',
+          carparkName: selectedCarpark,
+          overrideStatus: selectedStatus,
+          reason:
+              trimmedReason.isNotEmpty
+                  ? trimmedReason
+                  : 'Manual operator override',
+          appliedBy: 'Op-Admin #01 - Just now',
+        ),
+      );
+    });
+    showAppSnackBar(
+      context,
+      'Override applied to $selectedCarpark.',
+      icon: Icons.check_circle_outline_rounded,
+    );
   }
 
-  Widget _buildSheetHeader(BuildContext sheetContext, String title) {
+  Widget _buildSheetHeader(
+    BuildContext sheetContext,
+    String title, {
+    VoidCallback? onClose,
+  }) {
     return Row(
       children: [
         Expanded(
-          child: Text(title, style: Theme.of(context).textTheme.titleLarge),
+          child: Text(
+            title,
+            style: Theme.of(sheetContext).textTheme.titleLarge,
+          ),
         ),
         IconButton(
           tooltip: 'Close',
           icon: const Icon(Icons.close_rounded),
-          onPressed: () => Navigator.pop(sheetContext),
+          onPressed:
+              onClose ??
+              () {
+                FocusScope.of(sheetContext).unfocus();
+                Navigator.pop(sheetContext);
+              },
         ),
       ],
     );
   }
 
   void _onNavTap(int index) {
-    if (index == _selectedNavIndex) return;
+    if (_isNavigating || index == _selectedNavIndex) return;
     final Widget destination;
     switch (index) {
       case 0:
@@ -753,6 +783,8 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
       default:
         return;
     }
+    _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
