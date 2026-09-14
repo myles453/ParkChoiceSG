@@ -389,60 +389,15 @@ The objective of Lab 2 is to transform the system requirements into a structured
 
 ## 5. Dynamic Model (Dialog Map / UI State Machine)
 
-```
-+==========================================================================================================+
-|                                          DRIVER INTERFACE FLOW                                         |
-+==========================================================================================================+
-                        +---------------------------+
-                        |  1.0 Search Home Screen   |<-----------------------+
-                        +---------------------------+                        |
-                              |                       ^                          |
-                [Submit Valid Search] |                       | [Tap Back / Clear]       |
-                              v                       |                          |
-                        +---------------------------+                        |
-                        | 2.0 Results List Display  |                        |
-                        +---------------------------+                        |
-                              |                       ^                          |
-                [Select Carpark Card] |                       | [Tap Back]               |
-                              v                       |                          |
-                        +---------------------------+                        |
-                        |  3.0 Carpark Detail View  |                        |
-                        +---------------------------+                        |
-                              |                       |                          |
-        [Select "Report Issue"]    |                       | [Select "Navigate"]      |
-                              v                       v                          |
-                  +---------------------+  +--------------------+               |
-                  | 3.1 Report Modal UI |  | 4.0 Ext Navigation |---------------+
-                  +---------------------+  +--------------------+
-                              |
-                              +--------------------------------------------------+
+The dynamic model represents ParkChoiceSG as state machines of user-interface states. Separate dialog maps are provided for the Anonymous Driver and System Operator because each actor interacts with a distinct set of interfaces and transitions.
 
-+==========================================================================================================+
-|                                      OPERATOR ADMINISTRATION FLOW                                      |
-+==========================================================================================================+
-                        +---------------------------+
-                        | 6.0 Operator Login Screen |
-                        +---------------------------+
-                              |
-                              | [Valid Credentials Over TLS]
-                              v
-                        +---------------------------+
-                        |  7.0 Operator Dashboard   |<-----------------------+
-                        +---------------------------+                        |
-                              |                       |                          |
-                [Select Report Queue] |                       | [Select API Health]      |
-                              v                       v                          |
-                  +--------------------+  +--------------------+               |
-                  | 8.0 Report Action  |  | 9.0 Health & Cache |               |
-                  |   & Override Panel |  |   Telemetry View   |               |
-                  +--------------------+  +--------------------+               |
-                              |                       |                          |
-                  | [Submit Override]     | [Trigger Manual Refresh] |
-                              v                       v                          |
-                  +--------------------+  +--------------------+               |
-                  | 8.1 Confirm Update |  | 9.1 Data Refreshed |---------------+
-                  +--------------------+  +--------------------+
-```
+### 5.1 Driver Interface Dialog Map
+
+![Driver Interface Dialog Map](./driver-dialog-map.png)
+
+### 5.2 Operator / Administrator Dialog Map
+
+![Operator Administrator Dialog Map](./operator-dialog-map.png)
 
 ---
 
