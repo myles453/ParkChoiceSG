@@ -71,4 +71,4 @@ Inspect the accompanying manifest for usable pair counts. A few successful cycle
 
 ## Verification on 2 October
 
-85 tests passed, including skipped-slot scheduling, provider failure/timeout isolation, archive-only mode and cross-process lock exclusion/release. A finite live cycle was started from outside the pipeline directory with the default five-minute interval. It loaded HDB (2,425 accepted observations), LTA (2,606) and URA (154); all three run IDs were verified in PostgreSQL. The cycle took approximately two minutes and stopped after one cycle. No continuous collector was left running.
+A finite live cycle was started from outside the pipeline directory with the default five-minute interval. It loaded HDB (2,425 accepted observations), LTA (2,606) and URA (154); all three run IDs were verified in PostgreSQL. The cycle took approximately two minutes and stopped after one cycle. No continuous collector was left running.

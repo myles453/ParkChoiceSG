@@ -158,7 +158,7 @@ def collect_reference(directory: Path):
 
 
 def load_postgres(manifest: dict, rows: list[dict], references: list[dict], metadata: list[dict] | None = None):
-    """One transaction: all rows commit or none do. Run schema.sql separately first."""
+    """One transaction: all rows commit or none do; expects the existing parking_data schema."""
     import psycopg
     from psycopg.types.json import Jsonb
     db_url = os.environ.get("DATABASE_URL")
