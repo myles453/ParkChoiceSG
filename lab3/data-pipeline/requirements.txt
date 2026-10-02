@@ -1,0 +1,3 @@
+# Only needed for loading into PostgreSQL. The local puller uses Python's standard library.
+psycopg[binary]==3.2.10
+pyproj==3.7.2
