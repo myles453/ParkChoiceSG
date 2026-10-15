@@ -12,3 +12,11 @@ __pycache__/
 # Local environment files
 .env
 .env.*
+
+# Python environments and test caches
+.venv/
+.pytest_cache/
+
+# Local datasets, rebuilt by the scripts in ml/ and ml_lta_ura/
+ml/data/
+ml_lta_ura/data/
