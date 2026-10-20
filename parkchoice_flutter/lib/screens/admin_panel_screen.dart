@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../services/operator_session.dart';
 import '../widgets/app_ui.dart';
 import '../widgets/bottom_nav_bar.dart';
 import 'carpark_search_screen.dart';
 import 'parking_session_tracker_screen.dart';
 import 'preferences_screen.dart';
 
+/// Operator console: alerts, data source health and carpark overrides.
+///
+/// Reached only after operator sign-in. Panel data is a prototype.
 class AdminPanelScreen extends StatefulWidget {
   const AdminPanelScreen({super.key});
 
@@ -165,9 +169,15 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AppPageHeader(
+              AppPageHeader(
                 title: 'Admin panel',
                 subtitle: 'Monitor platform health and parking operations.',
+                trailing: IconButton(
+                  key: const Key('operator-sign-out'),
+                  tooltip: 'Sign out',
+                  icon: const Icon(Icons.logout_rounded),
+                  onPressed: _signOut,
+                ),
               ),
               const SizedBox(height: AppSpacing.section),
               AppSectionTitle(
@@ -765,6 +775,11 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
         ),
       ],
     );
+  }
+
+  void _signOut() {
+    OperatorSession.instance.signOut();
+    _onNavTap(0);
   }
 
   void _onNavTap(int index) {

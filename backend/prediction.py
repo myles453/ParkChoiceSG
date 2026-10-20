@@ -12,6 +12,7 @@ _audit_lock=Lock()
 
 @dataclass(frozen=True)
 class PredictionRequest:
+    """Ask for one carpark's availability at the driver's arrival time."""
     agency: str
     carpark_id: str
     issued_at: datetime
@@ -20,6 +21,7 @@ class PredictionRequest:
 
 @dataclass(frozen=True)
 class Prediction:
+    """Forecast or reasoned non-forecast. p_free is the chance of a free lot."""
     status: str
     agency: str
     carpark_id: str
@@ -36,6 +38,7 @@ class Prediction:
 
 
 class AvailabilityPredictor(Protocol):
+    """Any forecaster the recommender can call; lets tests swap in stubs."""
     ready: bool
     def predict(self, request: PredictionRequest) -> Prediction: ...
 

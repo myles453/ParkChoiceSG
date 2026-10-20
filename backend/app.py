@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from onemap_adapter import Coordinate, OneMapClient
 from model_adapter import configured_predictor
+from operator_auth import verify_operator
 from recommendation import TripRequest, recommend
 
 app = FastAPI(title='ParkChoiceSG backend', version='0.1.0')
@@ -20,6 +21,7 @@ app.state.predictor = configured_predictor()
 
 
 class PointInput(BaseModel):
+    """WGS84 point sent by the app. Strict floats reject strings and NaN."""
     model_config = ConfigDict(extra='forbid', allow_inf_nan=False)
     latitude: float = Field(ge=-90, le=90,strict=True)
     longitude: float = Field(ge=-180, le=180,strict=True)
@@ -29,11 +31,13 @@ class PointInput(BaseModel):
 
 
 class SearchInput(BaseModel):
+    """Free-text destination query passed to OneMap search."""
     model_config = ConfigDict(extra='forbid',str_strip_whitespace=True)
     query: str = Field(min_length=1,max_length=200)
 
 
 class RecommendationInput(BaseModel):
+    """Trip request body. Ranges match recommendation.TripRequest."""
     model_config = ConfigDict(extra='forbid')
     origin: PointInput
     destination: PointInput
@@ -41,6 +45,13 @@ class RecommendationInput(BaseModel):
     candidate_limit: int = Field(default=3,ge=1,le=5,strict=True)
     radius_meters: int = Field(default=1500,ge=100,le=3000,strict=True)
     payment_method: Literal['parking_sg','paper_coupon'] = 'parking_sg'
+
+
+class OperatorLoginInput(BaseModel):
+    """Operator console credential. Never logged or echoed in errors."""
+    model_config = ConfigDict(extra='forbid')
+    username: str = Field(min_length=1,max_length=100)
+    password: str = Field(min_length=1,max_length=200)
 
 
 @app.exception_handler(RequestValidationError)
@@ -88,3 +99,15 @@ def recommendations(body: RecommendationInput):
         # Database errors may contain connection details; no raw trace/body is
         # returned. Expected route/model failures are candidate-level statuses.
         raise HTTPException(503,'Recommendation data is temporarily unavailable') from None
+
+
+@app.post('/operator/login')
+def operator_login(body: OperatorLoginInput):
+    """Check the single operator credential. Drivers never sign in."""
+    try:
+        ok = verify_operator(body.username,body.password)
+    except ValueError:
+        raise HTTPException(503,'Operator login is not configured') from None
+    if not ok:
+        raise HTTPException(401,'Incorrect operator username or password')
+    return {'status':'ok'}

@@ -17,6 +17,7 @@ SINGAPORE = timezone(timedelta(hours=8), "SGT")
 
 @dataclass(frozen=True)
 class PriceQuote:
+    """Result of one stay quote. amount_cents is set only when status is 'quoted'."""
     status: str
     amount_cents: int | None = None
     payment_method: str | None = None
@@ -43,6 +44,7 @@ def _clock(value):
 
 
 def day_type(day, holidays):
+    """Classify a date as public_holiday, sunday, saturday or weekday. Holidays win."""
     if day in holidays:
         return "public_holiday"
     if day.weekday() == 6:
@@ -126,6 +128,13 @@ def quote_schedule(schedule: Mapping[str, Any], rules: list[dict], arrival_at: d
                    duration_minutes: int, holidays: Mapping[date, str], covered_years: set[int],
                    *, payment_method="parking_sg", first_entry: bool | None = None,
                    checked_at: datetime | None = None) -> PriceQuote:
+    """Price one stay against a reviewed tariff schedule, minute by minute.
+
+    Each minute takes the highest-priority verified rule whose window covers it.
+    Minutes under the same rule and window are billed together, then caps apply.
+    Any stale, missing, conflicting or unreviewed evidence returns an
+    unavailable quote with a status code instead of a guessed amount.
+    """
     arrival_at = validate_quote_request(arrival_at, duration_minutes, payment_method, first_entry)
     checked_at = _aware(checked_at or datetime.now(timezone.utc), "checked_at")
     if duration_minutes > 1440:

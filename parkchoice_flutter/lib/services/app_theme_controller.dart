@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Light, dark or system appearance, saved on the device only.
 class AppThemeController extends ChangeNotifier {
   AppThemeController._();
 
@@ -11,6 +12,7 @@ class AppThemeController extends ChangeNotifier {
 
   ThemeMode get themeMode => _themeMode;
 
+  /// Reads the saved appearance. Call once before runApp.
   Future<void> load() async {
     final preferences = await SharedPreferences.getInstance();
     final savedMode = preferences.getString(_preferenceKey);
@@ -21,6 +23,7 @@ class AppThemeController extends ChangeNotifier {
     };
   }
 
+  /// Applies [mode] at once, then saves it for the next launch.
   Future<void> setThemeMode(ThemeMode mode) async {
     if (_themeMode == mode) return;
     _themeMode = mode;
