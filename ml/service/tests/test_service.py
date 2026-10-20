@@ -17,6 +17,19 @@ FIELDS = {"carpark_id", "issue_at", "arrival_at", "horizon_minutes", "mode", "p_
           "current_available", "current_observed_at", "current_reading_stale", "model_version", "status", "fallback_reason"}
 
 
+def test_current_endpoint_preserves_stale_source_time_and_caches(env):
+    response=env.client.post('/current',json={'carpark_ids':['ACB','HE12','UNKNOWN']})
+    assert response.status_code==200
+    rows={r['carpark_id']:r for r in response.json()}
+    assert rows['ACB']['status']=='fresh_source_update'
+    assert rows['ACB']['available_lots']==120
+    assert rows['HE12']['status']=='stale'
+    assert rows['HE12']['timestamp_kind']=='source_update'
+    assert 'UNKNOWN' not in rows
+    env.client.post('/current',json={'carpark_ids':['ACB']})
+    assert env.calls==1
+
+
 def one(env, cp, **kw):
     out = env.predict([cp], **kw)
     assert len(out) == 1 and set(out[0]) == FIELDS

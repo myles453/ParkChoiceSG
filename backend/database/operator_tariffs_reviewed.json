@@ -1,0 +1,4135 @@
+{
+  "checked_at": "2026-09-30T13:27:00+00:00",
+  "operator_tariffs": [
+    {
+      "carpark_id": "65",
+      "source_url": "https://www.capitaland.com/sg/malls/bedokmall/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 155
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 260,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 155
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 260,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 155
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 260,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 155
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 260,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "43",
+      "source_url": "https://www.capitaland.com/sg/malls/westgate/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "62",
+      "source_url": "https://www.capitaland.com/sg/malls/lotone/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 135
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "64",
+      "source_url": "https://www.capitaland.com/sg/malls/junction8/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 135
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 265
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "9",
+      "source_url": "https://www.capitaland.com/sg/malls/plazasingapura/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 195
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 325
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 325
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 300,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 325
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 200,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 195
+              }
+            ],
+            "ph_eve": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "66",
+      "source_url": "https://www.capitaland.com/sg/malls/funan/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 240
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 330,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 300,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 200,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 240
+              }
+            ],
+            "ph_eve": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "3",
+      "source_url": "https://www.capitaland.com/sg/malls/rafflescity/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "08:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 260
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "08:00",
+          "rule_kind": "flat",
+          "amount_cents": 325,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "08:00",
+          "end_time": "08:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "08:00",
+          "end_time": "08:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "08:00",
+          "end_time": "08:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 65,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 260
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "61",
+      "source_url": "https://www.capitaland.com/sg/malls/bugisplus/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 220
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 330,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "weekdays": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "weekday",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 330
+              }
+            ],
+            "weekdays": [
+              4
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 200,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 330
+              }
+            ],
+            "ph_eve": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 330
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 330
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 300,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 120,
+                "unit_minutes": 120,
+                "amount_cents": 330
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "59",
+      "source_url": "https://www.capitaland.com/sg/malls/clarkequay/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "07:00",
+          "end_time": "07:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "07:00",
+          "end_time": "07:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "07:00",
+          "end_time": "07:00",
+          "rule_kind": "flat",
+          "amount_cents": 300,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "07:00",
+          "end_time": "07:00",
+          "rule_kind": "flat",
+          "amount_cents": 300,
+          "unit_minutes": null,
+          "priority": 300,
+          "review_status": "verified",
+          "calculation": {
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "07:00",
+          "end_time": "07:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 55,
+          "unit_minutes": 15,
+          "priority": 200,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 160
+              }
+            ],
+            "ph_eve": true,
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {},
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "53",
+      "source_url": "https://www.capitaland.com/sg/malls/imm/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "first_entry_required": true,
+            "repeat_entry_tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 0
+              },
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "first_entry_required": true,
+            "repeat_entry_tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "first_entry_required": true,
+            "repeat_entry_tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 40,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "first_entry_required": true,
+            "repeat_entry_tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 120
+              }
+            ],
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {
+        "first_entry_required": true
+      },
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "63",
+      "source_url": "https://www.capitaland.com/sg/malls/tampinesmall/en/concierge.html",
+      "grace_minutes": 10,
+      "rules": [
+        {
+          "day_type": "weekday",
+          "start_time": "00:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "tiers": [
+              {
+                "duration_minutes": 60,
+                "unit_minutes": 60,
+                "amount_cents": 135
+              }
+            ],
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "all",
+          "start_time": "18:00",
+          "end_time": "00:00",
+          "rule_kind": "flat",
+          "amount_cents": 265,
+          "unit_minutes": null,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "saturday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "pending_review",
+          "calculation": {
+            "billing": "round_up_unit",
+            "blocks_quote": true
+          },
+          "description": "Conflict: main table first 2 hours; FAQ first hour"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "sunday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "pending_review",
+          "calculation": {
+            "billing": "round_up_unit",
+            "blocks_quote": true
+          },
+          "description": "Conflict: main table first 2 hours; FAQ first hour"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        },
+        {
+          "day_type": "public_holiday",
+          "start_time": "03:00",
+          "end_time": "18:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 45,
+          "unit_minutes": 15,
+          "priority": 100,
+          "review_status": "pending_review",
+          "calculation": {
+            "billing": "round_up_unit",
+            "blocks_quote": true
+          },
+          "description": "Conflict: main table first 2 hours; FAQ first hour"
+        }
+      ],
+      "config": {
+        "source_conflict": "Weekend 03:00-18:00 first-duration conflict"
+      },
+      "note": "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    },
+    {
+      "carpark_id": "4",
+      "source_url": "https://www.esplanade.com/visit/visitor-guide/getting-here-and-around",
+      "grace_minutes": 0,
+      "rules": [
+        {
+          "day_type": "all",
+          "start_time": "00:00",
+          "end_time": "00:00",
+          "rule_kind": "per_unit",
+          "amount_cents": 230,
+          "unit_minutes": 60,
+          "priority": 100,
+          "review_status": "verified",
+          "calculation": {
+            "full_day": true,
+            "billing": "round_up_unit"
+          },
+          "description": "Published general motor-car tariff (GST included)"
+        }
+      ],
+      "config": {
+        "continuous_full_day": true
+      },
+      "note": "Official daily $2.30/hour or part thereof, GST included and explicitly no grace period."
+    }
+  ],
+  "all_lta_evidence": [
+    [
+      "guide-20260930-1",
+      "LTA",
+      "1",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Suntec City",
+        "guide_name": "Suntec City",
+        "weekday_day": "7.00am-5.00pm: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+        "weekday_evening": "5.00pm-4.00am :$3.00 per entry; 4.00am-7.00am: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+        "saturday": "7.00am-4.00am: $2.60 for 1st hr; $1.30 for the next 3 hrs; $1.30 per 30 min or part thereof after the 4th hr; 4.00am-7.00am: $2.60 for 1st hr; $1.30 per 30 min or part thereof",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-2",
+      "LTA",
+      "2",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Marina Square",
+        "guide_name": "Marina Square",
+        "weekday_day": "Mon-Thu: 7.00am-5.00pm: $3.27 for 1st 2hrs; $1.64 per ½ hr for sub. ½ hr",
+        "weekday_evening": "Mon-Thu: 5.00pm-11.00pm: $2.25 per entry; 11.00pm-7.00am: $1.12 per ½ hr",
+        "saturday": "Fri/Sat-Sun/PH: 7.00am-2am :$2.44 for 1st 2 hrs; $1.22 per hr for sub. 2hrs; $1.43 per ½ hr for sub. ½ hr after 4 hrs of parking. 2am-7.00am: $1.12 per ½ hr",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-3",
+      "LTA",
+      "3",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Raffles City",
+        "guide_name": "Raffles City Shopping Centre",
+        "weekday_day": "8.00am-5.59pm: $2.60 for 1st hr; $0.65 for sub. 15min",
+        "weekday_evening": "6.00pm-7.59am next day: $3.25 per entry",
+        "saturday": "8.00am-7.59am (the next day): $2.60 for 1st 2 hr; $0.65 for sub. 15min",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-4",
+      "LTA",
+      "4",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Esplanade",
+        "guide_name": "The Esplanade",
+        "weekday_day": "$2.30 per hour or part thereof.",
+        "weekday_evening": "$2.30 per hour or part thereof.",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-5",
+      "LTA",
+      "5",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Millenia Singapore",
+        "guide_name": "Millenia Singapore (Basement Car Park)",
+        "weekday_day": "7.00am-5.59pm: $3.90 for 1st hr; $1.95 per sub.½ hr",
+        "weekday_evening": "6.00pm-7.00am: $3 per entry. Mon-Thurs (Overnight Parking): 12.00am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+        "saturday": "7.00am-1.59am: $2.80 for 1st 2hrs; $1.40 per sub.½ hr. Fri/Sat-Sun/PH (Overnight Parking): 2am-6.59am: $3.90 for 1st hr; $1.95 per sub.½ hr",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-6",
+      "LTA",
+      "6",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.8.html",
+      "2026-09-30T13:07:43.282340+00:00",
+      "f1032fdbe6682f22273b67ea75051a53a0d5eb5e1a90e19795dacd7d66e41736",
+      {
+        "development": "Singapore Flyer",
+        "guide_name": "Singapore Flyer",
+        "weekday_day": "9.00am-10.59pm: $2.50 per hour or part thereof",
+        "weekday_evening": "11pm - 8.59am: $2.50 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "missing-20260930-7",
+      "LTA",
+      "7",
+      "unresolved",
+      null,
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "development": "Orchard Point",
+        "reason": "no_exact_guide_match"
+      },
+      "no_source",
+      "No confirmed carpark-specific numeric tariff; never copy a nearby or similarly named tariff."
+    ],
+    [
+      "guide-20260930-8",
+      "LTA",
+      "8",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "The Heeren",
+        "guide_name": "The Heeren",
+        "weekday_day": "3.00am-4.59pm: $4.00 for 1st hour and $2.00 for sub. 30 min or part thereof",
+        "weekday_evening": "3.00am-4.59pm: $4.50 per entry",
+        "saturday": "$6.00 for 1st two hours and $2.00 for sub. 30min or part thereof",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-9",
+      "LTA",
+      "9",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Plaza Singapura",
+        "guide_name": "Plaza Singapura",
+        "weekday_day": "12.00am-5.59pm: $1.95 for 1st hr; $0.55 for sub. 15min",
+        "weekday_evening": "6.00pm–11.59pm: $3.25 per entry",
+        "saturday": "12.00am-2.59am: $0.55/15 min; 3am-5.59pm: $3.25 for 1st 2hr; $0.55 for every sub. 15min. 6.00pm–11.59pm: $3.25 per entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-10",
+      "LTA",
+      "10",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "The Cathay",
+        "guide_name": "The Cathay",
+        "weekday_day": "8.00am-5:59am: $1.80 every 60 min or part thereof.",
+        "weekday_evening": "6.00pm-7.59am: $2.95 per entry",
+        "saturday": "8.00am-5.59pm: $1.60 every 60 min or part thereof ; 6pm-7.59am: $3.10 per entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-11",
+      "LTA",
+      "11",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Cineleisure",
+        "guide_name": "Cathay Cineleisure Orchard",
+        "weekday_day": "7.00am-4.59pm: $2.40 for 1st hr; $1.40 for sub. 30min",
+        "weekday_evening": "5.00pm-6.59am: $0.04/min",
+        "saturday": "7.00am-10.59am: $4.80 per entry; 11.00am-7.00.59pm: $2.50 per hr; 8pm-6.59am: $0.05/min",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-12",
+      "LTA",
+      "12",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Hilton Orchard",
+        "guide_name": "Hilton Singapore Orchard",
+        "weekday_day": "6.01am-5.59pm: $3.80 for 1st hr; $2.50 for sub. 30 min",
+        "weekday_evening": "6.00pm-6.00am next day: $7.00 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-13",
+      "LTA",
+      "13",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Ngee Ann City",
+        "guide_name": "Ngee Ann City",
+        "weekday_day": "12.01am-12.00pm & 2.01pm-5.00pm: $1.20 every 30min or part thereof; 12.01pm-2.00pm: $1.70 every 30min or part thereof",
+        "weekday_evening": "5.01pm-7.00pm: $1.70 every 30min or part thereof; Aft 7.00pm: $4.00/entry",
+        "saturday": "12.01am-12.00pm & 2.01pm-5.00pm: $2.40 for 1st hr; $1.50 every sub. 30min or part thereof; 12.01pm-2.00pm & 5.01pm-7.00pm: $3.40 for 1st hr; $2 every sub. 30min or part thereof; Aft 7pm: $4 per entry.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-14",
+      "LTA",
+      "14",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Wisma Atria",
+        "guide_name": "Wisma Atria",
+        "weekday_day": "12.00am-5.00pm: $2.60 for 1st hr; $1.70 for sub. 30min (Lunch hr surcharge of additional $1.10 between 12pm-2pm daily)",
+        "weekday_evening": "After 5.00pm: $5.00 per entry",
+        "saturday": "12am-5.00pm: $2.70 for 1st hr; $1.70 for sub. 30min (Lunch hr surcharge of additional $1.10 between 12pm-2pm daily); After 5.00pm: $5.00 per entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-15",
+      "LTA",
+      "15",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Wheelock Place",
+        "guide_name": "Wheelock Place",
+        "weekday_day": "6.00am-5.30pm: $3.27 for 1st hr; $1.64 for sub. 30min.",
+        "weekday_evening": "5.30pm-6.00am: $4.91 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-16",
+      "LTA",
+      "16",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "VivoCity P3",
+        "guide_name": "Vivocity",
+        "weekday_day": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof.",
+        "weekday_evening": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof; 12.00am-4.00am: $3.20 per entry.",
+        "saturday": "4.00am-12.00am: $2.20 for 1st hr; $1.10 for sub. 30 min or part thereof; 12.00am-4.00am: $4.80 per entry.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "missing-20260930-17",
+      "LTA",
+      "17",
+      "unresolved",
+      null,
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "development": "Sentosa",
+        "reason": "aggregate_carpark_identity"
+      },
+      "no_source",
+      "No confirmed carpark-specific numeric tariff; never copy a nearby or similarly named tariff."
+    ],
+    [
+      "guide-20260930-18",
+      "LTA",
+      "18",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Tang Plaza",
+        "guide_name": "Tang Plaza",
+        "weekday_day": "6am-6.00pm: $3.00 for 1st hr; $0.05/min up to a maximum charge of $18.00",
+        "weekday_evening": "Aft 6.00pm: $6 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-20",
+      "LTA",
+      "20",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Far East Plaza",
+        "guide_name": "Far East Plaza",
+        "weekday_day": "8.00am-5.00pm: $2.00 for 1st hr; $1.50 for sub. 30min",
+        "weekday_evening": "Aft 5.00pm: $3.50 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-21",
+      "LTA",
+      "21",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Centrepoint",
+        "guide_name": "The Centrepoint",
+        "weekday_day": "6.00am-5.59am: $2.80 for 1st hr; $1.20 for sub. 30min or part thereof.",
+        "weekday_evening": "-",
+        "saturday": "6.00am-5.59apm: $3 for 1st hr or part thereof; $1.20 for sub. 30min or part thereof.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-22",
+      "LTA",
+      "22",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Concorde Hotel",
+        "guide_name": "Concorde Hotel",
+        "weekday_day": "7.00am-6.00pm: $2.14 for 1st hr; $1.39 for sub. 30min",
+        "weekday_evening": "After 6.00pm: $3.75 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "$3.75 per entry",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-23",
+      "LTA",
+      "23",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "ION Orchard",
+        "guide_name": "ION Orchard",
+        "weekday_day": "Monday to Thursday 8.00am-4.59pm: $2.73 for 1st hr; $1.31 for sub. 30min or part thereof",
+        "weekday_evening": "Monday to Thursday 5.00pm-11.59pm: $3.05 per entry; 12.00am-7.59am $1.09 per hr or part thereof",
+        "saturday": "Friday to Sunday and Public Holiday 8.00am-5.59pm: $2.62 for 1st hr; $1.91 for sub. 30min or part thereof; 6pm-11.59pm: $3.82 per entry; 12.00am-7.59am $1.09 per hour or part thereof",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-24",
+      "LTA",
+      "24",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "313@Somerset",
+        "guide_name": "313@Somerset",
+        "weekday_day": "Monday to Thursday 7.00am-7.00am: $3.05 for 1st hr; $1.31 for sub. 30min",
+        "weekday_evening": "-",
+        "saturday": "Friday to Sunday and Public Holiday 7.00am-7.00am: $3.27.00 for 1st hr; $1.64 for sub. 30min",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-26",
+      "LTA",
+      "26",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Resorts World",
+        "guide_name": "Resorts World Sentosa (RWS)",
+        "weekday_day": "Monday to Thursday (excluding PH): 12.00am-11:59pm: $6.50 for 1st hr; $1.10 for ½ hr or part thereof. Capped at $13.10 per day.",
+        "weekday_evening": "Monday to Thursday (excluding PH): 12.00am-11:59pm: $6.50 for 1st hr; $1.10 for ½ hr or part thereof. Capped at $13.10 per day.",
+        "saturday": "Friday to Sunday and Public Holiday: 12.00am-11:59pm: $9.70 for 1st hr; $1.10 for ½ hr or part thereof. Capped at $16.30 per day.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-27",
+      "LTA",
+      "27",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Orchard Central",
+        "guide_name": "Orchard Central",
+        "weekday_day": "12.00am-5.59pm: $2.73 for 1st hr; $0.68 for sub. 15 minutes",
+        "weekday_evening": "6pm-11.59pm: $4.09/entry",
+        "saturday": "12.00am-5.59pm: $2.94 for 1st hr; $0.74 for sub. 15 minutes; 6pm-11.59pm: $4.41/entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-43",
+      "LTA",
+      "43",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.5.html",
+      "2026-09-30T13:07:43.234471+00:00",
+      "0476cda8bbabc2e4a31d65de9f06417ea0955fb94ba9c9db9298916801278be1",
+      {
+        "development": "Westgate",
+        "guide_name": "Westgate",
+        "weekday_day": "12.00am-6.00pm: $1.60 for 1st hr; $0.55 for sub. 15min",
+        "weekday_evening": "6.00pm-11.59pm: $3.25 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-50",
+      "LTA",
+      "50",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "VivoCity P2",
+        "guide_name": "Vivocity",
+        "weekday_day": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof.",
+        "weekday_evening": "4.00am-12.00am: $1.60 for 1st hr; $0.80 for sub. 30 min or part thereof; 12.00am-4.00am: $3.20 per entry.",
+        "saturday": "4.00am-12.00am: $2.20 for 1st hr; $1.10 for sub. 30 min or part thereof; 12.00am-4.00am: $4.80 per entry.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-52",
+      "LTA",
+      "52",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Orchard Gateway",
+        "guide_name": "orchardgateway",
+        "weekday_day": "12.00am-5.59pm: $2.40 for 1st 1hr or part thereof; $1.53 for sub. 30min or part thereof",
+        "weekday_evening": "6.00pm-11.59pm: $2.51 for 1st 1hr or part thereof; $1.64 for sub. 30min or part thereof",
+        "saturday": "$2.51 for 1st 1hr or part thereof; $1.64 for sub. 30min or part thereof",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-53",
+      "LTA",
+      "53",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.5.html",
+      "2026-09-30T13:07:43.234471+00:00",
+      "0476cda8bbabc2e4a31d65de9f06417ea0955fb94ba9c9db9298916801278be1",
+      {
+        "development": "IMM Building",
+        "guide_name": "IMM Building",
+        "weekday_day": "First hour - Free (first entry only, excluding public holidays) Second hour of first entry or first hour of subsequent same-day entry - $1.20 sub. 15min - $0.40",
+        "weekday_evening": "First hour - Free (first entry only, excluding public holidays) Second hour of first entry or first hour of subsequent same-day entry - $1.20 sub. 15min - $0.41",
+        "saturday": "First 1 hour - $1.20 (first entry only) sub. 15min - $0.40",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-55",
+      "LTA",
+      "55",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "Paragon",
+        "guide_name": "Paragon Shopping Centre",
+        "weekday_day": "3.00am-4.59pm: $3.00 for 1st hr; $1.60 for sub. 30min; Peak Hr Surcharge of $2.10 from 11am-3pm.",
+        "weekday_evening": "5.00pm-2.59am: $4.60 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "3am-4.59pm: $3.00 for 1st hr; $1.60 for sub. 30min. 5.00pm-2.59am: $4.60 per entry",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-56",
+      "LTA",
+      "56",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "National Gallery",
+        "guide_name": "National Gallery",
+        "weekday_day": "7.00am-6.00pm: $1.40 per 30min.",
+        "weekday_evening": "6.00pm-1.00am: $3.30 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-57",
+      "LTA",
+      "57",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.1.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "a814f2acb6a9352cf541b0c2a63cad7cad092271ad4c7faac9e17ca75889a89d",
+      {
+        "development": "The Atrium@Orchard",
+        "guide_name": "The Atrium @ Orchard",
+        "weekday_day": "12.00am-5.59pm: $1.95 for 1st hr; $0.55 for sub. 15min",
+        "weekday_evening": "6.00pm-11.59pm: $3.25 per entry",
+        "saturday": "12.00am-2.59am: $0.55 per 15min; 3.00am-5.59pm: $3.25 for 1st 2hrs; $0.55 for sub. 15min; 6.00pm-11.59pm: $3.25 per entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-58",
+      "LTA",
+      "58",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.5.html",
+      "2026-09-30T13:07:43.234471+00:00",
+      "0476cda8bbabc2e4a31d65de9f06417ea0955fb94ba9c9db9298916801278be1",
+      {
+        "development": "Bt Panjang Plaza",
+        "guide_name": "Bukit Panjang Plaza",
+        "weekday_day": "12.00am-5.59pm: $2.75 for 1st 2 hrs; $0.45 for sub. 15 min or part thereof",
+        "weekday_evening": "6.00pm-11.59pm: $2.75 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-59",
+      "LTA",
+      "59",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "CQ @ Clarke Quay",
+        "guide_name": "Clarke Quay",
+        "weekday_day": "7.00am-6.59am (next morning): 1st hour @ $1.60, $0.55 for subsequent 15 min or part thereof",
+        "weekday_evening": "7.00am-6.59am (next morning): 1st hour @ $1.60, $0.55 for subsequent 15 min or part thereof",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "7.00am to 6.59am (next morning): $3.00 per entry.",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-61",
+      "LTA",
+      "61",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Bugis+",
+        "guide_name": "Bugis+",
+        "weekday_day": "12.00am-5.59pm: $2.20 for 1st hr; $0.55 for sub. 15 min",
+        "weekday_evening": "6.00pm-11.59pm: Mon-Thu: $3.30 per entry; Fri: $3.30 for 1st 2hrs; $0.55 for sub. 15 min.",
+        "saturday": "$3.30 for 1st 2hrs; $0.55 for sub. 15 min",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-62",
+      "LTA",
+      "62",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.5.html",
+      "2026-09-30T13:07:43.234471+00:00",
+      "0476cda8bbabc2e4a31d65de9f06417ea0955fb94ba9c9db9298916801278be1",
+      {
+        "development": "Lot One",
+        "guide_name": "Lot One",
+        "weekday_day": "12.00am-5.59pm: $1.35 for 1st hr; $0.45 for sub. 15min",
+        "weekday_evening": "6.00pm-11.59pm: $2.65 per entry;",
+        "saturday": "3.00am-5.59pm: $2.65 for 1st 2-hrs; $0.45 for sub. 15 min; 6.00pm-11.59pm: $2.65 per entry; 12.00am-2.59am: Sub. 15min or part thereof at $0.45",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-63",
+      "LTA",
+      "63",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.3.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "af6966677a9d705545de6a7985e2735d907c6ca3e990c05386b206e57adbda5b",
+      {
+        "development": "Tampines Mall",
+        "guide_name": "Tampines Mall",
+        "weekday_day": "12.00am-5.59pm: $1.35 for 1st hr; $0.45 for sub. 15min or part thereof",
+        "weekday_evening": "6.00pm-11.59pm: $2.65 per entry",
+        "saturday": "3.00am-5.59pm: $2.65 for 1st 2hrs; $0.45 for sub. 15min or part thereof; 6.00pm-11.59pm: $2.65 per entry.12.00am-2.59am: $0.45 for sub. 15min or part thereof",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-64",
+      "LTA",
+      "64",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.2.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "826af464a0b47529e462bb76b2ed55538cd7e1e3e81f8a0af9061d45f33a46ac",
+      {
+        "development": "Junction 8",
+        "guide_name": "Junction 8",
+        "weekday_day": "12.00am-5.59pm - $1.35 for 1st hr; $0.45 for sub. 15 min",
+        "weekday_evening": "6.00pm-11.59pm: $2.65 per entry",
+        "saturday": "12.00am-5.59pm - $2.65 for 1st 2hr; $0.45 for sub. 15 min. 6.00pm-11.59pm: $2.65 per entry",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-65",
+      "LTA",
+      "65",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.3.html",
+      "2026-09-30T13:07:43.027032+00:00",
+      "af6966677a9d705545de6a7985e2735d907c6ca3e990c05386b206e57adbda5b",
+      {
+        "development": "Bedok Mall",
+        "guide_name": "Bedok Mall",
+        "weekday_day": "12.00am-5.59pm: $1.55 for 1st hr, $0.40 for sub. 15min",
+        "weekday_evening": "6pm-11.59pm: $2.60 per entry",
+        "saturday": "Same as weekdays",
+        "sunday_ph": "Same as weekdays",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "guide-20260930-66",
+      "LTA",
+      "66",
+      "lta_guide",
+      "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/parking/parking_rates.4.html",
+      "2026-09-30T13:07:43.042863+00:00",
+      "4f212f62a979fff2409b2c48d48c247aba2ed5edc3564f8214cc2797b3e9a71d",
+      {
+        "development": "Funan Mall",
+        "guide_name": "Funan",
+        "weekday_day": "12.00am-5.59pm: $2.40 for 1st hr, $0.65 for sub 15min.",
+        "weekday_evening": "6.00pm-11.59pm: $3.30 per entry.",
+        "saturday": "12.00am-2.59pm: Every 15min of part thereof at $0.65. 3am-5.59pm: $2.60 for 1st 2hr, $0.65 for sub 15min or part thereof . 6.00pm to 11.59pm: $3.30 per entry.",
+        "sunday_ph": "Same as Saturday",
+        "gst_status": "not_confirmed",
+        "grace_minutes": null
+      },
+      "requires_review",
+      "LTA guide may exclude GST; operator billing/grace and tariff-boundary semantics need confirmation."
+    ],
+    [
+      "operator-20260930-65",
+      "LTA",
+      "65",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/bedokmall/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 155
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 260,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 155
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 260,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 155
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 260,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 155
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 260,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-43",
+      "LTA",
+      "43",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/westgate/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-62",
+      "LTA",
+      "62",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/lotone/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 135
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-64",
+      "LTA",
+      "64",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/junction8/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 135
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 265
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-9",
+      "LTA",
+      "9",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/plazasingapura/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 195
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 325
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 325
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 300,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 325
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 200,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 195
+                }
+              ],
+              "ph_eve": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-66",
+      "LTA",
+      "66",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/funan/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 240
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 330,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 300,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 200,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 240
+                }
+              ],
+              "ph_eve": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-3",
+      "LTA",
+      "3",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/rafflescity/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "08:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 260
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "08:00",
+            "rule_kind": "flat",
+            "amount_cents": 325,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "08:00",
+            "end_time": "08:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "08:00",
+            "end_time": "08:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "08:00",
+            "end_time": "08:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 65,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 260
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-61",
+      "LTA",
+      "61",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/bugisplus/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 220
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 330,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "weekdays": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "weekday",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 330
+                }
+              ],
+              "weekdays": [
+                4
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 200,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 330
+                }
+              ],
+              "ph_eve": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 330
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 330
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 300,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 120,
+                  "unit_minutes": 120,
+                  "amount_cents": 330
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-59",
+      "LTA",
+      "59",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/clarkequay/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "rule_kind": "flat",
+            "amount_cents": 300,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "rule_kind": "flat",
+            "amount_cents": 300,
+            "unit_minutes": null,
+            "priority": 300,
+            "review_status": "verified",
+            "calculation": {
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 55,
+            "unit_minutes": 15,
+            "priority": 200,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 160
+                }
+              ],
+              "ph_eve": true,
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-53",
+      "LTA",
+      "53",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/imm/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "first_entry_required": true,
+              "repeat_entry_tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 0
+                },
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "first_entry_required": true,
+              "repeat_entry_tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "first_entry_required": true,
+              "repeat_entry_tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 40,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "first_entry_required": true,
+              "repeat_entry_tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 120
+                }
+              ],
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-63",
+      "LTA",
+      "63",
+      "operator_page",
+      "https://www.capitaland.com/sg/malls/tampinesmall/en/concierge.html",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 10,
+        "rules": [
+          {
+            "day_type": "weekday",
+            "start_time": "00:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "tiers": [
+                {
+                  "duration_minutes": 60,
+                  "unit_minutes": 60,
+                  "amount_cents": 135
+                }
+              ],
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "all",
+            "start_time": "18:00",
+            "end_time": "00:00",
+            "rule_kind": "flat",
+            "amount_cents": 265,
+            "unit_minutes": null,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "saturday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "pending_review",
+            "calculation": {
+              "billing": "round_up_unit",
+              "blocks_quote": true
+            },
+            "description": "Conflict: main table first 2 hours; FAQ first hour"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "sunday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "pending_review",
+            "calculation": {
+              "billing": "round_up_unit",
+              "blocks_quote": true
+            },
+            "description": "Conflict: main table first 2 hours; FAQ first hour"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "00:00",
+            "end_time": "03:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          },
+          {
+            "day_type": "public_holiday",
+            "start_time": "03:00",
+            "end_time": "18:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 45,
+            "unit_minutes": 15,
+            "priority": 100,
+            "review_status": "pending_review",
+            "calculation": {
+              "billing": "round_up_unit",
+              "blocks_quote": true
+            },
+            "description": "Conflict: main table first 2 hours; FAQ first hour"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official operator rates and motor-car grace reviewed; crossings between tariff bands remain unquoted."
+    ],
+    [
+      "operator-20260930-4",
+      "LTA",
+      "4",
+      "operator_page",
+      "https://www.esplanade.com/visit/visitor-guide/getting-here-and-around",
+      "2026-09-30T13:27:00+00:00",
+      null,
+      {
+        "grace_minutes": 0,
+        "rules": [
+          {
+            "day_type": "all",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "rule_kind": "per_unit",
+            "amount_cents": 230,
+            "unit_minutes": 60,
+            "priority": 100,
+            "review_status": "verified",
+            "calculation": {
+              "full_day": true,
+              "billing": "round_up_unit"
+            },
+            "description": "Published general motor-car tariff (GST included)"
+          }
+        ]
+      },
+      "verified_facts",
+      "Official daily $2.30/hour or part thereof, GST included and explicitly no grace period."
+    ]
+  ]
+}

@@ -5,7 +5,7 @@ import asyncio
 import logging
 import os
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -37,6 +37,10 @@ class PredictRequest(BaseModel):
         if v.tzinfo is None or v.utcoffset() is None:
             raise ValueError("arrival_at must be timezone-aware")
         return v
+
+
+class CurrentRequest(BaseModel):
+    carpark_ids: list[str] = Field(min_length=1, max_length=MAX_CARPARKS)
 
 
 class PredictResult(BaseModel):
@@ -106,6 +110,29 @@ def create_app(artifact_dir: str | Path | None = None, feed: LiveFeed | None = N
         if req.arrival_at < engine.feed.clock():
             raise HTTPException(422, "arrival_at is in the past")
         return engine.predict(req.carpark_ids, req.arrival_at)
+
+    @app.post('/current')
+    def current(req: CurrentRequest):
+        """Share the same cached source readings used by the classifier."""
+        engine = state['engine']
+        if engine is None:
+            raise HTTPException(503,'Current availability service is unavailable')
+        try:
+            readings = engine.feed.current()
+        except Exception:
+            raise HTTPException(503,'HDB feed is unavailable') from None
+        now = engine.feed.clock()
+        results=[]
+        for cid in req.carpark_ids:
+            reading=readings.get(cid)
+            if reading is None: continue
+            age=now-reading.observed_at
+            fresh=timedelta(0)<=age<=timedelta(minutes=15)
+            results.append({'carpark_id':cid,'available_lots':reading.lots_available,
+                'total_lots':reading.total_lots,'timestamp':reading.observed_at,
+                'status':'fresh_source_update' if fresh else 'stale',
+                'timestamp_kind':'source_update','feed':'hdb_live_service'})
+        return results
 
     return app
 

@@ -19,15 +19,15 @@ void main() {
     ParkingSessionManager.instance.endSession();
   });
 
-  testWidgets('register screen presents the account setup flow', (
+  testWidgets('driver starts at anonymous parking search', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const MyApp());
 
-    expect(find.text('Create your account'), findsOneWidget);
-    expect(find.text('Create Account'), findsOneWidget);
-    expect(find.text('Sign in instead'), findsOneWidget);
-    expect(find.byType(TextField), findsNWidgets(4));
+    expect(find.text('Find parking'), findsOneWidget);
+    expect(find.text('Create Account'), findsNothing);
+    expect(find.text('Find carparks'), findsOneWidget);
+    expect(find.byType(TextField), findsNWidgets(2));
     expect(tester.takeException(), isNull);
   });
 
@@ -40,7 +40,6 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
 
     await tester.pumpWidget(const MyApp());
-    await tester.tap(find.text('Create Account'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
     await tester.tap(find.text('Preferences'));
@@ -82,7 +81,6 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
 
     await tester.pumpWidget(const MyApp());
-    await tester.tap(find.text('Create Account'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Find parking'), findsOneWidget);

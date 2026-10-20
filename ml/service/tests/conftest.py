@@ -14,9 +14,15 @@ NOW = datetime(2026, 10, 7, 4, 0, tzinfo=timezone.utc)  # Wed 12:00 Singapore
 
 @pytest.fixture(autouse=True)
 def no_network(monkeypatch):
+    real_connect = socket.socket.connect
     def blocked(*a, **k):
         raise AssertionError("tests must not use the real network")
-    monkeypatch.setattr(socket.socket, "connect", blocked)
+    def connect(sock, address):
+        # Windows asyncio creates its internal socket pair through loopback TCP.
+        if isinstance(address, tuple) and address[0] in {'127.0.0.1', '::1'}:
+            return real_connect(sock, address)
+        return blocked()
+    monkeypatch.setattr(socket.socket, "connect", connect)
     monkeypatch.setattr(socket, "create_connection", blocked)
 
 

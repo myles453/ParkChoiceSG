@@ -3,8 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:parkchoicesg_2/screens/carpark_search_screen.dart';
-import 'package:parkchoicesg_2/screens/login_screen.dart';
-import 'package:parkchoicesg_2/screens/register_screen.dart';
 
 import 'constants.dart';
 import 'services/app_theme_controller.dart';
@@ -35,12 +33,8 @@ class MyApp extends StatelessWidget {
           theme: _buildTheme(AppColors.light, Brightness.light),
           darkTheme: _buildTheme(AppColors.dark, Brightness.dark),
           themeMode: themeController.themeMode,
-          initialRoute: '/register',
-          routes: {
-            '/login': (context) => const LoginScreen(),
-            '/register': (context) => const RegisterScreen(),
-            '/home': (context) => const CarparkSearchScreen(),
-          },
+          initialRoute: '/home',
+          routes: {'/home': (context) => const CarparkSearchScreen()},
         );
       },
     );

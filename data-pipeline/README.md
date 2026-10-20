@@ -72,3 +72,12 @@ This defaults to HDB. `--include-retrieval-series` opts in to separate LTA/URA p
 | `export_training.py` | Causal forecast-horizon feature/label export. |
 
 The database schema and policies are already applied. This folder is an operational handover for that database: no SQL setup or dated seeds need to be run. Tests and one-off audit/seeding tools are excluded. Collection does not train a model or generate a final carpark ranking.
+
+## Application integration
+
+The active request-time API now lives in [../backend/](../backend/README.md).
+It reuses parsing/HTTP helpers from this folder but reads its own `backend/.env`.
+Collection still reads `data-pipeline/.env`; starting the API does not start collection.
+The shipped HDB model is a probability classifier, described in
+[the current model integration](../backend/MODEL-INTEGRATION.md). Older count-target
+handover notes describe the generic export contract, not the shipped model output.

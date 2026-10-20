@@ -42,24 +42,25 @@ def count(value) -> int:
     return int(value)
 
 
-def get_json(url: str, headers: dict[str, str] | None = None) -> tuple[dict, bytes, datetime]:
+def get_json(url: str, headers: dict[str, str] | None = None, *,
+             timeout: float = 30, attempts: int = 3) -> tuple[dict, bytes, datetime]:
     """Bounded retries; never treat HTTP success as proof of a valid payload."""
-    for attempt in range(3):
+    for attempt in range(attempts):
         try:
             request_headers = {"Accept": "application/json",
                                "User-Agent": "ParkChoiceSG-Lab3-data-pipeline"}
             request_headers.update(headers or {})
-            with urlopen(Request(url, headers=request_headers), timeout=30) as response:
+            with urlopen(Request(url, headers=request_headers), timeout=timeout) as response:
                 raw = response.read()
             return json.loads(raw), raw, datetime.now(UTC)
         except HTTPError as exc:
-            if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == attempts - 1:
                 raise
             retry_after = exc.headers.get("Retry-After", "")
             delay = min(int(retry_after), 30) if retry_after.isdigit() else 2 ** (attempt + 1)
             time.sleep(delay)
         except (URLError, TimeoutError):
-            if attempt == 2:
+            if attempt == attempts - 1:
                 raise
             time.sleep(2 ** (attempt + 1))
     raise RuntimeError("request_failed")

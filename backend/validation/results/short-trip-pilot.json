@@ -1,0 +1,144 @@
+{
+  "checked_at": "2026-10-17 08:50:15.974558+00:00",
+  "model_version": "short-horizon-lgbm-20261007",
+  "seed": 20261017,
+  "groups": {
+    "5min/short/full": {
+      "issued": 60,
+      "matched": 53,
+      "unmatched": 7,
+      "not_free": 43,
+      "brier": 0.09951005969284465,
+      "paired_count": 53,
+      "paired_model_brier": 0.09951005969284465,
+      "persistence_brier": 0.18867924528301888,
+      "state_changes": 10
+    },
+    "5min/short/near_full": {
+      "issued": 42,
+      "matched": 31,
+      "unmatched": 11,
+      "not_free": 2,
+      "brier": 0.07247543312717458,
+      "paired_count": 31,
+      "paired_model_brier": 0.07247543312717458,
+      "persistence_brier": 0.06451612903225806,
+      "state_changes": 2
+    },
+    "5min/short/other_free": {
+      "issued": 60,
+      "matched": 53,
+      "unmatched": 7,
+      "not_free": 0,
+      "brier": 0.002822193781828597,
+      "paired_count": 53,
+      "paired_model_brier": 0.002822193781828597,
+      "persistence_brier": 0.0,
+      "state_changes": 0
+    },
+    "5min/profile/stale_profile": {
+      "issued": 30,
+      "matched": 16,
+      "unmatched": 14,
+      "not_free": 1,
+      "brier": 0.03379106021102696,
+      "paired_count": 0,
+      "paired_model_brier": null,
+      "persistence_brier": null,
+      "state_changes": 0
+    },
+    "10min/short/full": {
+      "issued": 60,
+      "matched": 41,
+      "unmatched": 19,
+      "not_free": 33,
+      "brier": 0.13481078984698033,
+      "paired_count": 41,
+      "paired_model_brier": 0.13481078984698033,
+      "persistence_brier": 0.1951219512195122,
+      "state_changes": 8
+    },
+    "10min/short/near_full": {
+      "issued": 42,
+      "matched": 23,
+      "unmatched": 19,
+      "not_free": 2,
+      "brier": 0.11664026417828408,
+      "paired_count": 23,
+      "paired_model_brier": 0.11664026417828408,
+      "persistence_brier": 0.08695652173913043,
+      "state_changes": 2
+    },
+    "10min/short/other_free": {
+      "issued": 60,
+      "matched": 48,
+      "unmatched": 12,
+      "not_free": 0,
+      "brier": 0.0031161692153335667,
+      "paired_count": 48,
+      "paired_model_brier": 0.0031161692153335667,
+      "persistence_brier": 0.0,
+      "state_changes": 0
+    },
+    "10min/profile/stale_profile": {
+      "issued": 30,
+      "matched": 14,
+      "unmatched": 16,
+      "not_free": 1,
+      "brier": 0.03544830298131961,
+      "paired_count": 0,
+      "paired_model_brier": null,
+      "persistence_brier": null,
+      "state_changes": 0
+    },
+    "15min/short/full": {
+      "issued": 60,
+      "matched": 2,
+      "unmatched": 58,
+      "not_free": 1,
+      "brier": 0.0008314534542671735,
+      "paired_count": 2,
+      "paired_model_brier": 0.0008314534542671735,
+      "persistence_brier": 0.5,
+      "state_changes": 1
+    },
+    "15min/short/near_full": {
+      "issued": 42,
+      "matched": 2,
+      "unmatched": 40,
+      "not_free": 0,
+      "brier": 0.16653882584468388,
+      "paired_count": 2,
+      "paired_model_brier": 0.16653882584468388,
+      "persistence_brier": 0.0,
+      "state_changes": 0
+    },
+    "15min/short/other_free": {
+      "issued": 60,
+      "matched": 3,
+      "unmatched": 57,
+      "not_free": 0,
+      "brier": 2.9620180883418714e-08,
+      "paired_count": 3,
+      "paired_model_brier": 2.9620180883418714e-08,
+      "persistence_brier": 0.0,
+      "state_changes": 0
+    },
+    "15min/profile/stale_profile": {
+      "issued": 30,
+      "matched": 11,
+      "unmatched": 19,
+      "not_free": 0,
+      "brier": 4.685585488899009e-06,
+      "paired_count": 0,
+      "paired_model_brier": null,
+      "persistence_brier": null,
+      "state_changes": 0
+    }
+  },
+  "polls": 16,
+  "poll_errors": 0,
+  "selection": "Stratified single-issuance convenience sample, not population weighted.",
+  "claim": "Prospective pilot at one time only. Insufficient to establish general accuracy or enable new horizons.",
+  "decision": "Keep sub-15-minute predictions and historical-profile ranking gated pending broader evidence."
+}

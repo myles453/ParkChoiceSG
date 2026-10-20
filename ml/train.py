@@ -10,7 +10,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import resource
+try:
+    import resource
+except ImportError:  # Unix-only measurement; inference/training also run on Windows.
+    resource = None
 import time
 import zlib
 from datetime import datetime, timezone
@@ -57,8 +60,8 @@ def log(msg: str) -> None:
     print(f"[train] {msg}", flush=True)
 
 
-def peak_rss_mb() -> float:
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
+def peak_rss_mb() -> float | None:
+    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0 if resource else None
 
 
 def check_features(names: list[str]) -> None:
@@ -399,7 +402,8 @@ def main() -> None:
     t0 = time.time()
     card = train_all(args.data_dir / "pairs.parquet", args.data_dir / "observations.parquet",
                      args.models_dir, args.threads, args.sample_max)
-    run = {"wall_seconds": round(time.time() - t0, 1), "peak_rss_mb": round(peak_rss_mb(), 1),
+    peak = peak_rss_mb()
+    run = {"wall_seconds": round(time.time() - t0, 1), "peak_rss_mb": round(peak, 1) if peak is not None else None,
            "threads": args.threads, "train_sample_size": card["train_sample_size"]}
     (ML_DIR / "reports").mkdir(exist_ok=True)
     (ML_DIR / "reports" / "train_run.json").write_text(json.dumps(run, indent=2))
