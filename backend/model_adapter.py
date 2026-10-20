@@ -9,6 +9,7 @@ from pipeline_support import load_local_env
 
 
 class HdbModelClient:
+    """HTTP client for the ml/service HDB model. Failures become statuses, not errors."""
     ready = True  # configured, not a claim that the remote process is healthy
     supported_agencies = ('HDB',)
     output_kind = 'probability'
@@ -92,6 +93,7 @@ class HdbModelClient:
 
 
 def configured_predictor():
+    """Use the model service when PARKCHOICE_MODEL_URL is set, otherwise no forecasts."""
     load_local_env()
     url = os.environ.get('PARKCHOICE_MODEL_URL','').strip()
     return HdbModelClient(url) if url else PendingPredictor()

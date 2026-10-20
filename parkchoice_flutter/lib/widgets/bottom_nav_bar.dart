@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
+/// Bottom bar shared by every main screen: Search, Tracker, Preferences, Admin.
 class ParkChoiceBottomNav extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onDestinationSelected;

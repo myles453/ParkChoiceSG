@@ -26,6 +26,7 @@ _tokens: OneMapTokens | None = None
 
 @dataclass(frozen=True)
 class Coordinate:
+    """A validated WGS84 latitude and longitude in decimal degrees."""
     latitude: float
     longitude: float
 
@@ -40,6 +41,7 @@ class Coordinate:
 
 @dataclass(frozen=True)
 class RouteEstimate:
+    """One OneMap route result. Distance and duration are None unless status is 'ok'."""
     status: str
     mode: str
     requested_at: datetime
@@ -60,6 +62,7 @@ class RoutingProvider(Protocol):
 
 @dataclass(frozen=True)
 class SearchMatch:
+    """One destination candidate shown to the driver."""
     name: str
     address: str
     postal: str | None
@@ -68,6 +71,7 @@ class SearchMatch:
 
 @dataclass(frozen=True)
 class SearchResult:
+    """Search outcome with matches and the count of rows rejected as malformed."""
     status: str
     matches: tuple[SearchMatch, ...] = ()
     rejected_count: int = 0
@@ -85,6 +89,7 @@ def _nonnegative_number(value):
 
 @dataclass
 class OneMapClient:
+    """Server-side OneMap search and routing client. Tokens never reach the app."""
     access_token: str = field(repr=False)
     timeout_seconds: float = 8
     tokens: OneMapTokens | None = field(default=None,repr=False)

@@ -50,6 +50,7 @@ the forecast ranking. Open `http://127.0.0.1:8000/docs` for request schemas.
 | `onemap_adapter.py`, `onemap_auth.py` | Place search, driving/walking routes and REST token renewal. |
 | `model_adapter.py`, `prediction.py` | Validate the supplied model contract and record issued forecasts. |
 | `scoring.py` | Explainable provisional four-factor score. |
+| `operator_auth.py` | Single operator console login from `OPERATOR_USERNAME` and `OPERATOR_PASSWORD_HASH`. |
 | `pipeline_support.py` | Reuse collector helpers without duplicating ingestion; load `backend/.env`. |
 | `database/` | Existing SQL schema history and dated pricing seeds; not startup scripts. |
 | `validation/` | Offline tests, optional live checks and documented validation results. |
@@ -68,7 +69,9 @@ Weights remain provisional: cost 40%, walking 30%, availability 20%, driving 10%
 The default shortlist is three nearby candidates, not a global optimum.
 
 Search, current-location input, OneMap markers and external navigation are connected.
-Authenticated operator actions, reporting and durable session/favourites/preferences
+The admin tab requires operator sign-in through `POST /operator/login`. Generate the
+password hash with `python backend/operator_auth.py`. Operator actions on the panel,
+reporting and durable session/favourites/preferences
 storage are not complete. Local HTTP service setup is not a production deployment.
 No schema changes, seed replay, data collection or retraining happens when starting the API.
 
@@ -84,6 +87,9 @@ From the repository root:
 
 For the model unit tests, install `pytest` in the same environment, then run
 `python -m pytest ml/tests ml/service/tests/test_service.py -q` from the root.
+Lab 4 black box and basis path cases, with their results tables, are in
+`validation/LAB4-TESTING.md`. Refresh the tables with `python backend/validation/lab4_report.py`.
+
 Raw-data parity checks need the model owner's ignored datasets; the command above
 intentionally selects tests that do not require those archives.
 

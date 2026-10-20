@@ -13,6 +13,7 @@ class TokenError(Exception):
 
 @dataclass
 class OneMapTokens:
+    """Thread-safe OneMap access token cache that renews before expiry."""
     email: str = field(repr=False)
     password: str = field(repr=False)
     _token: str = field(default='',repr=False)

@@ -4,10 +4,11 @@ import '../constants.dart';
 import '../services/app_theme_controller.dart';
 import '../widgets/app_ui.dart';
 import '../widgets/bottom_nav_bar.dart';
-import 'admin_panel_screen.dart';
+import 'operator_login_screen.dart';
 import 'carpark_search_screen.dart';
 import 'parking_session_tracker_screen.dart';
 
+/// Driver preferences, saved destinations and appearance. Stored on device only.
 class PreferencesScreen extends StatefulWidget {
   const PreferencesScreen({super.key});
 
@@ -842,7 +843,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
         destination = const ParkingSessionTrackerScreen();
         break;
       case 3:
-        destination = const AdminPanelScreen();
+        destination = operatorEntryScreen();
         break;
       default:
         return;

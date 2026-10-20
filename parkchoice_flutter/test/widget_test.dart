@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:parkchoicesg_2/constants.dart';
 import 'package:parkchoicesg_2/main.dart';
 import 'package:parkchoicesg_2/services/app_theme_controller.dart';
+import 'package:parkchoicesg_2/services/operator_session.dart';
 import 'package:parkchoicesg_2/services/parking_session_manager.dart';
 
 void main() {
@@ -12,6 +13,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     AppThemeController.instance.setThemeModeForTesting(ThemeMode.light);
     ParkingSessionManager.instance.endSession();
+    OperatorSession.instance.signOut();
   });
 
   tearDown(() {
@@ -93,7 +95,8 @@ void main() {
     await tester.tap(find.text('Admin'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Admin panel'), findsOneWidget);
+    expect(find.text('Operator sign-in'), findsOneWidget);
+    expect(find.text('Admin panel'), findsNothing);
 
     await tester.tap(find.text('Search'));
     await tester.pump();

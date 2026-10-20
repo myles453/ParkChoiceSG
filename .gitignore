@@ -20,3 +20,4 @@ __pycache__/
 # Local datasets, rebuilt by the scripts in ml/ and ml_lta_ura/
 ml/data/
 ml_lta_ura/data/
+.venv/

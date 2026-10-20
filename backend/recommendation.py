@@ -17,6 +17,7 @@ from scoring import POLICY_VERSION, PROBABILITY_POLICY_VERSION, rank_candidates,
 
 @dataclass(frozen=True)
 class TripRequest:
+    """Validated driver request: where from, where to and how long to park."""
     origin: Coordinate
     destination: Coordinate
     duration_minutes: int

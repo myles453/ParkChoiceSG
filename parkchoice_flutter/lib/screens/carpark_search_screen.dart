@@ -4,11 +4,14 @@ import '../services/parking_api.dart';
 import '../services/device_location.dart';
 import '../services/navigation_handoff.dart';
 import '../widgets/bottom_nav_bar.dart';
-import 'admin_panel_screen.dart';
+import 'operator_login_screen.dart';
 import 'parking_session_tracker_screen.dart';
 import 'preferences_screen.dart';
 import 'carpark_map_screen.dart';
 
+/// Home screen: pick a destination and stay length, then see ranked carparks.
+///
+/// [api], [locate] and [launchNavigation] are injectable so tests run offline.
 class CarparkSearchScreen extends StatefulWidget {
   final ParkingApi? api;
   final Future<Map<String, dynamic>> Function()? locate;
@@ -411,7 +414,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
     final Widget? page = switch (index) {
       1 => const ParkingSessionTrackerScreen(),
       2 => const PreferencesScreen(),
-      3 => const AdminPanelScreen(),
+      3 => operatorEntryScreen(),
       _ => null,
     };
     if (page != null) {

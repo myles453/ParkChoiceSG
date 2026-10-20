@@ -6,10 +6,11 @@ import '../constants.dart';
 import '../services/parking_session_manager.dart';
 import '../widgets/app_ui.dart';
 import '../widgets/bottom_nav_bar.dart';
-import 'admin_panel_screen.dart';
+import 'operator_login_screen.dart';
 import 'carpark_search_screen.dart';
 import 'preferences_screen.dart';
 
+/// Live timer and accruing cost for the active stay, plus recent sessions.
 class ParkingSessionTrackerScreen extends StatefulWidget {
   const ParkingSessionTrackerScreen({super.key});
 
@@ -728,7 +729,7 @@ class _ParkingSessionTrackerScreenState
         destination = const PreferencesScreen();
         break;
       case 3:
-        destination = const AdminPanelScreen();
+        destination = operatorEntryScreen();
         break;
       default:
         return;
