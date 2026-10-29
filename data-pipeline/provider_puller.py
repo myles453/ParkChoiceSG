@@ -37,7 +37,7 @@ def load_local_env(path: Path | None = None):
             raise ValueError(f"Malformed .env line {line_number}")
         name, value = name.strip(), value.strip()
         if name not in {"LTA_ACCOUNT_KEY", "URA_ACCESS_KEY", "DATABASE_URL", "ONEMAP_ACCESS_TOKEN",
-                        "ONEMAP_EMAIL", "ONEMAP_PASSWORD", "PARKCHOICE_MODEL_URL"}:
+                        "ONEMAP_EMAIL", "ONEMAP_PASSWORD", "PARKCHOICE_MODEL_URL","OPERATOR_USERNAME","OPERATOR_PASSWORD_HASH"}:
             raise ValueError(f"Unsupported .env name on line {line_number}")
         if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
             value = value[1:-1]
