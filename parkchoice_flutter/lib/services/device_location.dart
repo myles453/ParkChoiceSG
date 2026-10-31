@@ -1,13 +1,20 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 /// One location fix after a user action. No background tracking or persistence.
 Future<Map<String, dynamic>> currentDeviceLocation() async {
-  if (!await Geolocator.isLocationServiceEnabled()) {
+  if (!await Geolocator.isLocationServiceEnabled().timeout(
+    const Duration(seconds: 5),
+  )) {
     throw StateError(
       'Location services are off. Choose a starting place instead.',
     );
   }
-  var permission = await Geolocator.checkPermission();
+  var permission = await Geolocator.checkPermission().timeout(
+    const Duration(seconds: 5),
+  );
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
   }
@@ -17,12 +24,26 @@ Future<Map<String, dynamic>> currentDeviceLocation() async {
       'Location permission was not granted. Choose a starting place instead.',
     );
   }
-  final position = await Geolocator.getCurrentPosition(
-    locationSettings: const LocationSettings(
-      accuracy: LocationAccuracy.high,
-      timeLimit: Duration(seconds: 15),
-    ),
-  );
+  Position position;
+  try {
+    position = await Geolocator.getCurrentPosition(
+      locationSettings: const LocationSettings(
+        accuracy: LocationAccuracy.high,
+        timeLimit: Duration(seconds: 10),
+      ),
+    );
+  } on TimeoutException {
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) rethrow;
+    // Some devices stall in the Play Services provider. Try Android's own
+    // provider once; both requests remain bounded and require permission.
+    position = await Geolocator.getCurrentPosition(
+      locationSettings: AndroidSettings(
+        forceLocationManager: true,
+        accuracy: LocationAccuracy.medium,
+        timeLimit: const Duration(seconds: 8),
+      ),
+    );
+  }
   final measuredAt = position.timestamp.toUtc();
   final age = DateTime.now().toUtc().difference(measuredAt);
   if (age > const Duration(minutes: 2) || age < const Duration(seconds: -30)) {

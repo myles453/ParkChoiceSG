@@ -3,6 +3,8 @@ from pathlib import Path
 import sys
 import unittest
 from unittest.mock import patch
+import os
+import tempfile
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from fastapi.testclient import TestClient
@@ -13,6 +15,16 @@ ENV={'OPERATOR_USERNAME':'operator','OPERATOR_PASSWORD_HASH':hash_password('corr
 
 
 class VerifyOperatorTests(unittest.TestCase):
+    def test_private_environment_file_accepts_operator_configuration(self):
+        from pipeline_support import load_local_env
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / '.env'
+            path.write_text('OPERATOR_USERNAME=fixture\nOPERATOR_PASSWORD_HASH=fixture-hash\n')
+            with patch.dict(os.environ, {}, clear=True):
+                load_local_env(path)
+                self.assertEqual(os.environ['OPERATOR_USERNAME'], 'fixture')
+                self.assertEqual(os.environ['OPERATOR_PASSWORD_HASH'], 'fixture-hash')
+
     def test_correct_credentials(self):
         self.assertTrue(verify_operator('operator','correct horse',ENV))
 

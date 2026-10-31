@@ -17,7 +17,7 @@ DOC=HERE/'LAB4-TESTING.md'
 
 
 def changed(kwargs):
-    diff={k:v for k,v in kwargs.items() if NOMINAL.get(k,'absent')!=v}
+    diff={k:v for k,v in kwargs.items() if NOMINAL.get(k,'absent')!=v or type(NOMINAL.get(k)) is not type(v)}
     return 'nominal' if not diff else ', '.join(f'{k}={v!r}' for k,v in diff.items())
 
 

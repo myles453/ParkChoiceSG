@@ -594,6 +594,11 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
   }
 
   Future<void> _showAddOverrideModal() async {
+    if (!mounted ||
+        _isNavigating ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     String selectedCarpark = 'Orchard Central Terminal';
     String selectedStatus = 'CLOSED (Maintenance)';
     var reason = '';
@@ -622,7 +627,10 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                       ctx,
                       'Apply carpark override',
                       onClose: () {
-                        if (isClosing) return;
+                        if (isClosing ||
+                            ModalRoute.of(ctx)?.isCurrent != true) {
+                          return;
+                        }
                         isClosing = true;
                         FocusScope.of(ctx).unfocus();
                         Navigator.pop(ctx);
@@ -706,7 +714,10 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (isClosing) return;
+                          if (isClosing ||
+                              ModalRoute.of(ctx)?.isCurrent != true) {
+                            return;
+                          }
                           isClosing = true;
                           FocusScope.of(ctx).unfocus();
                           Navigator.pop(ctx, true);
@@ -783,7 +794,11 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
   }
 
   void _onNavTap(int index) {
-    if (_isNavigating || index == _selectedNavIndex) return;
+    if (_isNavigating ||
+        index == _selectedNavIndex ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     final Widget destination;
     switch (index) {
       case 0:

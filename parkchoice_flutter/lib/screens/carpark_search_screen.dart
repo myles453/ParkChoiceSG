@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import '../models/ranking_mode.dart';
 
 import '../services/parking_api.dart';
 import '../services/device_location.dart';
@@ -35,7 +38,11 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
   Map<String, dynamic>? _destination;
   Map<String, dynamic>? _result;
   int _duration = 60;
+  RankingMode _rankingMode = RankingMode.bestOverall;
   bool _busy = false;
+  bool _isNavigating = false;
+  bool _mapOpen = false;
+  bool _choosingPlace = false;
   String? _message;
 
   @override
@@ -53,11 +60,16 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
   }
 
   Future<void> _chooseLocation(bool startingPoint) async {
+    if (!mounted || _busy || _isNavigating || _mapOpen || _choosingPlace) {
+      return;
+    }
     final controller = startingPoint ? _originText : _destinationText;
     if (controller.text.trim().isEmpty) {
       setState(() => _message = 'Enter a place name or postal code first.');
       return;
     }
+    _choosingPlace = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     setState(() {
       _busy = true;
       _message = null;
@@ -65,7 +77,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
     });
     try {
       final matches = await _api.destinations(controller.text.trim());
-      if (!mounted) return;
+      if (!mounted || _isNavigating) return;
       if (matches.isEmpty) {
         setState(
           () =>
@@ -75,11 +87,12 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
         return;
       }
       setState(() => _busy = false);
+      var isClosing = false;
       final selected = await showModalBottomSheet<Map<String, dynamic>>(
         context: context,
         showDragHandle: true,
         builder:
-            (context) => SafeArea(
+            (sheetContext) => SafeArea(
               child: SizedBox(
                 height: 400,
                 child: ListView.builder(
@@ -88,13 +101,21 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
                       (context, index) => ListTile(
                         title: Text(matches[index]['name'] as String),
                         subtitle: Text(matches[index]['address'] as String),
-                        onTap: () => Navigator.pop(context, matches[index]),
+                        onTap: () {
+                          if (isClosing ||
+                              !sheetContext.mounted ||
+                              ModalRoute.of(sheetContext)?.isCurrent != true) {
+                            return;
+                          }
+                          isClosing = true;
+                          Navigator.pop(sheetContext, matches[index]);
+                        },
                       ),
                 ),
               ),
             ),
       );
-      if (!mounted || selected == null) return;
+      if (!mounted || _isNavigating || selected == null) return;
       setState(() {
         if (startingPoint) {
           _origin = selected;
@@ -112,11 +133,15 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
         );
       }
     } finally {
+      _choosingPlace = false;
       if (mounted) setState(() => _busy = false);
     }
   }
 
   Future<void> _findParking() async {
+    if (!mounted || _busy || _isNavigating || _mapOpen || _choosingPlace) {
+      return;
+    }
     if (_origin == null || _destination == null) {
       setState(
         () =>
@@ -148,8 +173,9 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
           _destination!['coordinate'] as Map,
         ),
         durationMinutes: _duration,
+        rankingMode: _rankingMode,
       );
-      if (mounted) setState(() => _result = result);
+      if (mounted && !_isNavigating) setState(() => _result = result);
     } catch (_) {
       if (mounted) {
         setState(
@@ -164,19 +190,35 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
   }
 
   Future<void> _useCurrentLocation() async {
+    if (!mounted || _busy || _isNavigating || _mapOpen || _choosingPlace) {
+      return;
+    }
+    FocusManager.instance.primaryFocus?.unfocus();
     setState(() {
       _busy = true;
       _message = null;
       _result = null;
       _origin = null;
+      _originText.clear();
     });
     try {
-      final location = await (widget.locate ?? currentDeviceLocation)();
-      if (!mounted) return;
+      // Bound permission/service checks as well as the native location fix.
+      final location = await (widget.locate ?? currentDeviceLocation)().timeout(
+        const Duration(seconds: 30),
+      );
+      if (!mounted || _isNavigating) return;
       setState(() {
         _origin = location;
         _originText.text = 'Current location';
       });
+    } on TimeoutException {
+      if (mounted) {
+        setState(
+          () =>
+              _message =
+                  'Your phone could not get a location fix. Try again near a window or choose a starting place.',
+        );
+      }
     } catch (error) {
       if (mounted) {
         setState(
@@ -215,6 +257,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
   }
 
   Widget _locationField(bool origin) => Padding(
+    key: ValueKey(origin ? 'origin-field' : 'destination-field'),
     padding: const EdgeInsets.only(bottom: 12),
     child: TextField(
       controller: origin ? _originText : _destinationText,
@@ -345,6 +388,10 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
 
   List<Widget> _results() {
     if (_result == null) return [];
+    // A pushed route builds later. Capture the selections now, before an input
+    // edit or GPS refresh can clear the search screen's mutable fields.
+    final origin = _origin;
+    final destination = _destination;
     final ranked = (_result!['ranked'] as List).cast<Map<String, dynamic>>();
     final fallback =
         ((_result!['fallback_ranked'] as List?) ?? [])
@@ -370,6 +417,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
             : 'Parking comparison',
         style: Theme.of(context).textTheme.titleLarge,
       ),
+      Text('Ranking mode: ${_rankingMode.label}'),
       Text(
         showingFallback
             ? _result!['fallback_notice'].toString()
@@ -382,20 +430,9 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
       const Text(
         'The ranking weights are being evaluated. Route times and charges are estimates.',
       ),
-      if (rows.isNotEmpty)
+      if (rows.isNotEmpty && origin != null && destination != null)
         OutlinedButton.icon(
-          onPressed:
-              () => Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder:
-                      (_) => CarparkMapScreen(
-                        origin: _origin!,
-                        destination: _destination!,
-                        carparks: rows,
-                      ),
-                ),
-              ),
+          onPressed: () => _openMap(origin, destination, rows),
           icon: const Icon(Icons.map_outlined),
           label: const Text('View map'),
         ),
@@ -410,7 +447,38 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
     ];
   }
 
+  Future<void> _openMap(
+    Map<String, dynamic> origin,
+    Map<String, dynamic> destination,
+    List<Map<String, dynamic>> rows,
+  ) async {
+    if (!mounted || _busy || _isNavigating || _mapOpen) return;
+    _mapOpen = true;
+    FocusManager.instance.primaryFocus?.unfocus();
+    try {
+      await Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          builder:
+              (_) => CarparkMapScreen(
+                origin: origin,
+                destination: destination,
+                carparks: rows,
+              ),
+        ),
+      );
+    } finally {
+      _mapOpen = false;
+    }
+  }
+
   void _navigate(int index) {
+    if (!mounted ||
+        _isNavigating ||
+        _mapOpen ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     final Widget? page = switch (index) {
       1 => const ParkingSessionTrackerScreen(),
       2 => const PreferencesScreen(),
@@ -418,6 +486,8 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
       _ => null,
     };
     if (page != null) {
+      _isNavigating = true;
+      FocusManager.instance.primaryFocus?.unfocus();
       Navigator.pushReplacement(
         context,
         PageRouteBuilder<void>(
@@ -461,6 +531,7 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
               ),
             _locationField(false),
             DropdownButtonFormField<int>(
+              key: const Key('parking-duration-selector'),
               initialValue: _duration,
               decoration: const InputDecoration(
                 labelText: 'Parking duration',
@@ -483,6 +554,35 @@ class _CarparkSearchScreenState extends State<CarparkSearchScreen> {
                         _result = null;
                       }),
             ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<RankingMode>(
+              key: const Key('ranking-mode-selector'),
+              initialValue: _rankingMode,
+              isExpanded: true,
+              decoration: const InputDecoration(labelText: 'Ranking mode'),
+              items:
+                  RankingMode.values
+                      .map(
+                        (mode) => DropdownMenuItem(
+                          value: mode,
+                          child: Text(mode.label),
+                        ),
+                      )
+                      .toList(),
+              onChanged:
+                  _busy
+                      ? null
+                      : (mode) {
+                        if (mode == null) return;
+                        setState(() {
+                          _rankingMode = mode;
+                          _result = null;
+                          _message = null;
+                        });
+                      },
+            ),
+            const SizedBox(height: 8),
+            Text(_rankingMode.description),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _busy ? null : _findParking,

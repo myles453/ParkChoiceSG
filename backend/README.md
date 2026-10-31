@@ -45,7 +45,7 @@ the forecast ranking. Open `http://127.0.0.1:8000/docs` for request schemas.
 | File/folder | Responsibility |
 |---|---|
 | `app.py` | Validate requests and expose `/health`, `/destinations`, `/recommend`. |
-| `recommendation.py` | Shortlist, route, quote, predict, check eligibility and rank. |
+| `recommendation.py` / `RecommendationController` | Shortlist, route, quote, predict, check eligibility and rank; retain the public function entry point. |
 | `comparison.py`, `pricing.py` | Read versioned tariffs and calculate supported stay prices. |
 | `onemap_adapter.py`, `onemap_auth.py` | Place search, driving/walking routes and REST token renewal. |
 | `model_adapter.py`, `prediction.py` | Validate the supplied model contract and record issued forecasts. |
@@ -56,6 +56,18 @@ the forecast ranking. Open `http://127.0.0.1:8000/docs` for request schemas.
 | `validation/` | Offline tests, optional live checks and documented validation results. |
 
 ## Scope and limits
+
+Flutter sends `ranking_mode` as `best_overall` (default), `cheaper` or `closer`.
+The backend applies the selected weights to both prediction rankings and any
+separately labelled current-reading fallback. Closer prioritises walking distance
+from the carpark to the destination. All modes keep the same eligibility checks.
+
+The search screen's **Use current location** button requests a foreground device
+location fix with permission, which becomes the route origin. **View map** opens
+OneMap tiles with start, destination and returned carpark markers. This is a
+marker map; turn-by-turn navigation opens externally. Refresh device fixes older
+than two minutes. Web location needs localhost or HTTPS; a physical phone needs
+a reachable backend URL rather than the development computer's loopback address.
 
 The integrated model predicts **P(at least one free car lot at arrival)** for HDB, not a
 future lot count. Ranked forecasts require short-mode horizons of 15-90 minutes,
@@ -101,3 +113,5 @@ routine unit test. The database collector is separately operated by the model te
 See [the runbook](BACKEND-RUNBOOK.md), [architecture](ARCHITECTURE.md),
 [model integration](MODEL-INTEGRATION.md), [database schema](../data-pipeline/SCHEMA.md)
 and [collection instructions](../data-pipeline/README.md).
+
+The primary Lab 4 control-class cases, traceability and phone demo material are in [../lab4/README.md](../lab4/README.md).

@@ -49,7 +49,7 @@ def http_case(body):
         else:
             raise RuntimeError('Local API did not become ready')
         with urlopen(root+'/openapi.json',timeout=3) as r:
-            assert set(json.load(r)['paths'])=={'/health','/destinations','/recommend'}
+            assert set(json.load(r)['paths'])=={'/health','/destinations','/recommend','/operator/login'}
         request=Request(root+'/recommend',data=json.dumps(body).encode(),
                         headers={'Content-Type':'application/json'},method='POST')
         with urlopen(request,timeout=100) as r:

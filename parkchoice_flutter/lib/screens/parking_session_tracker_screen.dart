@@ -370,6 +370,12 @@ class _ParkingSessionTrackerScreenState
   }
 
   Future<void> _onEndSessionPrompt() async {
+    if (!mounted ||
+        _isNavigating ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
+    var isClosing = false;
     final session = ParkingSessionManager.instance.currentSession;
     if (session == null) return;
 
@@ -435,11 +441,21 @@ class _ParkingSessionTrackerScreenState
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(ctx, false),
+                onPressed: () {
+                  if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                    return;
+                  }
+                  isClosing = true;
+                  Navigator.pop(ctx, false);
+                },
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
                 onPressed: () {
+                  if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                    return;
+                  }
+                  isClosing = true;
                   Navigator.pop(ctx, true);
                 },
                 style: ElevatedButton.styleFrom(
@@ -465,7 +481,9 @@ class _ParkingSessionTrackerScreenState
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: Theme.of(context).textTheme.bodySmall),
+        Expanded(
+          child: Text(label, style: Theme.of(context).textTheme.bodySmall),
+        ),
         const SizedBox(width: 12),
         Flexible(
           child: Text(
@@ -516,6 +534,11 @@ class _ParkingSessionTrackerScreenState
   }
 
   Future<void> _showExtendSessionModal() async {
+    if (!mounted ||
+        _isNavigating ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     String selectedInterval = '+30 min';
     var isClosing = false;
     final appliedInterval = await showModalBottomSheet<String>(
@@ -542,7 +565,10 @@ class _ParkingSessionTrackerScreenState
                         tooltip: 'Close',
                         icon: const Icon(Icons.close_rounded),
                         onPressed: () {
-                          if (isClosing) return;
+                          if (isClosing ||
+                              ModalRoute.of(ctx)?.isCurrent != true) {
+                            return;
+                          }
                           isClosing = true;
                           FocusScope.of(ctx).unfocus();
                           Navigator.pop(ctx);
@@ -602,7 +628,10 @@ class _ParkingSessionTrackerScreenState
                     height: 50,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        if (isClosing) return;
+                        if (isClosing ||
+                            ModalRoute.of(ctx)?.isCurrent != true) {
+                          return;
+                        }
                         isClosing = true;
                         FocusScope.of(ctx).unfocus();
                         Navigator.pop(ctx, selectedInterval);
@@ -719,7 +748,11 @@ class _ParkingSessionTrackerScreenState
   }
 
   void _onNavTap(int index) {
-    if (_isNavigating || index == _selectedNavIndex) return;
+    if (_isNavigating ||
+        index == _selectedNavIndex ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     final Widget destination;
     switch (index) {
       case 0:

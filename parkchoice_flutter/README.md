@@ -2,7 +2,8 @@
 
 **15 October integration:** the search screen now calls the recommendation backend
 using real selected places, routed distances, supported total-stay prices and a
-labelled current-availability baseline. It opens without driver registration.
+labelled current-availability baseline. Drivers open directly to parking search;
+there are no driver accounts, login screens or registration screens.
 Other screens remain existing prototype work. See the
 [backend runbook](../backend/BACKEND-RUNBOOK.md). Only `PARKING_API_URL` belongs in
 Flutter configuration; database/provider secrets stay on the backend.
@@ -35,6 +36,9 @@ flutter run
 Select an Android emulator or another connected Flutter device when prompted.
 
 ## Validate
+
+See [the frontend stability review](FRONTEND-VERIFICATION.md) for reproduced
+crash cases, regression tests and the remaining phone checks.
 
 ```powershell
 flutter analyze

@@ -39,13 +39,6 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
   VehicleType _selectedVehicle = VehicleType.car;
   double _maxWalkingDistance = 400;
 
-  final List<String> _rankingCriteria = [
-    'Cost',
-    'Walking Distance',
-    'Driving Time',
-    'Availability Confidence',
-  ];
-
   final Map<VehicleType, double> _clearanceByVehicle = const {
     VehicleType.car: 1.9,
     VehicleType.suvVan: 2.1,
@@ -131,8 +124,8 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
               _buildWalkingDistanceCard(),
               const SizedBox(height: AppSpacing.section),
               const AppSectionTitle(
-                title: 'Ranking priority',
-                subtitle: 'Drag items to set recommendation priorities.',
+                title: 'Ranking mode',
+                subtitle: 'Choose a mode for each search.',
               ),
               const SizedBox(height: 13),
               _buildRankingPriorityCard(),
@@ -357,6 +350,11 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
   }
 
   Future<void> _showAddLocationModal() async {
+    if (!mounted ||
+        _isNavigating ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     var label = '';
     var address = '';
     var isClosing = false;
@@ -373,58 +371,64 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
             20,
             MediaQuery.of(ctx).viewInsets.bottom + 24,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSheetHeader(
-                ctx,
-                'Add custom location',
-                onClose: () {
-                  if (isClosing) return;
-                  isClosing = true;
-                  FocusScope.of(ctx).unfocus();
-                  Navigator.pop(ctx);
-                },
-              ),
-              const SizedBox(height: 5),
-              Text(
-                'Save a place you visit often for faster searches.',
-                style: Theme.of(ctx).textTheme.bodyMedium,
-              ),
-              const SizedBox(height: 18),
-              AppTextField(
-                label: 'Location label',
-                hint: 'e.g. Gym, Parents',
-                prefixIcon: Icons.bookmark_outline_rounded,
-                textInputAction: TextInputAction.next,
-                onChanged: (value) => label = value,
-              ),
-              const SizedBox(height: 14),
-              AppTextField(
-                label: 'Address or landmark',
-                hint: 'Enter an address',
-                prefixIcon: Icons.place_outlined,
-                textInputAction: TextInputAction.done,
-                onChanged: (value) => address = value,
-              ),
-              const SizedBox(height: 22),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (isClosing) return;
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSheetHeader(
+                  ctx,
+                  'Add custom location',
+                  onClose: () {
+                    if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                      return;
+                    }
                     isClosing = true;
                     FocusScope.of(ctx).unfocus();
-                    final canSave =
-                        label.trim().isNotEmpty && address.trim().isNotEmpty;
-                    Navigator.pop(ctx, canSave);
+                    Navigator.pop(ctx);
                   },
-                  child: const Text('Save location'),
                 ),
-              ),
-            ],
+                const SizedBox(height: 5),
+                Text(
+                  'Save a place you visit often for faster searches.',
+                  style: Theme.of(ctx).textTheme.bodyMedium,
+                ),
+                const SizedBox(height: 18),
+                AppTextField(
+                  label: 'Location label',
+                  hint: 'e.g. Gym, Parents',
+                  prefixIcon: Icons.bookmark_outline_rounded,
+                  textInputAction: TextInputAction.next,
+                  onChanged: (value) => label = value,
+                ),
+                const SizedBox(height: 14),
+                AppTextField(
+                  label: 'Address or landmark',
+                  hint: 'Enter an address',
+                  prefixIcon: Icons.place_outlined,
+                  textInputAction: TextInputAction.done,
+                  onChanged: (value) => address = value,
+                ),
+                const SizedBox(height: 22),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                        return;
+                      }
+                      isClosing = true;
+                      FocusScope.of(ctx).unfocus();
+                      final canSave =
+                          label.trim().isNotEmpty && address.trim().isNotEmpty;
+                      Navigator.pop(ctx, canSave);
+                    },
+                    child: const Text('Save location'),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -601,8 +605,10 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 12,
+            runSpacing: 8,
             children: [
               Text(
                 'MAX WALKING DISTANCE',
@@ -630,8 +636,10 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
               });
             },
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 12,
+            runSpacing: 8,
             children: [
               Text(
                 '100m  Strict',
@@ -663,62 +671,20 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
 
   Widget _buildRankingPriorityCard() {
     return AppSurface(
-      padding: const EdgeInsets.all(12),
-      child: ReorderableListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: _rankingCriteria.length,
-        onReorderItem: (oldIndex, newIndex) {
-          setState(() {
-            final item = _rankingCriteria.removeAt(oldIndex);
-            _rankingCriteria.insert(newIndex, item);
-          });
-        },
-        itemBuilder: (context, index) {
-          final item = _rankingCriteria[index];
-          return Container(
-            key: ValueKey(item),
-            margin: const EdgeInsets.only(bottom: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
-            decoration: BoxDecoration(
-              color: context.appColors.surfaceMuted,
-              borderRadius: BorderRadius.circular(AppRadii.control),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: context.appColors.infoSoft,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    (index + 1).toString(),
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: context.appColors.primaryDark,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    item,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleMedium?.copyWith(fontSize: 14),
-                  ),
-                ),
-                Icon(
-                  Icons.drag_indicator_rounded,
-                  color: context.appColors.tertiaryText,
-                  size: 21,
-                ),
-              ],
-            ),
-          );
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Best overall, Prioritise cheaper, or Prioritise closer.'),
+          const SizedBox(height: 8),
+          const Text(
+            'Select your mode on the search screen before finding carparks. Closer means a shorter walk to your destination.',
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton(
+            onPressed: () => _onNavTap(0),
+            child: const Text('Choose on search screen'),
+          ),
+        ],
       ),
     );
   }
@@ -741,11 +707,13 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                 size: 17,
               ),
               const SizedBox(width: 7),
-              Text(
-                'DATA MANAGEMENT',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: context.appColors.danger,
-                  letterSpacing: 0.8,
+              Expanded(
+                child: Text(
+                  'DATA MANAGEMENT',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: context.appColors.danger,
+                    letterSpacing: 0.8,
+                  ),
                 ),
               ),
             ],
@@ -777,6 +745,12 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
   }
 
   Future<void> _showEraseDataConfirmation() async {
+    if (!mounted ||
+        _isNavigating ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
+    var isClosing = false;
     final shouldErase = await showDialog<bool>(
       context: context,
       builder:
@@ -803,11 +777,21 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(ctx, false),
+                onPressed: () {
+                  if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                    return;
+                  }
+                  isClosing = true;
+                  Navigator.pop(ctx, false);
+                },
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
                 onPressed: () {
+                  if (isClosing || ModalRoute.of(ctx)?.isCurrent != true) {
+                    return;
+                  }
+                  isClosing = true;
                   Navigator.pop(ctx, true);
                 },
                 style: ElevatedButton.styleFrom(
@@ -833,7 +817,11 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
   }
 
   void _onNavTap(int index) {
-    if (_isNavigating || index == _selectedNavIndex) return;
+    if (_isNavigating ||
+        index == _selectedNavIndex ||
+        ModalRoute.of(context)?.isCurrent != true) {
+      return;
+    }
     final Widget destination;
     switch (index) {
       case 0:

@@ -45,6 +45,7 @@ class RecommendationInput(BaseModel):
     candidate_limit: int = Field(default=3,ge=1,le=5,strict=True)
     radius_meters: int = Field(default=1500,ge=100,le=3000,strict=True)
     payment_method: Literal['parking_sg','paper_coupon'] = 'parking_sg'
+    ranking_mode: Literal['best_overall','cheaper','closer'] = 'best_overall'
 
 
 class OperatorLoginInput(BaseModel):
@@ -91,7 +92,8 @@ def recommendations(body: RecommendationInput):
         raise HTTPException(503,'Routing setup is incomplete') from None
     try:
         trip = TripRequest(body.origin.coordinate(),body.destination.coordinate(),body.duration_minutes,
-                           body.candidate_limit,body.radius_meters,body.payment_method)
+                           body.candidate_limit,body.radius_meters,body.payment_method,
+                           ranking_mode=body.ranking_mode)
         return recommend(trip,client,app.state.predictor)
     except ValueError:
         raise HTTPException(422,'Invalid trip or routing configuration') from None

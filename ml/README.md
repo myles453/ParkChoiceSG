@@ -4,13 +4,6 @@ Predicts whether **at least 1 car lot will be free** at an HDB carpark when the 
 Two modes: a short-horizon LightGBM classifier (arrival within 90 minutes) and a lookup profile
 (later arrivals). Everything below is run from the `ml/` directory.
 
-## Application integration
-
-For the connected app, use port **8001** for this inference service and port **8000**
-for the recommendation API. Follow [the working backend setup](../backend/README.md),
-which uses `ml/requirements-inference.txt` for the verified runtime dependencies.
-The commands below also document the standalone training workflow.
-
 ## Setup
 
 ```bash
@@ -145,3 +138,11 @@ the model is least certain.
 - Lags can still be missing for carparks that update rarely; the model handles missing values but is less accurate then.
 - Model skill is mostly "stay as you are": see `reports/agent-e.md` for the split between rows whose state
   changes before arrival and rows whose state does not.
+
+## Application integration
+
+
+For the connected app, use port **8001** for this inference service and port **8000**
+for the recommendation API. Follow [the working backend setup](../backend/README.md),
+which uses `ml/requirements-inference.txt` for the verified runtime dependencies.
+The commands below also document the standalone training workflow.

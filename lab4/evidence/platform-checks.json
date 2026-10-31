@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-26",
+  "summary_origin": "Observed commands executed during this preparation; commands are reproducible below.",
+  "model": {
+    "command": "python -m pytest ml/tests ml/service/tests/test_service.py -q",
+    "passed": 108,
+    "returncode": 0,
+    "scope": "unit/service tests; excludes unavailable raw-data parity archives"
+  },
+  "flutter_analysis": {
+    "command": "flutter analyze",
+    "issues": 0,
+    "returncode": 0
+  },
+  "flutter_tests": {
+    "command": "flutter test --timeout 120s",
+    "passed": 44,
+    "returncode": 0
+  },
+  "android_build": {
+    "command": "flutter build apk --debug --target-platform android-arm64 --dart-define=PARKING_API_URL=http://127.0.0.1:8000",
+    "returncode": 0,
+    "bytes": 90874257,
+    "sha256": "6523b2f612b30aecb794bd8bf3ab9eb306b2eb06c00ea340ec2855d64c8dfe9b",
+    "source_hash_normalization": "CRLF to LF for text files",
+    "source_sha256": {
+      "parkchoice_flutter/lib/constants.dart": "b942bf9db73073a16773e228213b8138f7ae659b79917870dd0cbc48347ce18d",
+      "parkchoice_flutter/lib/main.dart": "186ad4f375af5ebc03a854ff927960e42dd401b8c70b698b4c15036b7b248bcd",
+      "parkchoice_flutter/lib/models/ranking_mode.dart": "1e14bf94f910883f8b15842a5ef872589dd1fa3a21e5c22650b912355139e069",
+      "parkchoice_flutter/lib/screens/admin_panel_screen.dart": "d9bc8a5ae92ee179b0a997cf8f7d4d9b0d7e21909f7ad1eff47f734ee250f130",
+      "parkchoice_flutter/lib/screens/carpark_map_screen.dart": "00ae6265d70c9d937815ad2657a1d1b6ef516d0bf3a2f346be050268aa5a28f1",
+      "parkchoice_flutter/lib/screens/carpark_search_screen.dart": "f0d07b83f3d53776e0f4d3e14b6e73243cbe83be5c253be167098ae2e39bcfbc",
+      "parkchoice_flutter/lib/screens/operator_login_screen.dart": "54467728d3b3727157e60c3e8f8de316b9e6a3d8ffaab2ec9e2956bff1d9cc51",
+      "parkchoice_flutter/lib/screens/parking_session_tracker_screen.dart": "170684dea18c00e16d90b04c3e2b5d6dba5eb4f39f138a82c34c4c77200f6ca8",
+      "parkchoice_flutter/lib/screens/preferences_screen.dart": "e48213d6e18ce4a8200aacad63d27a2099b8d2fc239e5b59ef2ef5f3bdcb6d39",
+      "parkchoice_flutter/lib/services/app_theme_controller.dart": "ee148c84773547e318439f2a84e211ba5c731162a033f63fcf73049ab3447d6c",
+      "parkchoice_flutter/lib/services/device_location.dart": "ef24cf461e9192f6d9858647de4473ce2fc2b9fb9ab10c5aad702c3f66982345",
+      "parkchoice_flutter/lib/services/navigation_handoff.dart": "10df5dca05fe2502f0689a771ced8d7d779ccfbee45a222116f0d784c6f107a7",
+      "parkchoice_flutter/lib/services/operator_session.dart": "96d1077fa20b1366aebe8aceb9177f87cd4ff5b75096f857add5d12935efb281",
+      "parkchoice_flutter/lib/services/parking_api.dart": "d5d7647906476255a72004715596fe506ee8bf9d95578db62d101adac73963e2",
+      "parkchoice_flutter/lib/services/parking_session_manager.dart": "8bc191af143189bc10530280958dea7a50fe3d75636c2e0a79b530f0410ddb47",
+      "parkchoice_flutter/lib/widgets/app_ui.dart": "7fbf54af1c0f6d4ac6644de1829c199a15d68688cf7eb54733c9c89c83111e78",
+      "parkchoice_flutter/lib/widgets/bottom_nav_bar.dart": "38b85756ba5649ae73e6ac0ecccf66331f9f984a12d0f8e2efc607850508d6fd",
+      "parkchoice_flutter/pubspec.yaml": "3b90267811a4a8fba2bfd2e7499aba63126ca2b7548cc7189af8d4761e61b3af",
+      "parkchoice_flutter/pubspec.lock": "4c7231fb0ee82c813104a47ff4f99fb81f076feecc87ca6cbeda6e108001a084",
+      "parkchoice_flutter/android/app/src/main/AndroidManifest.xml": "4e5a1fa5879d7fedaccd0e9e80345b5d318158e3ecc6c365e388f874999c0711",
+      "parkchoice_flutter/android/app/src/debug/AndroidManifest.xml": "26092959ab0bfc16953408b7e6cca993d6e48e4b763159142f1e33e4ab44ab16",
+      "parkchoice_flutter/android/app/build.gradle.kts": "b76f5845bb3e05b0e452a6a9f91c3b8f742c72654bd95dea6898ed7b54239baf"
+    }
+  },
+  "device": {
+    "adb_attached_devices": 0,
+    "physical_device_acceptance": "pending"
+  },
+  "video": {
+    "recorded": false,
+    "status": "script prepared; actual recording pending"
+  }
+}

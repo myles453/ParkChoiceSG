@@ -9,12 +9,14 @@ class CarparkMapScreen extends StatefulWidget {
   final Map<String, dynamic> destination;
   final List<Map<String, dynamic>> carparks;
   final TileProvider? tileProvider;
+  final Future<bool> Function(Uri)? launchWebsite;
   const CarparkMapScreen({
     super.key,
     required this.origin,
     required this.destination,
     required this.carparks,
     this.tileProvider,
+    this.launchWebsite,
   });
 
   @override
@@ -24,10 +26,36 @@ class CarparkMapScreen extends StatefulWidget {
 class _CarparkMapScreenState extends State<CarparkMapScreen> {
   bool _tileError = false;
 
-  LatLng point(Map value) => LatLng(
-    (value['latitude'] as num).toDouble(),
-    (value['longitude'] as num).toDouble(),
-  );
+  LatLng? point(Object? value) {
+    if (value is! Map) return null;
+    final lat = value['latitude'], lng = value['longitude'];
+    if (lat is! num ||
+        lng is! num ||
+        !lat.isFinite ||
+        !lng.isFinite ||
+        lat < -90 ||
+        lat > 90 ||
+        lng < -180 ||
+        lng > 180) {
+      return null;
+    }
+    return LatLng(lat.toDouble(), lng.toDouble());
+  }
+
+  Future<void> _openWebsite(String url) async {
+    try {
+      if (await (widget.launchWebsite ?? launchUrl)(Uri.parse(url))) return;
+    } catch (_) {
+      // A missing browser or failed platform launch must not crash the map.
+    }
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not open the website. Please try again.'),
+        ),
+      );
+    }
+  }
 
   Marker marker(LatLng point, Color color, String label, IconData icon) =>
       Marker(
@@ -48,13 +76,24 @@ class _CarparkMapScreenState extends State<CarparkMapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final start = point(widget.origin['coordinate'] as Map);
-    final end = point(widget.destination['coordinate'] as Map);
+    final start = point(widget.origin['coordinate']);
+    final end = point(widget.destination['coordinate']);
+    if (start == null || end == null) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Carparks on OneMap')),
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text(
+              'Map coordinates are unavailable. Return to search and select your places again.',
+            ),
+          ),
+        ),
+      );
+    }
     final validCarparks =
-        widget.carparks
-            .where((r) => r['latitude'] is num && r['longitude'] is num)
-            .toList();
-    final points = [start, end, ...validCarparks.map(point)];
+        widget.carparks.where((r) => point(r) != null).toList();
+    final points = [start, end, ...validCarparks.map((r) => point(r)!)];
     return Scaffold(
       appBar: AppBar(title: const Text('Carparks on OneMap')),
       body: Column(
@@ -94,9 +133,12 @@ class _CarparkMapScreenState extends State<CarparkMapScreen> {
                   userAgentPackageName: 'sg.parkchoicesg.student',
                   tileProvider: widget.tileProvider,
                   errorTileCallback: (_, _, _) {
-                    if (mounted && !_tileError) {
-                      setState(() => _tileError = true);
-                    }
+                    if (!mounted || _tileError) return;
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (mounted && !_tileError) {
+                        setState(() => _tileError = true);
+                      }
+                    });
                   },
                 ),
                 MarkerLayer(
@@ -110,7 +152,7 @@ class _CarparkMapScreenState extends State<CarparkMapScreen> {
                     marker(end, Colors.red, 'Destination', Icons.location_on),
                     ...validCarparks.map(
                       (r) => marker(
-                        point(r),
+                        point(r)!,
                         Colors.green,
                         r['display_name'].toString(),
                         Icons.local_parking,
@@ -132,14 +174,12 @@ class _CarparkMapScreenState extends State<CarparkMapScreen> {
                 errorBuilder: (_, _, _) => const SizedBox(width: 20),
               ),
               TextButton(
-                onPressed:
-                    () => launchUrl(Uri.parse('https://www.onemap.gov.sg/')),
+                onPressed: () => _openWebsite('https://www.onemap.gov.sg/'),
                 child: const Text('OneMap'),
               ),
               const Text('© contributors |'),
               TextButton(
-                onPressed:
-                    () => launchUrl(Uri.parse('https://www.sla.gov.sg/')),
+                onPressed: () => _openWebsite('https://www.sla.gov.sg/'),
                 child: const Text('Singapore Land Authority'),
               ),
             ],

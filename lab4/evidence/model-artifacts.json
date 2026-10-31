@@ -1,0 +1,22 @@
+[
+  {
+    "file": "carpark_stats.parquet",
+    "sha256": "3e8fc8063c775a54f3ee89058b660d0d58381feb4270219d173ad5400c226a3d",
+    "unchanged_check": "byte equality"
+  },
+  {
+    "file": "model_card.json",
+    "sha256": "5965f3b06f017ad2eaafc110634e843ed3a02313a126e788942d96b367adfd4a",
+    "unchanged_check": "JSON semantic equality"
+  },
+  {
+    "file": "profile.parquet",
+    "sha256": "50e5897244fb8dafb65c5e31a2973f295f3fe443062db5540ef47154708cd402",
+    "unchanged_check": "byte equality"
+  },
+  {
+    "file": "short_horizon.joblib",
+    "sha256": "3227c0ccba7a87b4b2ea8c0f0f07ebc920f2bb4a52c237aeeb0738673ff80e7b",
+    "unchanged_check": "byte equality"
+  }
+]

@@ -1,6 +1,6 @@
 # Lab 4 test cases and results
 
-This file covers Lab 4 procedure 3.2. Black box tests target `scoring.score_candidate`. Basis path tests target `pricing.window_at` and `pricing._tier_price`. All cases are automated with `unittest`.
+This is the supplementary scoring and pricing-path study for Lab 4 procedure 3.2. The primary concrete control-class cases and current results are in `../../lab4/TEST-CASES-AND-RESULTS.md`. Black box tests target `scoring.score_candidate`. Basis path tests target `pricing.window_at` and `pricing._tier_price`. All cases are automated with `unittest`.
 
 | File | Contents |
 |---|---|
@@ -23,15 +23,15 @@ python validation/lab4_report.py
 
 ### Specification under test
 
-Each factor becomes a penalty between 0 and 1. The score is `100 × (1 − Σ weight × penalty)`.
+Each factor becomes a penalty between 0 and 1. The score is `100 Ã— (1 âˆ’ Î£ weight Ã— penalty)`.
 
 | Factor | Penalty | Penalty is 0.5 when |
 |---|---|---|
-| Cost | cost ÷ (cost + 400 × duration ÷ 60) | cost is S$4 per hour of stay |
-| Walking | metres ÷ (metres + 500) | 500 m |
-| Driving | seconds ÷ (seconds + 900) | 15 min |
-| Availability, lots mode | 1 ÷ (1 + lots) | 1 lot |
-| Availability, probability mode | 1 − p_free | p_free = 0.5 |
+| Cost | cost Ã· (cost + 400 Ã— duration Ã· 60) | cost is S$4 per hour of stay |
+| Walking | metres Ã· (metres + 500) | 500 m |
+| Driving | seconds Ã· (seconds + 900) | 15 min |
+| Availability, lots mode | 1 Ã· (1 + lots) | 1 lot |
+| Availability, probability mode | 1 âˆ’ p_free | p_free = 0.5 |
 
 Default weights are cost 0.40, walking 0.30, availability 0.20 and driving 0.10. Invalid input raises `ValueError`.
 
@@ -41,12 +41,12 @@ The nominal input is cost 400 cents, duration 60 min, walking 500 m, driving 900
 
 | Input | Valid classes | Invalid classes |
 |---|---|---|
-| `cost_cents` | V1 integer ≥ 0 | I1 negative integer; I2 not an integer |
-| `duration_minutes` | V2 integer ≥ 1 | I3 integer ≤ 0; I4 not an integer |
-| `walking_meters` | V3 finite number ≥ 0 | I5 negative; I6 infinite or NaN; I7 not a number |
-| `driving_seconds` | V4 finite number ≥ 0 | I8 negative; I9 infinite or NaN |
-| Availability | V5 lots ≥ 0 with no probability; V6 probability in [0, 1] with no lots | I10 lots negative; I11 neither supplied; I12 both supplied; I13 probability < 0; I14 probability > 1; I15 probability NaN |
-| `weights` | V7 omitted, so defaults apply; V8 four positive weights that sum to 1 | I16 a key missing; I17 a weight ≤ 0; I18 sum is not 1 |
+| `cost_cents` | V1 integer â‰¥ 0 | I1 negative integer; I2 not an integer |
+| `duration_minutes` | V2 integer â‰¥ 1 | I3 integer â‰¤ 0; I4 not an integer |
+| `walking_meters` | V3 finite number â‰¥ 0 | I5 negative; I6 infinite or NaN; I7 not a number |
+| `driving_seconds` | V4 finite number â‰¥ 0 | I8 negative; I9 infinite or NaN |
+| Availability | V5 lots â‰¥ 0 with no probability; V6 probability in [0, 1] with no lots | I10 lots negative; I11 neither supplied; I12 both supplied; I13 probability < 0; I14 probability > 1; I15 probability NaN |
+| `weights` | V7 omitted, so defaults apply; V8 four positive weights that sum to 1 | I16 a key missing; I17 a weight â‰¤ 0; I18 sum is not 1 |
 
 There are 8 valid and 18 invalid classes. Two tests cover all 8 valid classes. Each invalid class gets its own test, so a failure points to one cause.
 
@@ -56,12 +56,12 @@ Each test moves one input to its boundary and keeps the others nominal.
 
 | Input | Boundary | Values tested | Expected score by hand |
 |---|---|---|---|
-| Cost | 0 | −1, 0, 1 | error; 100 × (1 − 0.30) = 70; 100 × (1 − 0.4 × 1/401 − 0.30) = 69.9002 |
+| Cost | 0 | âˆ’1, 0, 1 | error; 100 Ã— (1 âˆ’ 0.30) = 70; 100 Ã— (1 âˆ’ 0.4 Ã— 1/401 âˆ’ 0.30) = 69.9002 |
 | Duration | 1 | 0, 1 | error; reference 6.667 cents, cost penalty 0.9836, score 30.6557 |
-| Walking | 0 | −0.001, 0 | error; 100 × (1 − 0.35) = 65 |
-| Driving | 0 | −0.001, 0 | error; 100 × (1 − 0.45) = 55 |
-| Lots | 0 | −0.001, 0 | error; availability penalty 1, score 40 |
-| Probability | 0 and 1 | −0.001, 0, 1, 1.001 | error; 40; 60; error |
+| Walking | 0 | âˆ’0.001, 0 | error; 100 Ã— (1 âˆ’ 0.35) = 65 |
+| Driving | 0 | âˆ’0.001, 0 | error; 100 Ã— (1 âˆ’ 0.45) = 55 |
+| Lots | 0 | âˆ’0.001, 0 | error; availability penalty 1, score 40 |
+| Probability | 0 and 1 | âˆ’0.001, 0, 1, 1.001 | error; 40; 60; error |
 | Weight sum | 1 | exactly 1, 1.000001 | 50; error |
 
 Duration, walking, driving and lots have no upper limit in this method. The API layer caps duration at 1440 minutes, and `TripRequest` tests cover that cap.
@@ -74,7 +74,7 @@ Duration, walking, driving and lots have no upper limit in this method. The API 
 | EC-01 | Valid lots mode, default weights (V1-V5, V7) | `nominal` | 50.0 (best_overall_v1_provisional) | 50.0 (best_overall_v1_provisional) | Pass |
 | EC-02 | Valid probability mode, custom weights (V6, V8) | `available_lots=None, p_free=0.5, weights={'cost': 0.25, 'walking': 0.25, 'availability': 0.25, 'driving': 0.25}` | 50.0 (best_overall_probability_v2_provisional) | 50.0 (best_overall_probability_v2_provisional) | Pass |
 | EC-03 | I1 cost negative | `cost_cents=-400` | ValueError | ValueError | Pass |
-| EC-04 | I2 cost not an integer | `nominal` | ValueError | ValueError | Pass |
+| EC-04 | I2 cost not an integer | `cost_cents=400.0` | ValueError | ValueError | Pass |
 | EC-05 | I3 duration not positive | `duration_minutes=-60` | ValueError | ValueError | Pass |
 | EC-06 | I4 duration not an integer | `duration_minutes=60.5` | ValueError | ValueError | Pass |
 | EC-07 | I5 walking negative | `walking_meters=-500` | ValueError | ValueError | Pass |
@@ -119,7 +119,7 @@ Duration, walking, driving and lots have no upper limit in this method. The API 
 
 ## 2. Basis path testing (3.2.2)
 
-Each decision node counts once, even when its condition uses `and` or `or`. Cyclomatic complexity is checked two ways: V(G) = decisions + 1, and V(G) = E − N + 2 with one virtual exit node joining all `return` statements.
+Each decision node counts once, even when its condition uses `and` or `or`. Cyclomatic complexity is checked two ways: V(G) = decisions + 1, and V(G) = E âˆ’ N + 2 with one virtual exit node joining all `return` statements.
 
 We first measured `quote_schedule` (complexity 89 by `radon`) and `quote_hdb` (58). Those are too large to draw or test path by path. `quote_hdb` is also a legacy helper that the live app no longer calls. We chose the two methods below because every live price quote calls them and their logic is hard to get right.
 
@@ -180,7 +180,7 @@ flowchart TD
 Cyclomatic complexity:
 
 - Decision nodes are 2, 4, 6, 8, 9, 10 and 11. V(G) = 7 + 1 = 8.
-- E = 20 and N = 14, counting the exit node. V(G) = 20 − 14 + 2 = 8.
+- E = 20 and N = 14, counting the exit node. V(G) = 20 âˆ’ 14 + 2 = 8.
 
 Independent paths:
 
@@ -190,9 +190,9 @@ Independent paths:
 | P2 | 1-2T-3 | Empty window rejected |
 | P3 | 1-2F-4-5-6T-7-8F-9F-10F-11F-12 | Overnight end moved to the next day |
 | P4 | 1-2F-4-5-6F-8T-4-5-6F-8T-4-13 | Outside the window on both anchor dates, loop exhausted |
-| P5 | 1-2F-4-5-6F-8F-9T-4-…-13 | Day type mismatch |
-| P6 | 1-2F-4-5-6F-8F-9F-10T-4-…-13 | Weekday filter excludes the date |
-| P7 | 1-2F-4-5-6F-8F-9F-10F-11T-4-…-13 | Holiday eve rule does not apply |
+| P5 | 1-2F-4-5-6F-8F-9T-4-â€¦-13 | Day type mismatch |
+| P6 | 1-2F-4-5-6F-8F-9F-10T-4-â€¦-13 | Weekday filter excludes the date |
+| P7 | 1-2F-4-5-6F-8F-9F-10F-11T-4-â€¦-13 | Holiday eve rule does not apply |
 | P8 | 1-2F-4-5-6T-7-8T-4-5-6T-7-8F-9F-10F-11F-12 | Overnight window found from the previous day |
 
 Flipping decision 4 at its first visit means the loop body never runs. That path is infeasible because the loop always has two dates to check. P8 replaces it. P8 also tests the case most likely to break, a stay after midnight inside a window that opened the evening before.
@@ -270,7 +270,7 @@ flowchart TD
 Cyclomatic complexity:
 
 - Decision nodes are 2, 3, 5, 7, 10, 11 and 13. V(G) = 7 + 1 = 8.
-- E = 22 and N = 16, counting the exit node. V(G) = 22 − 16 + 2 = 8.
+- E = 22 and N = 16, counting the exit node. V(G) = 22 âˆ’ 16 + 2 = 8.
 
 Independent paths:
 

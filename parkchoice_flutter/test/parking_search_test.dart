@@ -39,6 +39,7 @@ void main() {
           recommendationCalls++;
           expect(body['origin'], {'latitude': 1.3, 'longitude': 103.8});
           expect(body['duration_minutes'], 60);
+          expect(body['ranking_mode'], 'best_overall');
           return http.Response(
             jsonEncode({
               'ranking_basis':

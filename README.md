@@ -26,3 +26,23 @@ The working search includes device location, OneMap markers, supported tariff
 comparisons, explainable ranking and external navigation. Administration, reporting
 and durable local-data screens remain partly prototypes. The probability model and
 provisional ranking policy have documented scope and validation limits in `backend/`.
+
+## Current ranking and frontend validation
+
+Drivers can select Best overall, Prioritise cheaper, or Prioritise closer.
+See [frontend verification](parkchoice_flutter/FRONTEND-VERIFICATION.md) and
+[Android phone setup](parkchoice_flutter/ANDROID-TESTING.md) for the crash fixes,
+stress tests and device checks. Drivers do not create accounts; operator sign-in
+remains separate and the console actions remain prototypes.
+
+## Lab 4 review and project rationale
+
+[Lab 4 review package](lab4/README.md) contains the testing evidence, traceability,
+demo plan and review documents. Physical-device acceptance, the final video and
+work-product attribution still require team completion.
+
+Read [project decisions](PROJECT-DECISIONS.md), or its
+[HTML reading version](PROJECT-DECISIONS.html), for the reasoning behind the data,
+prediction, pricing, architecture and three preference modes.
+
+See [31 October integration verification](backend/validation/INTEGRATION-2026-10-31.md) for the reconciled upstream changes and test results.

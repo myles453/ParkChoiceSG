@@ -1,6 +1,6 @@
 # ParkChoiceSG architecture â€” working prototype
 
-Updated 17 October 2026. This describes the implemented search backend and its
+Updated 26 October 2026. This describes the implemented search backend and its
 connected Flutter search screen. It is the backend portion of the team's design,
 not a claim that operator workflows and all-provider forecasting are complete.
 
@@ -47,7 +47,7 @@ flowchart TD
 ## Small, explainable structure
 
 The request-time Python modules live in `backend/`; collection helpers remain in `data-pipeline/`. There is one HTTP entry
-point, one workflow module and small routing, pricing, prediction and scoring
+point, one recommendation control class and small routing, pricing, prediction and scoring
 modules. The supplied ML inference service runs separately on localhost port
 8001; the app backend calls it through one small HTTP adapter. No ORM, message
 broker or dependency-injection container is introduced. The existing collectors run as a
@@ -56,7 +56,7 @@ separate command; searching does not start collection or retrain a model.
 | File/class | Responsibility |
 |---|---|
 | `app.py` | Validate HTTP input, call the workflow and return JSON/safe errors. Selects the configured model client or explicit current baseline. |
-| `TripRequest`, `recommendation.py` | Shortlist, call routes, price the stay, apply eligibility and coordinate ranking. Plain functions keep the request flow visible. |
+| `RecommendationController`, `TripRequest`, `recommendation.py` | Shortlist, route, price, predict and coordinate ranking. The public function delegates to the control class. |
 | `OneMapClient` / `RoutingProvider` | Normalize destination search and route measurements; replaceable in tests. |
 | `OneMapTokens` | HTTPS REST authentication, expiry-based memory cache and one retry after rejection. Credentials never enter Flutter. |
 | `CandidateStay`, `comparison.py` | Load applicable tariff versions and quote options from one DB snapshot. |
@@ -120,8 +120,9 @@ Read-only repeatable-read transactions hold DB snapshots for a short read stage,
 then close before network routing. Collection runs write transactions separately. The
 prototype currently uses the configured database credential with a read-only
 transaction; a dedicated least-privilege DB login still needs provisioning before
-deployment. Localhost API setup is not a deployed public service or an operator
-authentication implementation. OneMap attribution is visible; a production privacy
+deployment. Localhost API setup is not a deployed public service. Operator credential verification
+and a client-side console entry gate are implemented; server-side administration
+sessions and authorization remain unfinished. OneMap attribution is visible; a production privacy
 notice and deployment controls remain release work.
 
 The active Flutter source is `parkchoice_flutter/`. It and `lab 3/parkchoice_flutter/`

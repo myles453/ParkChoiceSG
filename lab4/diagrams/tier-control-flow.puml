@@ -1,0 +1,30 @@
+@startdot
+digraph G {
+graph [rankdir=TB, nodesep=0.30, ranksep=0.25, dpi=72, bgcolor="white"];
+node [shape=circle, fontname="Arial", fontsize=15, width=0.35, height=0.35];
+edge [fontname="Arial", fontsize=10, arrowsize=0.7];
+"1" -> "2";
+"2" -> "3";
+"2" -> "9";
+"3" -> "4";
+"3" -> "5";
+"5" -> "6";
+"5" -> "9";
+"6" -> "7";
+"7" -> "8";
+"7" -> "9";
+"9" -> "10";
+"10" -> "11";
+"10" -> "13";
+"11" -> "12";
+"11" -> "10";
+"12" -> "10";
+"13" -> "14";
+"13" -> "15";
+"14" -> "15";
+"4" -> "X";
+"8" -> "X";
+"15" -> "X";
+"X" [shape=doublecircle];
+}
+@enddot

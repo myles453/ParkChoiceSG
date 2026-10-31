@@ -1,6 +1,6 @@
 """Coordinate a small carpark search using existing DB, route and price modules.
 
-The service uses plain functions. The collector still runs separately; a driver
+The controller coordinates the request; small helpers own routes, price and scoring. The collector still runs separately; a driver
 search never polls all availability sources or writes driver information.
 """
 from contextlib import contextmanager
@@ -12,7 +12,7 @@ import os
 from comparison import CandidateStay, compare_stay_options
 from onemap_adapter import Coordinate, RoutingProvider
 from prediction import AvailabilityPredictor, PendingPredictor, PredictionRequest, record_forecast, valid_prediction
-from scoring import POLICY_VERSION, PROBABILITY_POLICY_VERSION, rank_candidates, score_candidate
+from scoring import MODE_LABELS, MODE_WEIGHTS, mode_weights, policy_version, rank_candidates, score_candidate
 
 
 @dataclass(frozen=True)
@@ -24,6 +24,7 @@ class TripRequest:
     candidate_limit: int = 3
     radius_meters: int = 1500
     payment_method: str = 'parking_sg'
+    ranking_mode: str = 'best_overall'
 
     def __post_init__(self):
         if not isinstance(self.origin, Coordinate) or not isinstance(self.destination, Coordinate):
@@ -33,6 +34,7 @@ class TripRequest:
                 raise ValueError(f'{name} must be an integer between {lower} and {upper}')
         if self.payment_method not in {'parking_sg','paper_coupon'}:
             raise ValueError('Unsupported payment method')
+        mode_weights(self.ranking_mode)
 
 
 @contextmanager
@@ -139,118 +141,140 @@ def quote_arrivals(connection, candidates: list[dict], request: TripRequest) -> 
     return results
 
 
+class RecommendationController:
+    """Coordinate one search using routing and prediction dependencies.
+
+    Helpers retain the existing database, pricing and scoring responsibilities.
+    Construct per request; this class starts no collector and trains no model.
+    """
+
+    def __init__(self, router: RoutingProvider, predictor: AvailabilityPredictor | None = None):
+        self.router = router
+        self.predictor = predictor or PendingPredictor()
+
+    def recommend(self, request: TripRequest) -> dict:
+        """Return candidates, exclusions and separately labelled forecast/current rankings."""
+        router, predictor = self.router, self.predictor
+        predictor = predictor or PendingPredictor()
+        use_model = getattr(predictor,'ready',False) is True
+        probability_model = use_model and getattr(predictor,'output_kind',None) == 'probability'
+        started_at = datetime.now(timezone.utc)
+        with read_connection() as connection:
+            candidates = shortlist(connection,request,current_baseline=not use_model,
+                                   supported_agencies=getattr(predictor,'supported_agencies',None))
+        for row in candidates:
+            point = Coordinate(row['latitude'],row['longitude'])
+            row['driving'] = asdict(router.route(request.origin,point,'drive'))
+            row['walking'] = asdict(router.route(point,request.destination,'walk'))
+        # All candidates assume the same departure after route collection, avoiding
+        # different departure instants just because one network call ran first.
+        departure_at = datetime.now(timezone.utc)
+        for row in candidates:
+            row['arrival_at'] = (departure_at+timedelta(seconds=row['driving']['duration_seconds'])
+                                 if row['driving']['status']=='ok' else None)
+            row['driving']['estimated_arrival_at'] = row['arrival_at']
+            row['driving']['departure_assumption'] = 'common_departure_after_route_collection'
+        with read_connection() as connection:
+            quotes = quote_arrivals(connection,candidates,request)
+        live_current = (predictor.current_readings([r['carpark_id'] for r in candidates])
+                        if probability_model and hasattr(predictor,'current_readings') else {})
+        # A trained adapter opts in explicitly. Never mix current counts and future
+        # predictions inside the same comparison score.
+        basis = ('arrival_free_probability' if probability_model else 'predicted_availability') if use_model else 'current_availability_baseline'
+        for row in candidates:
+            reasons = []
+            for mode in ('driving','walking'):
+                if row[mode]['status']!='ok':
+                    reasons.append(mode+'_'+row[mode]['status'])
+            quote = quotes.get((row['agency'],row['carpark_id']))
+            row['price'] = quote['price'] if quote else {'status':'driving_route_required','amount_cents':None}
+            row['current_availability'] = ({'available_lots':quote['lots_available'],
+                  'total_lots':quote['total_lots'],'status':quote['availability_status'],
+                  'timestamp':quote['availability_timestamp'],'timestamp_kind':quote['timestamp_kind'],
+                  'feed':quote['availability_feed']} if quote else None)
+            if row['agency']=='HDB' and row['carpark_id'] in live_current:
+                row['current_availability'] = live_current[row['carpark_id']]
+            if row['price']['status']!='quoted':
+                reasons.append('price_'+row['price']['status'])
+            if quote and quote['capacity_consistency']=='available_exceeds_capacity':
+                reasons.append('available_exceeds_capacity')
+            prediction = None
+            available = None
+            p_free = None
+            if row['arrival_at'] is not None:
+                issued = datetime.now(timezone.utc)
+                model_request = PredictionRequest(row['agency'],row['carpark_id'],issued,row['arrival_at'])
+                try:
+                    prediction = predictor.predict(model_request)
+                    if prediction.status=='ok' and (not valid_prediction(prediction,model_request)
+                            or (probability_model and prediction.p_free is None)):
+                        prediction = None
+                except Exception:
+                    prediction = None
+                row['prediction'] = asdict(prediction) if prediction is not None else {'status':'invalid_prediction'}
+                if use_model:
+                    if prediction is not None and valid_prediction(prediction,model_request):
+                        available = prediction.available_lots
+                        p_free = prediction.p_free
+                        try:
+                            record_forecast(prediction,row['current_availability'])
+                        except (OSError,ValueError):
+                            reasons.append('forecast_audit_unavailable_or_target_passed')
+                        if prediction.confidence=='low' and not probability_model:
+                            reasons.append('low_model_confidence')
+                        # Only synchronized HDB capacity can bound this value here.
+                        capacity = quote['total_lots'] if quote else None
+                        if capacity is not None and available is not None and available > capacity:
+                            reasons.append('prediction_exceeds_capacity')
+                    else:
+                        reasons.append('prediction_unavailable')
+            else:
+                row['prediction'] = {'status':'driving_route_required'}
+            if not use_model and quote:
+                if quote['availability_status']!='fresh_source_update':
+                    reasons.append('availability_'+quote['availability_status'])
+                else:
+                    available = quote['lots_available']
+            if p_free is not None:
+                if p_free < .90:
+                    reasons.append('arrival_probability_below_0_90')
+            elif available is None:
+                reasons.append('arrival_probability_missing' if probability_model else 'available_count_missing')
+            elif available <= 0:
+                reasons.append('no_available_lots_for_ranking')
+            row['ranking_basis'] = basis
+            row['ranking_exclusions'] = list(dict.fromkeys(reasons))
+            row['ranking_eligible'] = not reasons
+            row['scoring'] = (score_candidate(row['price']['amount_cents'],request.duration_minutes,
+                              row['walking']['distance_meters'],row['driving']['duration_seconds'],available,
+                              p_free=p_free,ranking_mode=request.ranking_mode)
+                              if not reasons else None)
+        ranked = rank_candidates(candidates,request.ranking_mode)
+        fallback_ranked = current_fallback(candidates,request) if probability_model and not ranked else []
+        return {'status':'ok' if ranked else 'current_reading_fallback' if fallback_ranked else 'no_eligible_candidates',
+                'prediction_status':('connected' if any(r['prediction']['status']=='ok' for r in candidates)
+                                     else 'configured_no_valid_forecast') if use_model else 'prediction_pending',
+                'ranking_basis':basis,
+                'ranking_mode':request.ranking_mode,
+                'ranking_mode_label':MODE_LABELS[request.ranking_mode],
+                'scoring_weights':mode_weights(request.ranking_mode),
+                'scoring_policy':policy_version(request.ranking_mode,probability=probability_model),
+                'fallback_scoring_policy':policy_version(request.ranking_mode) if fallback_ranked else None,
+                'policy_is_provisional':True,
+                'started_at':started_at, 'departure_at':departure_at, 'generated_at':datetime.now(timezone.utc),
+                'duration_minutes':request.duration_minutes, 'candidates':candidates, 'ranked':ranked,
+                'top_recommendation':ranked[0] if ranked else None,
+                'fallback_ranked':fallback_ranked,
+                'fallback_basis':'current_availability_baseline' if fallback_ranked else None,
+                'fallback_notice':('No usable arrival forecast. These options use current reported lots; '
+                                   'availability may change before arrival.') if fallback_ranked else None}
+
+
+
 def recommend(request: TripRequest, router: RoutingProvider,
               predictor: AvailabilityPredictor | None = None) -> dict:
-    """Build routed/priced candidates and a clearly labelled provisional ranking."""
-    predictor = predictor or PendingPredictor()
-    use_model = getattr(predictor,'ready',False) is True
-    probability_model = use_model and getattr(predictor,'output_kind',None) == 'probability'
-    started_at = datetime.now(timezone.utc)
-    with read_connection() as connection:
-        candidates = shortlist(connection,request,current_baseline=not use_model,
-                               supported_agencies=getattr(predictor,'supported_agencies',None))
-    for row in candidates:
-        point = Coordinate(row['latitude'],row['longitude'])
-        row['driving'] = asdict(router.route(request.origin,point,'drive'))
-        row['walking'] = asdict(router.route(point,request.destination,'walk'))
-    # All candidates assume the same departure after route collection, avoiding
-    # different departure instants just because one network call ran first.
-    departure_at = datetime.now(timezone.utc)
-    for row in candidates:
-        row['arrival_at'] = (departure_at+timedelta(seconds=row['driving']['duration_seconds'])
-                             if row['driving']['status']=='ok' else None)
-        row['driving']['estimated_arrival_at'] = row['arrival_at']
-        row['driving']['departure_assumption'] = 'common_departure_after_route_collection'
-    with read_connection() as connection:
-        quotes = quote_arrivals(connection,candidates,request)
-    live_current = (predictor.current_readings([r['carpark_id'] for r in candidates])
-                    if probability_model and hasattr(predictor,'current_readings') else {})
-    # A trained adapter opts in explicitly. Never mix current counts and future
-    # predictions inside the same comparison score.
-    basis = ('arrival_free_probability' if probability_model else 'predicted_availability') if use_model else 'current_availability_baseline'
-    for row in candidates:
-        reasons = []
-        for mode in ('driving','walking'):
-            if row[mode]['status']!='ok':
-                reasons.append(mode+'_'+row[mode]['status'])
-        quote = quotes.get((row['agency'],row['carpark_id']))
-        row['price'] = quote['price'] if quote else {'status':'driving_route_required','amount_cents':None}
-        row['current_availability'] = ({'available_lots':quote['lots_available'],
-              'total_lots':quote['total_lots'],'status':quote['availability_status'],
-              'timestamp':quote['availability_timestamp'],'timestamp_kind':quote['timestamp_kind'],
-              'feed':quote['availability_feed']} if quote else None)
-        if row['agency']=='HDB' and row['carpark_id'] in live_current:
-            row['current_availability'] = live_current[row['carpark_id']]
-        if row['price']['status']!='quoted':
-            reasons.append('price_'+row['price']['status'])
-        if quote and quote['capacity_consistency']=='available_exceeds_capacity':
-            reasons.append('available_exceeds_capacity')
-        prediction = None
-        available = None
-        p_free = None
-        if row['arrival_at'] is not None:
-            issued = datetime.now(timezone.utc)
-            model_request = PredictionRequest(row['agency'],row['carpark_id'],issued,row['arrival_at'])
-            try:
-                prediction = predictor.predict(model_request)
-                if prediction.status=='ok' and (not valid_prediction(prediction,model_request)
-                        or (probability_model and prediction.p_free is None)):
-                    prediction = None
-            except Exception:
-                prediction = None
-            row['prediction'] = asdict(prediction) if prediction is not None else {'status':'invalid_prediction'}
-            if use_model:
-                if prediction is not None and valid_prediction(prediction,model_request):
-                    available = prediction.available_lots
-                    p_free = prediction.p_free
-                    try:
-                        record_forecast(prediction,row['current_availability'])
-                    except (OSError,ValueError):
-                        reasons.append('forecast_audit_unavailable_or_target_passed')
-                    if prediction.confidence=='low' and not probability_model:
-                        reasons.append('low_model_confidence')
-                    # Only synchronized HDB capacity can bound this value here.
-                    capacity = quote['total_lots'] if quote else None
-                    if capacity is not None and available is not None and available > capacity:
-                        reasons.append('prediction_exceeds_capacity')
-                else:
-                    reasons.append('prediction_unavailable')
-        else:
-            row['prediction'] = {'status':'driving_route_required'}
-        if not use_model and quote:
-            if quote['availability_status']!='fresh_source_update':
-                reasons.append('availability_'+quote['availability_status'])
-            else:
-                available = quote['lots_available']
-        if p_free is not None:
-            if p_free < .90:
-                reasons.append('arrival_probability_below_0_90')
-        elif available is None:
-            reasons.append('arrival_probability_missing' if probability_model else 'available_count_missing')
-        elif available <= 0:
-            reasons.append('no_available_lots_for_ranking')
-        row['ranking_basis'] = basis
-        row['ranking_exclusions'] = list(dict.fromkeys(reasons))
-        row['ranking_eligible'] = not reasons
-        row['scoring'] = (score_candidate(row['price']['amount_cents'],request.duration_minutes,
-                          row['walking']['distance_meters'],row['driving']['duration_seconds'],available,
-                          p_free=p_free)
-                          if not reasons else None)
-    ranked = rank_candidates(candidates)
-    fallback_ranked = current_fallback(candidates,request) if probability_model and not ranked else []
-    return {'status':'ok' if ranked else 'current_reading_fallback' if fallback_ranked else 'no_eligible_candidates',
-            'prediction_status':('connected' if any(r['prediction']['status']=='ok' for r in candidates)
-                                 else 'configured_no_valid_forecast') if use_model else 'prediction_pending',
-            'ranking_basis':basis,
-            'scoring_policy':PROBABILITY_POLICY_VERSION if probability_model else POLICY_VERSION,
-            'policy_is_provisional':True,
-            'started_at':started_at, 'departure_at':departure_at, 'generated_at':datetime.now(timezone.utc),
-            'duration_minutes':request.duration_minutes, 'candidates':candidates, 'ranked':ranked,
-            'top_recommendation':ranked[0] if ranked else None,
-            'fallback_ranked':fallback_ranked,
-            'fallback_basis':'current_availability_baseline' if fallback_ranked else None,
-            'fallback_notice':('No usable arrival forecast. These options use current reported lots; '
-                               'availability may change before arrival.') if fallback_ranked else None}
+    """Compatibility entry point used by the HTTP route and existing validation."""
+    return RecommendationController(router, predictor).recommend(request)
 
 
 def current_fallback(candidates: list[dict], request: TripRequest) -> list[dict]:
@@ -277,10 +301,11 @@ def current_fallback(candidates: list[dict], request: TripRequest) -> list[dict]
                  (type(current['total_lots']) is int and count<=current['total_lots']))
             and all(row[m]['status']=='ok' for m in ('driving','walking')))
         row['fallback_scoring']=(score_candidate(row['price']['amount_cents'],request.duration_minutes,
-             row['walking']['distance_meters'],row['driving']['duration_seconds'],count) if allowed_row else None)
+             row['walking']['distance_meters'],row['driving']['duration_seconds'],count,
+             ranking_mode=request.ranking_mode) if allowed_row else None)
         if allowed_row:
             options.append({**row,'ranking_eligible':True,'scoring':row['fallback_scoring']})
-    return rank_candidates(options)
+    return rank_candidates(options,request.ranking_mode)
 
 
 def main():
@@ -293,11 +318,12 @@ def main():
     parser.add_argument('--duration-minutes',type=int,required=True)
     parser.add_argument('--candidate-limit',type=int,default=3)
     parser.add_argument('--radius-meters',type=int,default=1500)
+    parser.add_argument('--ranking-mode',choices=tuple(MODE_WEIGHTS),default='best_overall')
     args=parser.parse_args()
     try:
         client=OneMapClient.from_env()
         request=TripRequest(Coordinate(*args.origin),Coordinate(*args.destination),args.duration_minutes,
-                            args.candidate_limit,args.radius_meters)
+                            args.candidate_limit,args.radius_meters,ranking_mode=args.ranking_mode)
         from model_adapter import configured_predictor
         print(json.dumps(recommend(request,client,configured_predictor()),default=lambda x:x.isoformat(),indent=2,allow_nan=False))
     except ValueError:

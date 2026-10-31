@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T06:16:02.380273+00:00",
+  "checked_at": "2026-10-26T05:40:46.012695+00:00",
   "upstream_commit": "d05c1f8",
   "model": {
     "artifacts_loaded": true,
@@ -28,8 +28,8 @@
         "status": "unknown_carpark",
         "agency": "HDB",
         "carpark_id": "J58",
-        "issued_at": "2026-10-20T06:15:47.385744+00:00",
-        "arrival_at": "2026-10-20T06:36:47.903685+00:00",
+        "issued_at": "2026-10-26T05:40:34.832625+00:00",
+        "arrival_at": "2026-10-26T06:01:34.952954+00:00",
         "available_lots": null,
         "confidence": null,
         "model_version": null,
@@ -54,12 +54,12 @@
         "status": "ok",
         "agency": "HDB",
         "carpark_id": "J57",
-        "issued_at": "2026-10-20T06:15:47.459706+00:00",
-        "arrival_at": "2026-10-20T06:36:42.903685+00:00",
+        "issued_at": "2026-10-26T05:40:34.915898+00:00",
+        "arrival_at": "2026-10-26T06:01:29.952954+00:00",
         "available_lots": null,
         "confidence": "high",
         "model_version": "short-horizon-lgbm-20261007",
-        "history_cutoff": "2026-10-20T06:12:45+00:00",
+        "history_cutoff": "2026-10-26T05:36:56+00:00",
         "sample_count": null,
         "p_free": 0.9965813365780607,
         "mode": "short",
@@ -77,14 +77,14 @@
         "status": "ok",
         "agency": "HDB",
         "carpark_id": "J56",
-        "issued_at": "2026-10-20T06:15:47.524467+00:00",
-        "arrival_at": "2026-10-20T06:36:37.903685+00:00",
+        "issued_at": "2026-10-26T05:40:34.975887+00:00",
+        "arrival_at": "2026-10-26T06:01:24.952954+00:00",
         "available_lots": null,
         "confidence": "low",
         "model_version": "short-horizon-lgbm-20261007",
-        "history_cutoff": "2026-10-20T06:11:57+00:00",
+        "history_cutoff": "2026-10-26T05:34:40+00:00",
         "sample_count": null,
-        "p_free": 0.0878438331854481,
+        "p_free": 0.1246119733924612,
         "mode": "short",
         "fallback_reason": null
       },
@@ -101,13 +101,13 @@
         "rank": 1,
         "agency": "HDB",
         "carpark_id": "BBB",
-        "score": 65.42574548711079
+        "score": 65.39493562795586
       },
       {
         "rank": 2,
         "agency": "HDB",
         "carpark_id": "WCB",
-        "score": 60.8563159604518
+        "score": 61.0327865486871
       }
     ],
     "notice": "No usable arrival forecast. These options use current reported lots; availability may change before arrival."

@@ -28,6 +28,9 @@ void main() {
 
     expect(find.text('Find parking'), findsOneWidget);
     expect(find.text('Create Account'), findsNothing);
+    expect(find.text('Sign In'), findsNothing);
+    expect(find.text('Email'), findsNothing);
+    expect(find.text('Password'), findsNothing);
     expect(find.text('Find carparks'), findsOneWidget);
     expect(find.byType(TextField), findsNWidgets(2));
     expect(tester.takeException(), isNull);

@@ -37,6 +37,7 @@ class _OperatorLoginScreenState extends State<OperatorLoginScreen> {
   String? _error;
 
   Future<void> _signIn() async {
+    if (!mounted || _submitting || _isNavigating) return;
     final username = _usernameController.text.trim();
     final password = _passwordController.text;
     if (username.isEmpty || password.isEmpty) {
@@ -53,7 +54,7 @@ class _OperatorLoginScreenState extends State<OperatorLoginScreen> {
         username: username,
         password: password,
       );
-      if (!mounted) return;
+      if (!mounted || _isNavigating) return;
       if (!ok) {
         setState(() => _error = 'Incorrect operator username or password.');
         return;
@@ -61,7 +62,7 @@ class _OperatorLoginScreenState extends State<OperatorLoginScreen> {
       OperatorSession.instance.signIn();
       _replaceWith(const AdminPanelScreen());
     } catch (_) {
-      if (mounted) {
+      if (mounted && !_isNavigating) {
         setState(
           () => _error = 'Operator sign-in is unavailable. Please try again.',
         );
@@ -72,8 +73,9 @@ class _OperatorLoginScreenState extends State<OperatorLoginScreen> {
   }
 
   void _replaceWith(Widget destination) {
-    if (_isNavigating) return;
+    if (!mounted || _isNavigating) return;
     _isNavigating = true;
+    FocusManager.instance.primaryFocus?.unfocus();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
