@@ -1,0 +1,23 @@
+# Editor settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local environment files
+.env
+.env.*
+
+# Python environments and test caches
+.venv/
+.pytest_cache/
+
+# Local datasets, rebuilt by the scripts in ml/ and ml_lta_ura/
+ml/data/
+ml_lta_ura/data/
+.venv/

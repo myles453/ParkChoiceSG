@@ -1,0 +1,148 @@
+{
+  "checked_at": "2026-10-15T03:02:35.528971+00:00",
+  "model": "pending",
+  "claim": "real routes/current readings/prices; provisional baseline ranking, not forecast validation",
+  "samples": [
+    {
+      "destination": "City Hall",
+      "transport": "HTTP",
+      "elapsed_seconds": 10.578,
+      "status": "ok",
+      "ranked": [
+        {
+          "rank": 1,
+          "agency": "HDB",
+          "carpark_id": "BBB",
+          "score": 65.52886419938443
+        },
+        {
+          "rank": 2,
+          "agency": "HDB",
+          "carpark_id": "WCB",
+          "score": 61.477230993131535
+        },
+        {
+          "rank": 3,
+          "agency": "HDB",
+          "carpark_id": "ACB",
+          "score": 56.95080001895252
+        }
+      ],
+      "weight_sensitivity_wins_out_of_1000": {
+        "BBB": 1000,
+        "WCB": 0,
+        "ACB": 0
+      },
+      "candidates": [
+        {
+          "agency": "HDB",
+          "carpark_id": "BBB",
+          "price_status": "quoted",
+          "cost_cents": 240,
+          "driving_seconds": 484.0,
+          "walking_meters": 556.0,
+          "current_lots": 111,
+          "current_timestamp": "2026-10-15T02:54:48+00:00",
+          "exclusions": []
+        },
+        {
+          "agency": "HDB",
+          "carpark_id": "WCB",
+          "price_status": "quoted",
+          "cost_cents": 240,
+          "driving_seconds": 440.0,
+          "walking_meters": 954.0,
+          "current_lots": 35,
+          "current_timestamp": "2026-10-15T02:53:55+00:00",
+          "exclusions": []
+        },
+        {
+          "agency": "HDB",
+          "carpark_id": "ACB",
+          "price_status": "quoted",
+          "cost_cents": 280,
+          "driving_seconds": 422.0,
+          "walking_meters": 1279.0,
+          "current_lots": 10,
+          "current_timestamp": "2026-10-15T02:55:57+00:00",
+          "exclusions": []
+        }
+      ]
+    },
+    {
+      "destination": "Orchard",
+      "transport": "service",
+      "elapsed_seconds": 5.313,
+      "status": "no_eligible_candidates",
+      "ranked": [],
+      "weight_sensitivity_wins_out_of_1000": {},
+      "candidates": []
+    },
+    {
+      "destination": "Jurong East",
+      "transport": "service",
+      "elapsed_seconds": 9.516,
+      "status": "ok",
+      "ranked": [
+        {
+          "rank": 1,
+          "agency": "HDB",
+          "carpark_id": "J57",
+          "score": 70.77945513009172
+        },
+        {
+          "rank": 2,
+          "agency": "HDB",
+          "carpark_id": "J4",
+          "score": 67.14645204427154
+        },
+        {
+          "rank": 3,
+          "agency": "HDB",
+          "carpark_id": "J1",
+          "score": 66.5725510128764
+        }
+      ],
+      "weight_sensitivity_wins_out_of_1000": {
+        "J57": 1000,
+        "J4": 0,
+        "J1": 0
+      },
+      "candidates": [
+        {
+          "agency": "HDB",
+          "carpark_id": "J57",
+          "price_status": "quoted",
+          "cost_cents": 240,
+          "driving_seconds": 1261.0,
+          "walking_meters": 438.0,
+          "current_lots": 136,
+          "current_timestamp": "2026-10-15 02:54:59+00:00",
+          "exclusions": []
+        },
+        {
+          "agency": "HDB",
+          "carpark_id": "J4",
+          "price_status": "quoted",
+          "cost_cents": 240,
+          "driving_seconds": 1177.0,
+          "walking_meters": 721.0,
+          "current_lots": 82,
+          "current_timestamp": "2026-10-15 02:54:25+00:00",
+          "exclusions": []
+        },
+        {
+          "agency": "HDB",
+          "carpark_id": "J1",
+          "price_status": "quoted",
+          "cost_cents": 240,
+          "driving_seconds": 1122.0,
+          "walking_meters": 812.0,
+          "current_lots": 247,
+          "current_timestamp": "2026-10-15 02:55:55+00:00",
+          "exclusions": []
+        }
+      ]
+    }
+  ]
+}

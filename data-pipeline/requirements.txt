@@ -1,0 +1,3 @@
+# Runtime dependencies for PostgreSQL loading and coordinate normalization.
+psycopg[binary]==3.2.10
+pyproj==3.7.2

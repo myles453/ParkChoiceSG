@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-26",
+  "exercise": "3.3.3: refactor recommendation orchestration into its design control class",
+  "baseline_sha256": "73f7f65250b285d217fbd8b9dd597453df3390b4a2748932e92e584a3b9355f7",
+  "refactored_sha256": "76a84b292b51dd9da0643d571e3a4883c7e6852fadb1b6303212caefdd6709f4",
+  "scope": "One controller class; retain public function API and existing helper responsibilities.",
+  "assistant_context": "Ongoing project conversation, not a fresh or blind model session.",
+  "status": "regression passed",
+  "backend_test_methods": 151,
+  "documented_cases": 88,
+  "additional_fix": "Accepted OPERATOR_USERNAME and OPERATOR_PASSWORD_HASH in the private environment loader; regression added."
+}

@@ -1,0 +1,116 @@
+{
+  "checked_at": "2026-10-26T05:40:46.012695+00:00",
+  "upstream_commit": "d05c1f8",
+  "model": {
+    "artifacts_loaded": true,
+    "model_version": "short-horizon-lgbm-20261007",
+    "trained_at": "2026-10-07T07:37:00.497514+00:00"
+  },
+  "status": "ok",
+  "ranking_basis": "arrival_free_probability",
+  "policy": "best_overall_probability_v2_provisional",
+  "ranked": [
+    {
+      "rank": 1,
+      "agency": "HDB",
+      "carpark_id": "J57",
+      "score": 70.8570672631128
+    }
+  ],
+  "candidates": [
+    {
+      "agency": "HDB",
+      "carpark_id": "J58",
+      "price_cents": 240,
+      "driving_seconds": 1266.0,
+      "walking_meters": 441.0,
+      "prediction": {
+        "status": "unknown_carpark",
+        "agency": "HDB",
+        "carpark_id": "J58",
+        "issued_at": "2026-10-26T05:40:34.832625+00:00",
+        "arrival_at": "2026-10-26T06:01:34.952954+00:00",
+        "available_lots": null,
+        "confidence": null,
+        "model_version": null,
+        "history_cutoff": null,
+        "sample_count": null,
+        "p_free": null,
+        "mode": null,
+        "fallback_reason": null
+      },
+      "ranking_exclusions": [
+        "prediction_unavailable",
+        "arrival_probability_missing"
+      ]
+    },
+    {
+      "agency": "HDB",
+      "carpark_id": "J57",
+      "price_cents": 240,
+      "driving_seconds": 1261.0,
+      "walking_meters": 438.0,
+      "prediction": {
+        "status": "ok",
+        "agency": "HDB",
+        "carpark_id": "J57",
+        "issued_at": "2026-10-26T05:40:34.915898+00:00",
+        "arrival_at": "2026-10-26T06:01:29.952954+00:00",
+        "available_lots": null,
+        "confidence": "high",
+        "model_version": "short-horizon-lgbm-20261007",
+        "history_cutoff": "2026-10-26T05:36:56+00:00",
+        "sample_count": null,
+        "p_free": 0.9965813365780607,
+        "mode": "short",
+        "fallback_reason": null
+      },
+      "ranking_exclusions": []
+    },
+    {
+      "agency": "HDB",
+      "carpark_id": "J56",
+      "price_cents": 240,
+      "driving_seconds": 1256.0,
+      "walking_meters": 531.0,
+      "prediction": {
+        "status": "ok",
+        "agency": "HDB",
+        "carpark_id": "J56",
+        "issued_at": "2026-10-26T05:40:34.975887+00:00",
+        "arrival_at": "2026-10-26T06:01:24.952954+00:00",
+        "available_lots": null,
+        "confidence": "low",
+        "model_version": "short-horizon-lgbm-20261007",
+        "history_cutoff": "2026-10-26T05:34:40+00:00",
+        "sample_count": null,
+        "p_free": 0.1246119733924612,
+        "mode": "short",
+        "fallback_reason": null
+      },
+      "ranking_exclusions": [
+        "arrival_probability_below_0_90"
+      ]
+    }
+  ],
+  "short_trip": {
+    "status": "current_reading_fallback",
+    "ranked": [],
+    "fallback_ranked": [
+      {
+        "rank": 1,
+        "agency": "HDB",
+        "carpark_id": "BBB",
+        "score": 65.39493562795586
+      },
+      {
+        "rank": 2,
+        "agency": "HDB",
+        "carpark_id": "WCB",
+        "score": 61.0327865486871
+      }
+    ],
+    "notice": "No usable arrival forecast. These options use current reported lots; availability may change before arrival."
+  },
+  "claim": "Integration check only; future outcomes have not been observed yet."
+}
