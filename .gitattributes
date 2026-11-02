@@ -1,8 +1,0 @@
-# Preserve document/model/archive bytes on Windows checkouts.
-*.pdf binary
-*.zip binary
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.joblib binary
-*.parquet binary

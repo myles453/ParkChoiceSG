@@ -1,8 +1,0 @@
-{
-  "phase": "entire class removed",
-  "returncode": 1,
-  "class_absent": true,
-  "tests_sha256": "8fb13793e2b19268c96aa57332bf2d41ef3d2eb7728e777b0f49d81122a2dd4e",
-  "output": "======================================================================\nERROR: test_lab4_controller (unittest.loader._FailedTest.test_lab4_controller)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_lab4_controller\nTraceback (most recent call last):\n  File \"C:\\Users\\Nestor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Nestor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"<workspace>\\lab4\\tmp\\reconstruction\\backend\\validation\\test_lab4_controller.py\", line 15, in <module>\n    from recommendation import RecommendationController, TripRequest\nImportError: cannot import name 'RecommendationController' from 'recommendation' (<workspace>\\lab4\\tmp\\reconstruction\\backend\\recommendation.py)\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n",
-  "path_redaction": "Absolute workspace paths replaced; outcomes and test diagnostics retained."
-}
