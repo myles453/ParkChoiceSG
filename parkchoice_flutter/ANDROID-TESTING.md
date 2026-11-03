@@ -2,6 +2,9 @@
 
 Use this folder, `parkchoice_flutter/`, rather than the older Flutter copies.
 
+For the current demo build and one-command laptop/USB setup, use
+[DEMO-READY.md](DEMO-READY.md).
+
 ## Connect and run
 
 1. Enable Developer options and USB debugging on the phone. Connect a USB data
