@@ -1,49 +1,42 @@
-# ParkChoiceSG Flutter UI
+# ParkChoiceSG Flutter application
 
-**15 October integration:** the search screen now calls the recommendation backend
-using real selected places, routed distances, supported total-stay prices and a
-labelled current-availability baseline. Drivers open directly to parking search;
-there are no driver accounts, login screens or registration screens.
-Other screens remain existing prototype work. See the
-[backend runbook](../backend/BACKEND-RUNBOOK.md). Only `PARKING_API_URL` belongs in
-Flutter configuration; database/provider secrets stay on the backend.
+The active client opens anonymous driver search. Selected origin, destination,
+stay duration and ranking mode are submitted to the FastAPI backend. Results
+display supported stay prices, routed travel/walking measurements, source times
+and arrival probability or a separately labelled current-reading fallback.
 
-This folder contains the standalone Flutter UI prototype for ParkChoiceSG. It is kept outside the Lab 2 deliverables so the product interface can evolve independently.
+## Connected features
 
-## Included flows
+- Manual place selection and foreground device location.
+- Best overall, Prioritise cheaper and Prioritise closer.
+- Result cards, attributed OneMap marker maps and external navigation.
+- Persisted Light/Dark/System appearance.
+- Separate operator credential check and process-local console entry gate.
 
-- Anonymous place selection and live backend carpark comparison
-- Prototype parking session tracking, reminders, and extensions (not durable storage)
-- Prototype saved destinations and vehicle preferences
-- Persisted System, Light, and Dark appearance modes
-- Prototype admin alerts, data-source health, and carpark overrides
+Tracker, saved labels, vehicle/walking controls and console actions retain their
+partial/sample behavior. Durable history/favourites, scheduled reminders, complete
+erasure and server-side administrative writes are not implemented. The final
+use-case statuses are in [the models PDF](../lab5/output/pdf/ParkChoiceSG-Final-SRS-Models.pdf).
 
-## Visual styling
+## Run and test
 
-The app uses bundled Public Sans fonts (400Ã¢â‚¬â€œ700), forest green accents, and
-separate light and dark surface palettes. Shared colours and corner radii live
-in `lib/constants.dart`, component themes in `lib/main.dart`, and reusable
-surfaces and typography treatments in `lib/widgets/app_ui.dart`.
-Font source and licences are included in `assets/fonts/public_sans/`.
-
-## Run locally
+Start the model on port 8001 and backend on port 8000 using
+[backend setup](../backend/README.md). From this directory:
 
 ```powershell
 flutter pub get
-flutter run
+flutter run --dart-define=PARKING_API_URL=http://127.0.0.1:8000
+flutter analyze --no-pub
+flutter test --no-pub --timeout 120s
+flutter build apk --debug --target-platform android-arm64 --dart-define=PARKING_API_URL=http://127.0.0.1:8000
 ```
 
-Select an Android emulator or another connected Flutter device when prompted.
+For an Android phone using that loopback URL, forward port 8000 with USB debugging
+as described in [ANDROID-TESTING.md](ANDROID-TESTING.md). A network deployment
+requires its reachable API URL. Only `PARKING_API_URL` is client configuration;
+provider/database credentials stay server-side.
 
-## Validate
-
-See [the frontend stability review](FRONTEND-VERIFICATION.md) for reproduced
-crash cases, regression tests and the remaining phone checks.
-
-```powershell
-flutter analyze
-flutter test
-flutter build apk --debug
-```
-
-Generated build outputs, local SDK paths, IDE metadata, and caches are intentionally excluded from version control.
+The app uses bundled Public Sans fonts, shared themes in `lib/constants.dart`
+and `lib/main.dart`, and reusable components in `lib/widgets/app_ui.dart`.
+Font licences are retained under `assets/fonts/public_sans/`. Generated builds,
+local SDK paths and IDE/cache files are excluded from version control.

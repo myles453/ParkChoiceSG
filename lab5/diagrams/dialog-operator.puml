@@ -1,0 +1,52 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+[*] --> Gate : Admin tab
+state Gate <<choice>>
+state "Login form" as Login
+state "Signing in" as Busy
+state "Login error" as Error
+state "Operator console" as Console
+Console : entry / sample alerts, health and override list
+Gate --> Console : [signedIn in this app process]
+Gate --> Login : [not signed in]
+Login --> Busy : Submit [fields populated]
+Busy --> Console : [200 and login still active] / set app flag
+Busy --> Error : [401, 422, 503, timeout or network error]
+Error --> Login : Correct / retry
+state "Local override modal" as Override
+Console --> Override : Add override
+Override --> Console : Apply / update local list
+Override --> Console : Cancel
+Console --> Console : Resolve alert / local status only
+Console --> Console : Refresh source / feedback only
+Console --> Login : Sign out / clear flag
+Busy --> [*] : Leave screen / discard late success
+Login --> [*] : Return to driver screen
+Console --> [*] : Driver tab
+note right of Console
+No server report/override/refresh writes.
+Restart clears the operator app flag.
+end note
+
+@enduml

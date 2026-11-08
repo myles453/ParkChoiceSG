@@ -1,8 +1,8 @@
 # Periodic training-data collection
 
-The model teammate owns running collection. `collect_periodic.py` starts immediately and repeats on a **five-minute start interval** by default. Change the interval with `--interval-minutes`. This is the team's initial setting, not a guarantee of a provider's update frequency.
+`collect_periodic.py` starts immediately and repeats on a **five-minute start interval** by default. Change the interval with `--interval-minutes`. This is the team's initial setting, not a guarantee of a provider's update frequency.
 
-## Setup on the teammate's machine
+## Setup
 
 Use Python 3.12 and run from `ParkChoiceSG/data-pipeline`:
 
@@ -64,10 +64,10 @@ Successful finite runs exit with code 0; finite runs with any failed/timed-out p
 The script does not export training pairs automatically. After sufficient collection, use:
 
 ```powershell
-.\.venv\Scripts\python.exe export_training.py --output data/model-handover/hdb-arrival-pairs.csv --horizons 15 30 60
+.\.venv\Scripts\python.exe export_training.py --output data/training-export/hdb-arrival-pairs.csv --horizons 15 30 60
 ```
 
-Inspect the accompanying manifest for usable pair counts. A few successful cycles demonstrate operation, not model readiness. Agree coverage, chronological evaluation periods and confidence criteria before training. See `MODEL-TRAINING-HANDOVER.md` for the prediction target, fields and leakage rules.
+Inspect the accompanying manifest for usable pair counts. A few successful cycles demonstrate operation, not model readiness. Agree coverage, chronological evaluation periods and confidence criteria before training. See `TRAINING-DATA.md` for the prediction target, fields and leakage rules.
 
 ## Verification on 2 October
 

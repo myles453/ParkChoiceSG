@@ -22,14 +22,14 @@ published `data-pipeline/` directories without merging over unrelated local work
 This integration is published under the permanent `backend/`, `ml/` and
 `parkchoice_flutter/` working directories. Academic submission artifacts remain separate.
 
-## What the teammate supplied
+## Model artifacts
 
 | Component | Meaning | Application use now |
 |---|---|---|
 | `ml/models/short_horizon.joblib` plus statistics/calibrator | HDB classifier for **P(at least one free car lot on arrival)**. It does not predict a lot count. | Connected through the existing `ml/service` HTTP endpoint. |
 | `ml/models/profile.parquet` | Historical probability by HDB carpark, day type and 15-minute slot. The service can use it for later arrivals or stale/missing live readings. | Explicitly excluded from ranking in this integration, pending separate fallback evaluation. |
 | `ml_lta_ura/models/variant_a.joblib` | Retrieval-time model trained on HDB-style data and evaluated experimentally on real URA/LTA captures. | Retained locally, not connected to the HDB inference service. URA needs its own inference/history adapter and broader validation. |
-| `variant_b.joblib` | Adds a trailing-count feature needing substantial live history. | Not selected. The teammate recommends Variant A. |
+| `variant_b.joblib` | Adds a trailing-count feature needing substantial live history. | Not selected. Variant A is selected for application inference. |
 
 The URA transfer evaluation covers normal **weekdays** only. The LTA report has
 only 60 normal "not free" rows from three carparks and calls that verdict
@@ -81,9 +81,9 @@ was excluded. Results change with time; see the latest machine-readable
 
 The model's own offline tests passed locally: 107 tests covering the dataset,
 training helpers and inference service. Our workflow/auth/model integration
-suite passed 34 checks. The raw-data parity tests require the teammate's ignored
+suite passed 34 checks. The raw-data parity tests require the model training workflow's ignored
 `ml/data` files and **were not run**; reported held-out accuracy was read from
-the teammate's report, not independently reproduced. Windows LTA/URA collection
+the recorded model evaluation report, not independently reproduced. Windows LTA/URA collection
 uses the existing cross-platform pipeline; the experimental `ml_lta_ura/collect.py`
 still imports Unix `fcntl` and is not the Windows collection entry point.
 
@@ -109,7 +109,7 @@ Two details to resolve with the model owner:
 ## Run it
 
 Use the two local services and configuration described in
-[BACKEND-RUNBOOK.md](BACKEND-RUNBOOK.md). The private `.env` is prepared with
+[BACKEND-RUNBOOK.md](BACKEND-RUNBOOK.md). Configure the private `.env` with
 `PARKCHOICE_MODEL_URL=http://127.0.0.1:8001`; start the model service before using
 recommendations. No service is left running by the verification script.
 
@@ -122,4 +122,4 @@ From the repository root, repeat the real integration check with:
 This starts and stops temporary localhost services, makes bounded real API calls,
 reads the existing database, and records genuine forecasts locally. It does not
 start periodic collection or retrain the model. Later outcome matching depends
-on the teammate's collector continuing to save observations to the database.
+on the separate collector continuing to save observations to the database.

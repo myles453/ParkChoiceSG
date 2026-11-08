@@ -1,6 +1,6 @@
 # Existing database: schema, tables and rows
 
-Supabase hosts the team's PostgreSQL database. All collection tables/views live in the private **`parking_data`** schema. It already exists and is populated; the teammate needs collection credentials, not a new database or SQL setup. This repository cleanup does not change the live database.
+Supabase hosts the team's PostgreSQL database. All collection tables/views live in the private **`parking_data`** schema. The existing database is populated. Collection requires server-side credentials; schema migrations are retained under `../backend/database/`.
 
 The 19 tables have row-level security enabled, and the frontend `anon`/`authenticated` roles have no table SELECT access. Use trusted ingestion credentials for collection and a separately provided read-only credential for training. Do not put privileged credentials in the app.
 
@@ -64,9 +64,9 @@ The same source/code/lot-type/source-time key is deduplicated. Conflicting count
 
 Schedules retain source/capture links, validity interval, review state, billing/grace information and calculator configuration. Rules retain time/day bands, integer SGD cents, unit minutes, rule kind, review state and source-row links. More schedule/rule rows usually mean more versions/windows, not more carparks.
 
-The one-shot collector's daily URA refresh writes into these existing tables; the periodic training loop does not repeatedly fetch full URA tariff details. Missing/ambiguous tariff windows remain explicit. Price calculation, policy review and final ranking are outside this collection handover.
+The one-shot collector's daily URA refresh writes into these existing tables; the periodic training loop does not repeatedly fetch full URA tariff details. Missing/ambiguous tariff windows remain explicit. Price calculation, policy review and final ranking are documented in the backend.
 
-## Views the teammate should use
+## Training and comparison views
 
 | View | Purpose |
 |---|---|

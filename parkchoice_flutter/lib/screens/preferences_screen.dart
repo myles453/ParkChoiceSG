@@ -8,7 +8,7 @@ import 'operator_login_screen.dart';
 import 'carpark_search_screen.dart';
 import 'parking_session_tracker_screen.dart';
 
-/// Driver preferences, saved destinations and appearance. Stored on device only.
+/// Preference controls and in-memory saved destinations; appearance persists locally.
 class PreferencesScreen extends StatefulWidget {
   const PreferencesScreen({super.key});
 

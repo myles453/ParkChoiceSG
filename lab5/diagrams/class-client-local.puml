@@ -1,0 +1,75 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+class CarparkSearchScreen <<StatefulWidget>>
+class _CarparkSearchScreenState <<State>> {
+ -_origin, _destination: Map?
+ -_duration: int
+ -_rankingMode: RankingMode
+ -_result: Map?
+ -_findParking(): Future<void>
+ -_useCurrentLocation(): Future<void>
+ -_openMap(...): Future<void>
+}
+class ParkingApi <<HTTP adapter>>
+class CarparkMapScreen <<StatefulWidget>> {
+ +origin, destination: Map
+ +carparks: List<Map>
+}
+class PreferencesScreen <<StatefulWidget>>
+class AppThemeController <<ChangeNotifier>> {
+ +instance: AppThemeController
+ +themeMode: ThemeMode
+ +load(): Future<void>
+ +setThemeMode(mode): Future<void>
+}
+class ParkingSessionTrackerScreen <<StatefulWidget>>
+class ParkingSessionManager <<ValueNotifier>> {
+ +instance: ParkingSessionManager
+ +currentSession: ParkingSession?
+ +startSession(...): bool
+ +endSession(): void
+}
+class ParkingSession {
+ +carparkName, location: String
+ +hourlyRate: double
+ +startTime: DateTime
+ +duration: Duration
+ +runningCost: double
+}
+CarparkSearchScreen *-- _CarparkSearchScreenState
+_CarparkSearchScreenState --> ParkingApi
+_CarparkSearchScreenState ..> CarparkMapScreen : snapshots input
+PreferencesScreen --> AppThemeController : persists appearance
+ParkingSessionTrackerScreen --> ParkingSessionManager : listens
+ParkingSessionManager "1" o-- "0..1" ParkingSession : active stay
+note bottom of PreferencesScreen
+Saved labels, vehicle and walking controls
+remain screen-local prototype state.
+end note
+note bottom of ParkingSession
+Linear hourly-rate display; not the backend tariff engine.
+No durable history or complete start-session UI.
+end note
+
+@enduml

@@ -1,0 +1,82 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+interface RoutingProvider {
+ +route(start, end, mode): RouteEstimate
+}
+class OneMapClient <<adapter>> {
+ +from_env(): OneMapClient
+ +search(query: str): SearchResult
+ +route(start, end, mode): RouteEstimate
+}
+class OneMapTokens {
+ +get(): str
+}
+class Coordinate <<frozen value>> {
+ +latitude: float
+ +longitude: float
+ +query_value(): str
+}
+class RouteEstimate <<frozen value>> {
+ +status, mode: str
+ +distance_meters: float?
+ +duration_seconds: float?
+ +requested_at, retrieved_at: datetime
+ +estimated_arrival_at: datetime?
+}
+interface AvailabilityPredictor {
+ +ready: bool
+ +predict(request: PredictionRequest): Prediction
+}
+class HdbModelClient <<HTTP adapter>> {
+ +supported_agencies = (HDB,)
+ +current_readings(ids: list): dict
+ +predict(request): Prediction
+}
+class PendingPredictor {
+ +ready = false
+ +predict(request): Prediction
+}
+class PredictionRequest <<frozen value>> {
+ +agency, carpark_id: str
+ +issued_at, arrival_at: datetime
+}
+class Prediction <<frozen value>> {
+ +status, agency, carpark_id: str
+ +issued_at, arrival_at: datetime
+ +p_free: float?
+ +confidence, model_version: str?
+ +history_cutoff: datetime?
+ +mode, fallback_reason: str?
+}
+RoutingProvider <|.. OneMapClient
+OneMapClient --> OneMapTokens : token cache
+OneMapClient ..> Coordinate
+OneMapClient ..> RouteEstimate : returns
+AvailabilityPredictor <|.. HdbModelClient
+AvailabilityPredictor <|.. PendingPredictor
+HdbModelClient ..> PredictionRequest : validates horizon
+HdbModelClient ..> Prediction : normalizes response
+PendingPredictor ..> Prediction : unavailable status
+
+@enduml

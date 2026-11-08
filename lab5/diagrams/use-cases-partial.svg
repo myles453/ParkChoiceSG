@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="570" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 570" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="570"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-570)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="570" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<circle cx="45" cy="345" r="11" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 2; fill: none; fill-rule: evenodd;"/>
+			<path d="M 45 334 L 45 293 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 25 317 L 65 317 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 45 293 L 27 268 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 45 293 L 63 268 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<text x="21.875" y="243.0" style="font-family: Arial-Bold; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,486) scale(1,-1)">Driver</text>
+			<circle cx="755" cy="345" r="11" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 2; fill: none; fill-rule: evenodd;"/>
+			<path d="M 755 334 L 755 293 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 735 317 L 775 317 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 755 293 L 737 268 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<path d="M 755 293 L 773 268 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<text x="721.21484375" y="243.0" style="font-family: Arial-Bold; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,486) scale(1,-1)">Operator</text>
+			<ellipse cx="440.0" cy="510.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="364.40478515625" y="514.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1028) scale(1,-1)">UC-11 Preferences</text>
+			<text x="304.512939453125" y="493.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,986) scale(1,-1)">Appearance persists; other controls local</text>
+			<path d="M 65 315 L 120 315 L 120 510 L 195 510 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="436.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="348.359375" y="440.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,880) scale(1,-1)">UC-12 Saved locations</text>
+			<text x="297.00927734375" y="419.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,838) scale(1,-1)">Screen-local labels; recent search deferred</text>
+			<path d="M 65 315 L 120 315 L 120 436 L 195 436 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="362.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="359.694091796875" y="366.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,732) scale(1,-1)">UC-14 Start session</text>
+			<text x="290.340576171875" y="345.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,690) scale(1,-1)">Internal manager; complete UI entry deferred</text>
+			<path d="M 65 315 L 120 315 L 120 362 L 195 362 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="288.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="350.720947265625" y="292.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,584) scale(1,-1)">UC-15 Extend session</text>
+			<text x="309.090576171875" y="271.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,542) scale(1,-1)">Feedback only; no reminder scheduling</text>
+			<path d="M 65 315 L 120 315 L 120 288 L 195 288 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="214.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="363.006103515625" y="218.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,436) scale(1,-1)">UC-16 End session</text>
+			<text x="321.204833984375" y="197.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,394) scale(1,-1)">Clear active stay; screen-local entry</text>
+			<path d="M 65 315 L 120 315 L 120 214 L 195 214 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="140.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="349.77880859375" y="144.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,288) scale(1,-1)">UC-17 Session history</text>
+			<text x="307.845458984375" y="123.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,246) scale(1,-1)">Sample/local display; no durable history</text>
+			<path d="M 65 315 L 120 315 L 120 140 L 195 140 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="440.0" cy="66.0" rx="245.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="370.078369140625" y="70.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,140) scale(1,-1)">UC-18 Erase data</text>
+			<text x="307.021484375" y="49.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,98) scale(1,-1)">Reset two controls; full erasure deferred</text>
+			<path d="M 65 315 L 120 315 L 120 66 L 195 66 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="1015.0" cy="480.0" rx="175.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="932.79736328125" y="484.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,968) scale(1,-1)">UC-06 Sample alerts</text>
+			<text x="944.537353515625" y="463.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,926) scale(1,-1)">Local status changes</text>
+			<path d="M 775 315 L 805 315 L 805 480 L 840 480 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="1015.0" cy="375.0" rx="175.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="938.470947265625" y="379.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,758) scale(1,-1)">UC-07 Override list</text>
+			<text x="927.039794921875" y="358.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,716) scale(1,-1)">No recommendation effect</text>
+			<path d="M 775 315 L 805 315 L 805 375 L 840 375 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="1015.0" cy="270.0" rx="175.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="930.4482421875" y="274.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,548) scale(1,-1)">UC-08 Health display</text>
+			<text x="937.88330078125" y="253.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,506) scale(1,-1)">Sample measurements</text>
+			<path d="M 775 315 L 805 315 L 805 270 L 840 270 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<ellipse cx="1015.0" cy="165.0" rx="175.0" ry="30.0" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.3; fill: rgb(100%,96%,87%); fill-rule: evenodd;"/>
+			<text x="925.26025390625" y="169.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">UC-09 Refresh control</text>
+			<text x="919.122314453125" y="148.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,296) scale(1,-1)">Feedback; no collector starts</text>
+			<path d="M 775 315 L 805 315 L 805 165 L 840 165 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<text x="835" y="65.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,130) scale(1,-1)">UC-05 gate required for console entry.</text>
+			<text x="835" y="35.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,70) scale(1,-1)">No server admin token or persisted writes.</text>
+		</g>
+	</g>
+</svg>

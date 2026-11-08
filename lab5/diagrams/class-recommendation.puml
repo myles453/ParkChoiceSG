@@ -1,0 +1,70 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+class ParkingApi <<Flutter adapter>> {
+ +destinations(query: String): Future<List>
+ +recommend(origin, destination, durationMinutes, rankingMode): Future<Map>
+}
+class "app module" as App <<FastAPI functions>> {
+ +recommendations(body: RecommendationInput): dict
+ +destinations(body: SearchInput): dict
+}
+class RecommendationController <<control>> {
+ +router: RoutingProvider
+ +predictor: AvailabilityPredictor
+ +recommend(request: TripRequest): dict
+}
+class TripRequest <<frozen dataclass>> {
+ +origin: Coordinate
+ +destination: Coordinate
+ +duration_minutes: int
+ +candidate_limit: int = 3
+ +radius_meters: int = 1500
+ +payment_method: str
+ +ranking_mode: str
+}
+interface RoutingProvider {
+ +route(start: Coordinate, end: Coordinate, mode: str): RouteEstimate
+}
+interface AvailabilityPredictor {
+ +ready: bool
+ +predict(request: PredictionRequest): Prediction
+}
+class "recommendation helpers" as Helpers <<module functions>> {
+ +shortlist(connection, request): list
+ +quote_arrivals(connection, candidates, request): dict
+ +current_fallback(candidates, request): list
+}
+class "scoring module" as Scoring <<functions>> {
+ +score_candidate(..., ranking_mode): dict
+ +rank_candidates(candidates, ranking_mode): list
+}
+ParkingApi ..> App : HTTP POST
+App ..> RecommendationController : constructs per request
+RecommendationController ..> TripRequest : validated input
+RecommendationController "1" --> "1" RoutingProvider : router
+RecommendationController "1" --> "1" AvailabilityPredictor : predictor
+RecommendationController ..> Helpers : calls
+RecommendationController ..> Scoring : gates then scores
+
+@enduml

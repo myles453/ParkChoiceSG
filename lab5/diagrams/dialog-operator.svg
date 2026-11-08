@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="540" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="540"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-540)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="540" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="20" y="305" width="300" height="140" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="104.552978515625" y="417.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,834) scale(1,-1)">Operator login</text>
+			<path d="M 33,403 L 307,403 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="35" y="379.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,758) scale(1,-1)">entry / username and password</text>
+			<text x="35" y="358.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,716) scale(1,-1)">do / validate nonempty fields</text>
+			<text x="35" y="337.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,674) scale(1,-1)">Driver search remains anonymous</text>
+			<rect x="440" y="305" width="300" height="140" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="544.091064453125" y="417.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,834) scale(1,-1)">Signing in</text>
+			<path d="M 453,403 L 727,403 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="455" y="379.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,758) scale(1,-1)">do / POST /operator/login</text>
+			<text x="455" y="358.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,716) scale(1,-1)">Disable repeated submission</text>
+			<text x="455" y="337.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,674) scale(1,-1)">Discard success after leaving</text>
+			<rect x="860" y="305" width="320" height="140" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="941.342041015625" y="417.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,834) scale(1,-1)">Operator console</text>
+			<path d="M 873,403 L 1167,403 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="875" y="379.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,758) scale(1,-1)">entry / in-memory signedIn gate</text>
+			<text x="875" y="359.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,719) scale(1,-1)">do / sample alerts, health, overrides</text>
+			<text x="875" y="340.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,680) scale(1,-1)">Resolve/refresh affects local UI only</text>
+			<rect x="440" y="55" width="300" height="115" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="539.331787109375" y="142.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,284) scale(1,-1)">Login error</text>
+			<path d="M 453,128 L 727,128 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="455" y="104.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,208) scale(1,-1)">entry / invalid or unavailable</text>
+			<text x="455" y="81.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,163) scale(1,-1)">do / correct input and retry</text>
+			<rect x="860" y="55" width="320" height="115" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="924.443359375" y="142.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,284) scale(1,-1)">Local override modal</text>
+			<path d="M 873,128 L 1167,128 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="875" y="104.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,208) scale(1,-1)">Apply / update sample list</text>
+			<text x="875" y="81.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,163) scale(1,-1)">Cancel / no local change</text>
+			<path d="M 320 375 L 440 375 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="440 375, 430 371, 430 379" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="325.98046875" y="391.0" width="108.0390625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="331.98046875" y="395.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,790) scale(1,-1)">Submit [valid]</text>
+			<path d="M 740 375 L 860 375 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="860 375, 850 371, 850 379" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="746.19140625" y="391.0" width="107.6171875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="752.19140625" y="395.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,790) scale(1,-1)">[200 + active]</text>
+			<path d="M 590 305 L 590 170 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="590 170, 586 180, 594 180" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="493.2734375" y="226.0" width="193.453125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="499.2734375" y="230.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,460) scale(1,-1)">[401 / 422 / 503 / timeout]</text>
+			<path d="M 440 110 L 170 110 L 170 305 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="170 305, 174 295, 166 295" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="264.88671875" y="126.0" width="50.2265625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="270.88671875" y="130.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,260) scale(1,-1)">Retry</text>
+			<path d="M 1000 445 L 1000 510 L 170 510 L 170 445 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="170 445, 166 455, 174 455" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="499.9453125" y="520.0" width="180.109375" height="23.799999999999955" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="505.9453125" y="524.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1048) scale(1,-1)">Sign out / clear app flag</text>
+			<path d="M 950 305 L 950 170 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="950 170, 946 180, 954 180" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="898.640625" y="246.0" width="102.71875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="904.640625" y="250.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,500) scale(1,-1)">Add override</text>
+			<path d="M 1100 170 L 1100 305 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1100 305, 1104 295, 1096 295" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="1042.41796875" y="216.0" width="115.1640625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="1048.41796875" y="220.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,440) scale(1,-1)">Apply / Cancel</text>
+			<text x="219.189208984375" y="15.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,30) scale(1,-1)">Admin tab opens console if already signed in; otherwise login. No server write authorization is issued.</text>
+		</g>
+	</g>
+</svg>

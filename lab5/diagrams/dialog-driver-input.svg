@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="570" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 570" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="570"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-570)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="570" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="25" y="225" width="305" height="140" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="119.9619140625" y="337.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,674) scale(1,-1)">Search input</text>
+			<path d="M 38,323 L 317,323 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="40" y="299.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,598) scale(1,-1)">entry / anonymous form</text>
+			<text x="40" y="278.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,556) scale(1,-1)">do / origin, destination, stay, mode</text>
+			<text x="40" y="257.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,514) scale(1,-1)">Find [invalid] / inline correction</text>
+			<rect x="430" y="385" width="330" height="135" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="498.89599609375" y="492.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,984) scale(1,-1)">Place selection sheet</text>
+			<path d="M 443,478 L 747,478 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="445" y="454.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,908) scale(1,-1)">entry / OneMap matches</text>
+			<text x="445" y="431.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,863) scale(1,-1)">do / choose a place or cancel</text>
+			<rect x="430" y="65" width="330" height="150" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="502.64404296875" y="187.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,374) scale(1,-1)">Foreground location</text>
+			<path d="M 443,173 L 747,173 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="445" y="149.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,298) scale(1,-1)">do / permission, service and fix</text>
+			<text x="445" y="128.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,256) scale(1,-1)">Bound request to 30 seconds</text>
+			<text x="445" y="107.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,214) scale(1,-1)">Report failure; retain manual choice</text>
+			<rect x="880" y="225" width="295" height="140" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="950.957275390625" y="337.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,674) scale(1,-1)">Return to Search</text>
+			<path d="M 893,323 L 1162,323 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="895" y="299.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,598) scale(1,-1)">entry / selected input or error</text>
+			<text x="895" y="278.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,556) scale(1,-1)">GPS fix stores time and accuracy</text>
+			<text x="895" y="257.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,514) scale(1,-1)">Old fix &gt; 2 min requires refresh</text>
+			<circle cx="75" cy="415" r="7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<path d="M 75 415 L 75 365 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="75 365, 71 375, 79 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="96.859375" y="386.0" width="82.28125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="102.859375" y="390.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,780) scale(1,-1)">Open app</text>
+			<path d="M 330 330 L 365 330 L 365 455 L 430 455 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="430 455, 420 451, 420 459" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="297.3046875" y="476.0" width="105.390625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="303.3046875" y="480.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,960) scale(1,-1)">Search place</text>
+			<path d="M 330 260 L 365 260 L 365 150 L 430 150 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="430 150, 420 146, 420 154" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="304.9765625" y="106.0" width="100.046875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="310.9765625" y="110.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,220) scale(1,-1)">Use location</text>
+			<path d="M 760 455 L 1025 455 L 1025 365 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1025 365, 1021 375, 1029 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="867.51171875" y="471.0" width="204.9765625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="873.51171875" y="475.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,950) scale(1,-1)">Select valid match / Cancel</text>
+			<path d="M 760 150 L 1025 150 L 1025 225 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1025 225, 1029 215, 1021 215" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="834.84375" y="106.0" width="266.3125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="840.84375" y="110.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,220) scale(1,-1)">[fix] store origin / [failure] show error</text>
+			<path d="M 175 225 L 175 30 L 690 30 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="690 30, 680 26, 680 34" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="281.48828125" y="41.0" width="317.0234375" height="23.799999999999997" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="287.48828125" y="45.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,90) scale(1,-1)">Find [valid inputs] / POST recommendation</text>
+			<text x="720" y="24.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,48) scale(1,-1)">Continue to results dialog</text>
+		</g>
+	</g>
+</svg>

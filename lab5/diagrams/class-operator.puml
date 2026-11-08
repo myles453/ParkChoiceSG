@@ -1,0 +1,62 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+class OperatorLoginScreen <<StatefulWidget>>
+class _OperatorLoginScreenState <<State>> {
+ -_submitting, _isNavigating: bool
+ -_signIn(): Future<void>
+}
+class ParkingApi <<HTTP adapter>> {
+ +operatorLogin(username, password): Future<bool>
+}
+class "app module" as A <<FastAPI function>> {
+ +operator_login(body: OperatorLoginInput): dict
+}
+class "operator_auth module" as V <<functions>> {
+ +verify_operator(username, password, env): bool
+ +hash_password(password, salt?, iterations): str
+}
+class OperatorSession <<ValueNotifier<bool>>> {
+ +instance: OperatorSession
+ +signedIn: bool
+ +signIn(): void
+ +signOut(): void
+}
+class AdminPanelScreen <<StatefulWidget>>
+class "Private environment" as E <<configuration>> {
+ OPERATOR_USERNAME
+ OPERATOR_PASSWORD_HASH
+}
+OperatorLoginScreen *-- _OperatorLoginScreenState
+_OperatorLoginScreenState --> ParkingApi : submits
+ParkingApi ..> A : POST /operator/login
+A ..> V : verifies
+V ..> E : reads
+_OperatorLoginScreenState --> OperatorSession : success if screen active
+OperatorSession ..> AdminPanelScreen : app entry gate
+note bottom of OperatorSession
+Process-local boolean. No server token,
+account table or administrative write authorization.
+end note
+
+@enduml

@@ -1,13 +1,13 @@
 # ParkChoiceSG data collection
 
-Collect and clean HDB, LTA and URA parking data into the team's existing Supabase PostgreSQL database. The model teammate owns operating collection and training an arrival-time availability predictor. Voice assistance is deferred.
+Collect and clean HDB, LTA and URA parking data into the team's existing Supabase PostgreSQL database. The collection process is separate from model training and request-time recommendation.
 
 ## Read first
 
 - [SCHEMA.md](SCHEMA.md): tables, row meanings, important fields, views and a dated row-count snapshot.
 - [DATA-CONTRACT.md](DATA-CONTRACT.md): identity, timestamps, cleaning and deduplication.
 - [PERIODIC-COLLECTION.md](PERIODIC-COLLECTION.md): frequency, logs, failures and stopping/restarting.
-- [MODEL-TRAINING-HANDOVER.md](MODEL-TRAINING-HANDOVER.md): prediction target, export, evaluation and responsibilities.
+- [TRAINING-DATA.md](TRAINING-DATA.md): training export, evaluation and timestamp semantics.
 
 ## Setup and start
 
@@ -53,7 +53,7 @@ The training loop avoids repeatedly downloading URA's full rates dataset. For on
 After sufficient regular collection:
 
 ```powershell
-.\.venv\Scripts\python.exe export_training.py --output data/model-handover/hdb-arrival-pairs.csv --horizons 15 30 60
+.\.venv\Scripts\python.exe export_training.py --output data/training-export/hdb-arrival-pairs.csv --horizons 15 30 60
 ```
 
 This defaults to HDB. `--include-retrieval-series` opts in to separate LTA/URA proxies. Inspect the export manifest for usable pairs and coverage; row count alone does not prove readiness. No interpolation or missing-count zero filling is performed.
@@ -71,7 +71,7 @@ This defaults to HDB. `--include-retrieval-series` opts in to separate LTA/URA p
 | `import_ura_rates.py` | URA archive verification/parsing used by the rate loader. |
 | `export_training.py` | Causal forecast-horizon feature/label export. |
 
-The database schema and policies are already applied. This folder is an operational handover for that database: no SQL setup or dated seeds need to be run. Tests and one-off audit/seeding tools are excluded. Collection does not train a model or generate a final carpark ranking.
+The database schema and policies are already applied. Existing deployments do not need historical setup scripts or dated seeds replayed. Collector regression tests are under `../backend/validation/`. Collection does not train a model or generate a final carpark ranking.
 
 ## Application integration
 
@@ -81,4 +81,4 @@ It reuses parsing/HTTP helpers from this folder but reads its own `backend/.env`
 Collection still reads `data-pipeline/.env`; starting the API does not start collection.
 The shipped HDB model is a probability classifier, described in
 [the current model integration](../backend/MODEL-INTEGRATION.md). Older count-target
-handover notes describe the generic export contract, not the shipped model output.
+export documentation describes the generic export contract, not the shipped model output.

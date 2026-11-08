@@ -1,0 +1,58 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+left to right direction
+actor "Anonymous driver" as D
+actor Operator as O
+rectangle "Partial device-side functions" #FFF6DE {
+ usecase "UC-11 Preferences\nAppearance persists; other controls local" as P
+ usecase "UC-12 Saved locations\nIn-memory sample/edit list" as S
+ usecase "UC-14 Start session\nInternal manager; no complete UI entry" as T
+ usecase "UC-15 Extend session\nModal feedback only" as E
+ usecase "UC-16 End session\nClear active in-memory stay" as X
+ usecase "UC-17 Session history\nSample and screen-local entries" as H
+ usecase "UC-18 Erase data\nResets two controls only" as R
+}
+rectangle "Prototype console - no server writes" #FFF6DE {
+ usecase "UC-06 Sample alerts" as A
+ usecase "UC-07 Local override list" as V
+ usecase "UC-08 Sample health fields" as F
+ usecase "UC-09 Refresh feedback" as Q
+}
+D -- P
+D -- S
+D -- T
+D -- E
+D -- X
+D -- H
+D -- R
+O -- A
+O -- V
+O -- F
+O -- Q
+note bottom of F
+Console entry uses UC-05's app gate.
+There is no administrative token or
+authorized write endpoint.
+end note
+
+@enduml

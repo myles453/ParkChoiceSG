@@ -14,7 +14,7 @@ ONEMAP_ACCESS_TOKEN=
 
 Paste only the token value after `=`, not the whole JSON response or an
 `Authorization`/`Bearer` header. Keep existing provider/database settings.
-The loader now accepts this additional field; existing process environment
+The loader accepts this field; existing process environment
 values still take precedence. An expired token must be replaced privately.
 
 The standard REST authentication response includes `expiry_timestamp`. Use that

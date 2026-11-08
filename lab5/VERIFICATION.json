@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-08",
+  "branch": "submission/lab5-final",
+  "base_commit": "3d37040",
+  "tests": {
+    "backend": 151,
+    "model_and_service": 108,
+    "flutter": 46,
+    "all_passed": true,
+    "flutter_analysis": "no issues"
+  },
+  "android_build": {
+    "status": "passed",
+    "target": "android-arm64",
+    "version_code": 20261108,
+    "sha256": "28efb32b47145f7ed5561be092ddbb2a944b6e5e79430b501b61c12c4f450df2",
+    "bytes": 90874697,
+    "apk_committed": false
+  },
+  "pdf": {
+    "pages": 42,
+    "use_cases": 19,
+    "diagrams": 17,
+    "sha256": "25778ffa070351f994112cf7963e80ca8deb00302aaa3aae0375c5abe1e2a05a",
+    "minimum_font_pt": 8,
+    "layout_reviewed": true
+  },
+  "index_links": "all checked links resolve",
+  "python_docstring_cleanup_preserves_AST": true,
+  "live_services_checked": false,
+  "phone_acceptance_repeated": false,
+  "publication_scan": {
+    "checked_files": 381,
+    "archives_checked": 2,
+    "forbidden_files": 0,
+    "configured_secret_matches": 0
+  }
+}

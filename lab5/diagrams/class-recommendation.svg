@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1250" height="680" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1250 680" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1250" height="680"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-680)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1250" height="680" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 190 455 L 190 350 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="190 350, 186 360, 194 360" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="115.53515625" y="396.0" width="148.9296875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="121.53515625" y="400.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,800) scale(1,-1)">POST /recommend</text>
+			<path d="M 340 290 L 390 290 L 390 530 L 435 530 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="435 530, 425 526, 425 534" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="354.203125" y="391.0" width="71.59375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="360.203125" y="395.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,790) scale(1,-1)">dispatch</text>
+			<path d="M 805 530 L 900 530 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="900 530, 890 526, 890 534" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="826.65234375" y="544.0" width="46.6953125" height="23.799999999999955" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="832.65234375" y="548.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1096) scale(1,-1)">input</text>
+			<path d="M 560 455 L 560 350 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="560 350, 556 360, 564 360" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="566.4296875" y="391.0" width="67.140625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="572.4296875" y="395.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,790) scale(1,-1)">1 router</text>
+			<path d="M 805 490 L 850 490 L 850 250 L 900 250 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="900 250, 890 246, 890 254" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="806.203125" y="356.0" width="87.59375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="812.203125" y="360.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,720) scale(1,-1)">1 predictor</text>
+			<path d="M 480 455 L 415 455 L 415 80 L 400 80 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="400 80, 410 84, 410 76" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="392.99609375" y="168.0" width="44.0078125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="398.99609375" y="172.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,344) scale(1,-1)">calls</text>
+			<path d="M 805 465 L 825 465 L 825 80 L 900 80 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd; stroke-dasharray: 5, 4;"/>
+			<polygon points="900 80, 890 76, 890 84" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="802.99609375" y="156.0" width="44.0078125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="808.99609375" y="160.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,320) scale(1,-1)">calls</text>
+			<rect x="40" y="455" width="300" height="160" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="139.851318359375" y="587.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1174) scale(1,-1)">ParkingApi</text>
+			<path d="M 53,573 L 327,573 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="55" y="549.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1098) scale(1,-1)">&lt;&lt;Flutter HTTP adapter&gt;&gt;</text>
+			<text x="55" y="529.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1059) scale(1,-1)">recommend(...): Future&lt;Map&gt;</text>
+			<text x="55" y="510.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1020) scale(1,-1)">destinations(query): Future&lt;List&gt;</text>
+			<rect x="40" y="230" width="300" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="136.6923828125" y="322.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,644) scale(1,-1)">app module</text>
+			<path d="M 53,308 L 327,308 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="55" y="284.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,568) scale(1,-1)">&lt;&lt;FastAPI functions&gt;&gt;</text>
+			<text x="55" y="263.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,526) scale(1,-1)">recommendations(body): dict</text>
+			<rect x="435" y="455" width="370" height="160" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="494.904296875" y="587.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1174) scale(1,-1)">RecommendationController</text>
+			<path d="M 448,573 L 792,573 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="450" y="549.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1098) scale(1,-1)">router: RoutingProvider</text>
+			<text x="450" y="526.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1053) scale(1,-1)">predictor: AvailabilityPredictor</text>
+			<text x="450" y="504.8" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1009) scale(1,-1)">recommend(TripRequest): dict</text>
+			<rect x="900" y="425" width="330" height="190" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="1009.5771484375" y="587.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1174) scale(1,-1)">TripRequest</text>
+			<path d="M 913,573 L 1217,573 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="915" y="549.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1098) scale(1,-1)">origin, destination: Coordinate</text>
+			<text x="915" y="529.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1059) scale(1,-1)">duration_minutes: int</text>
+			<text x="915" y="510.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1020) scale(1,-1)">candidate_limit: int = 3</text>
+			<text x="915" y="490.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,981) scale(1,-1)">radius_meters: int = 1500</text>
+			<text x="915" y="471.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,942) scale(1,-1)">ranking_mode, payment_method: str</text>
+			<rect x="435" y="230" width="370" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="545.581787109375" y="322.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,644) scale(1,-1)">RoutingProvider</text>
+			<path d="M 448,308 L 792,308 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="450" y="284.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,568) scale(1,-1)">&lt;&lt;Protocol&gt;&gt;</text>
+			<text x="450" y="263.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,526) scale(1,-1)">route(start, end, mode): RouteEstimate</text>
+			<rect x="900" y="180" width="330" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="973.1357421875" y="272.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,544) scale(1,-1)">AvailabilityPredictor</text>
+			<path d="M 913,258 L 1217,258 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="915" y="234.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,468) scale(1,-1)">&lt;&lt;Protocol&gt;&gt;</text>
+			<text x="915" y="214.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,429) scale(1,-1)">predict(PredictionRequest): Prediction</text>
+			<rect x="40" y="20" width="360" height="110" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="107.025146484375" y="102.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,204) scale(1,-1)">recommendation helpers</text>
+			<path d="M 53,88 L 387,88 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="55" y="64.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,128) scale(1,-1)">shortlist(...): list; quote_arrivals(...): dict</text>
+			<text x="55" y="44.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,89) scale(1,-1)">current_fallback(...): list</text>
+			<rect x="900" y="20" width="330" height="110" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="994.26953125" y="102.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,204) scale(1,-1)">scoring module</text>
+			<path d="M 913,88 L 1217,88 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="915" y="64.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,128) scale(1,-1)">score_candidate(...): dict</text>
+			<text x="915" y="43.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,86) scale(1,-1)">rank_candidates(...): list</text>
+		</g>
+	</g>
+</svg>

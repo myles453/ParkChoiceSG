@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1250" height="690" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1250 690" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1250" height="690"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-690)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1250" height="690" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="20" y="535" width="320" height="135" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="111.908935546875" y="642.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1284) scale(1,-1)">ingestion_runs</text>
+			<path d="M 33,628 L 327,628 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="35" y="604.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1208) scale(1,-1)">PK run_id: uuid</text>
+			<text x="35" y="583.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1166) scale(1,-1)">retrieved_at: timestamptz</text>
+			<text x="35" y="562.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1124) scale(1,-1)">manifest: jsonb</text>
+			<rect x="450" y="535" width="350" height="135" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="543.68408203125" y="642.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1284) scale(1,-1)">carpark_identities</text>
+			<path d="M 463,628 L 787,628 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="465" y="604.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1208) scale(1,-1)">PK agency + carpark_id</text>
+			<text x="465" y="583.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1166) scale(1,-1)">display_name, address</text>
+			<text x="465" y="562.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1124) scale(1,-1)">Canonical agency-specific identity</text>
+			<rect x="900" y="535" width="330" height="135" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="961.49267578125" y="642.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1284) scale(1,-1)">source_carpark_codes</text>
+			<path d="M 913,628 L 1217,628 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="915" y="604.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1208) scale(1,-1)">PK feed + source_agency + code</text>
+			<text x="915" y="583.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1166) scale(1,-1)">FK agency + carpark_id</text>
+			<text x="915" y="562.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1124) scale(1,-1)">match_method, verified_at</text>
+			<rect x="20" y="230" width="320" height="160" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="94.987060546875" y="362.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,724) scale(1,-1)">metadata evidence</text>
+			<path d="M 33,348 L 327,348 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="35" y="324.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,648) scale(1,-1)">carpark_metadata_evidence</text>
+			<text x="35" y="304.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,609) scale(1,-1)">PK run_id + source + agency + ID</text>
+			<text x="35" y="285.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,570) scale(1,-1)">FK run_id; FK agency + carpark_id</text>
+			<text x="35" y="265.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,531) scale(1,-1)">captured_at, geometry, quality</text>
+			<rect x="450" y="230" width="350" height="160" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="555.823486328125" y="362.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,724) scale(1,-1)">rate_schedules</text>
+			<path d="M 463,348 L 787,348 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="465" y="324.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,648) scale(1,-1)">PK schedule_id</text>
+			<text x="465" y="303.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,606) scale(1,-1)">FK agency + carpark_id</text>
+			<text x="465" y="282.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,564) scale(1,-1)">source_run_id: optional capture FK</text>
+			<text x="465" y="261.6" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,523) scale(1,-1)">Validity, review and calculator</text>
+			<rect x="900" y="230" width="330" height="160" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="961.506591796875" y="362.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,724) scale(1,-1)">tariff_source_evidence</text>
+			<path d="M 913,348 L 1217,348 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="915" y="324.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,648) scale(1,-1)">PK evidence_id</text>
+			<text x="915" y="303.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,606) scale(1,-1)">FK agency + carpark_id</text>
+			<text x="915" y="282.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,564) scale(1,-1)">Capture key, time, source hash</text>
+			<text x="915" y="261.6" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,523) scale(1,-1)">Published facts and review status</text>
+			<rect x="20" y="25" width="320" height="130" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="91.842041015625" y="127.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,254) scale(1,-1)">provider snapshots</text>
+			<path d="M 33,113 L 327,113 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="35" y="89.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,178) scale(1,-1)">provider_availability_snapshots</text>
+			<text x="35" y="69.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,139) scale(1,-1)">PK run + agency + ID + lot_type</text>
+			<text x="35" y="50.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,100) scale(1,-1)">FK run_id; feed, time, count</text>
+			<rect x="450" y="25" width="350" height="130" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="533.1171875" y="127.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,254) scale(1,-1)">rate_schedule_rules</text>
+			<path d="M 463,113 L 787,113 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="465" y="89.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,178) scale(1,-1)">PK rule_id; FK schedule_id</text>
+			<text x="465" y="68.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,136) scale(1,-1)">Day/time, cents, unit, priority</text>
+			<text x="465" y="47.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,94) scale(1,-1)">Review and calculation rules</text>
+			<path d="M 800 605 L 900 605 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="820.875" y="620.0" width="58.25" height="23.799999999999955" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="826.875" y="624.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1248) scale(1,-1)">1 : 0..*</text>
+			<path d="M 625 535 L 625 390 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="595.875" y="456.0" width="58.25" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="601.875" y="460.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,920) scale(1,-1)">1 : 0..*</text>
+			<path d="M 450 580 L 400 580 L 400 435 L 280 435 L 280 390 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="315.875" y="448.0" width="58.25" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="321.875" y="452.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,904) scale(1,-1)">1 : 0..*</text>
+			<path d="M 800 575 L 850 575 L 850 435 L 1065 435 L 1065 390 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="970.875" y="449.0" width="58.25" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="976.875" y="453.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,906) scale(1,-1)">1 : 0..*</text>
+			<path d="M 145 535 L 145 390 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="86.96875" y="461.0" width="116.0625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="92.96875" y="465.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,930) scale(1,-1)">1 capture : 0..*</text>
+			<path d="M 20 600 L 3 600 L 3 90 L 20 90 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="22.875" y="188.0" width="58.25" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="28.875" y="192.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,384) scale(1,-1)">1 : 0..*</text>
+			<path d="M 625 230 L 625 155 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<rect x="595.875" y="179.0" width="58.25" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="601.875" y="183.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,366) scale(1,-1)">1 : 0..*</text>
+			<text x="900" y="140.0" style="font-family: Arial-Bold; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,280) scale(1,-1)">HDB direct history is separate:</text>
+			<text x="900" y="109.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,218) scale(1,-1)">carparks + availability_observations.</text>
+			<text x="900" y="88.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,176) scale(1,-1)">Normalized views provide comparison</text>
+			<text x="900" y="67.4" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,134) scale(1,-1)">and training inputs.</text>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,52 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+[*] --> Response : Validated response
+state Response <<choice>>
+state "Ranked forecast cards" as Forecast
+Forecast : entry / probability + cost + routes
+state "Current-reading cards" as Current
+Current : entry / explicit fallback notice + source time
+state "Unavailable" as Empty
+Empty : entry / reasons and retry
+Response --> Forecast : [ranked not empty]
+Response --> Current : [fallback_ranked not empty]
+Response --> Empty : [no usable ranking]
+state "OneMap marker view" as Map
+Map : entry / snapshot selected inputs and candidates
+Map : do / select marker, external navigation
+Forecast --> Map : View map
+Current --> Map : View map
+Map --> Forecast : Back [forecast screen retained]
+Map --> Current : Back [fallback screen retained]
+state "External navigation" as Nav
+state "Navigation error" as NError
+Map --> Nav : Navigate [valid destination and OS opens URL]
+Map --> NError : Navigate [invalid coordinate or handoff fails]
+NError --> Map : Dismiss / retry
+Nav --> Map : Return to app
+Forecast --> [*] : Change input/mode / return to Search
+Current --> [*] : Change input/mode / return to Search
+Empty --> [*] : Retry / return to Search
+
+@enduml

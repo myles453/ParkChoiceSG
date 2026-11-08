@@ -108,7 +108,7 @@ intentionally selects tests that do not require those archives.
 Live checks are opt-in and call real providers: `validation/run_model_workflow.py`
 uses the configured database and OneMap plus temporary local API/model processes.
 `validation/prospective_pilot.py` is a separate bounded capture study; do not run it as a
-routine unit test. The database collector is separately operated by the model teammate.
+routine unit test. Database collection runs as a separate process.
 
 See [the runbook](BACKEND-RUNBOOK.md), [architecture](ARCHITECTURE.md),
 [model integration](MODEL-INTEGRATION.md), [database schema](../data-pipeline/SCHEMA.md)

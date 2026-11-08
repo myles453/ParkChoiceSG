@@ -3,7 +3,7 @@
 Use the root `parkchoice_flutter/`, `backend/` and `ml/` folders. The older Flutter
 copies under Lab 2 and Lab 3 are not the active application.
 
-For a teammate's backup laptop, follow [BACKUP-LAPTOP.md](BACKUP-LAPTOP.md).
+For a backup laptop, follow [BACKUP-LAPTOP.md](BACKUP-LAPTOP.md).
 
 ## What has been checked
 

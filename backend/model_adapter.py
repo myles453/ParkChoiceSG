@@ -1,4 +1,4 @@
-"""Use the teammate's existing HDB inference service, without retraining it."""
+"""HTTP adapter for the HDB arrival-availability inference service."""
 from datetime import datetime, timedelta, timezone
 import os
 

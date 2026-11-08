@@ -63,7 +63,7 @@ separate command; searching does not start collection or retrain a model.
 | `PriceQuote`, `pricing.py` | Apply approved day/time/payment/grace/tier/cap rules. Missing or ambiguous rules remain unquoted. |
 | `PredictionRequest`, `Prediction`, `AvailabilityPredictor` | Small contract for the trained model. Validate identity, target time, model version, confidence and recent history cutoff. |
 | `PendingPredictor` | Return pending status with no invented forecast or confidence. |
-| `HdbModelClient` | Reuse the teammate's HDB service; validate probability, identity, actual issue time and recent history. Restrict the shortlist to HDB and the integration to short-mode horizons of 15â€“90 minutes. |
+| `HdbModelClient` | Call the HDB inference service; validate probability, identity, actual issue time and recent history. Restrict the shortlist to HDB and the integration to short-mode horizons of 15â€“90 minutes. |
 | `scoring.py` | Calculate the provisional score and deterministic tie-breaks from eligible raw factors. |
 | Flutter `ParkingApi` | POST destination/search requests to the backend and handle unavailable-service responses. |
 | Flutter `CarparkSearchScreen` | Let the driver select both locations and duration; show real costs, route measurements and correctly labelled availability. |
@@ -125,8 +125,8 @@ and a client-side console entry gate are implemented; server-side administration
 sessions and authorization remain unfinished. OneMap attribution is visible; a production privacy
 notice and deployment controls remain release work.
 
-The active Flutter source is `parkchoice_flutter/`. It and `lab 3/parkchoice_flutter/`
-were byte-identical at the start of this work; only the root source was updated.
+The active Flutter source is `parkchoice_flutter/`. The older copy under `lab 3/`
+is retained only as an earlier academic artifact.
 Tracker, preferences and operator screens remain existing prototype work and are
 not evidence that their backend use cases have been implemented.
 

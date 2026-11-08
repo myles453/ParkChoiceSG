@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="550" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 550" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="550"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-550)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="550" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 235 455 L 350 455 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="350 455, 340 451, 340 459" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="265.11328125" y="468.0" width="53.7734375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="271.11328125" y="472.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,944) scale(1,-1)">HTTP</text>
+			<path d="M 520 395 L 520 325 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="520 325, 516 335, 524 335" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="538.98046875" y="356.0" width="92.0390625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="544.98046875" y="360.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,720) scale(1,-1)">trip request</text>
+			<path d="M 690 455 L 910 455 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="910 455, 900 451, 900 459" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="748.640625" y="468.0" width="102.71875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="754.640625" y="472.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,944) scale(1,-1)">place search</text>
+			<path d="M 690 290 L 810 290 L 810 410 L 910 410 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="910 410, 900 406, 900 414" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="763.98828125" y="344.0" width="92.0234375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="769.98828125" y="348.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,696) scale(1,-1)">drive / walk</text>
+			<path d="M 350 265 L 235 265 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="235 265, 245 269, 245 261" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="270.98828125" y="278.0" width="44.0234375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="276.98828125" y="282.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,564) scale(1,-1)">read</text>
+			<path d="M 690 245 L 910 245 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="910 245, 900 241, 900 249" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="736.203125" y="256.0" width="127.59375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="742.203125" y="260.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,520) scale(1,-1)">prediction HTTP</text>
+			<path d="M 1050 200 L 1050 120 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1050 120, 1046 130, 1054 130" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="1060.2109375" y="151.0" width="79.578125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="1066.2109375" y="155.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,310) scale(1,-1)">HDB only</text>
+			<path d="M 910 70 L 235 70 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="235 70, 245 74, 245 66" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="512.19140625" y="84.0" width="135.6171875" height="23.799999999999997" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="518.19140625" y="88.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,176) scale(1,-1)">provider captures</text>
+			<path d="M 118 120 L 118 200 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="118 200, 122 190, 114 190" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="132.65234375" y="150.0" width="54.6953125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="138.65234375" y="154.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,308) scale(1,-1)">ingest</text>
+			<rect x="0" y="395" width="235" height="115" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="68.418212890625" y="482.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,964) scale(1,-1)">Flutter app</text>
+			<path d="M 13,468 L 222,468 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="15" y="444.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,888) scale(1,-1)">Anonymous driver search</text>
+			<text x="15" y="423.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,846) scale(1,-1)">Separate operator sign-in</text>
+			<rect x="350" y="395" width="340" height="115" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="457.693359375" y="482.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,964) scale(1,-1)">FastAPI :8000</text>
+			<path d="M 363,468 L 677,468 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="365" y="444.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,888) scale(1,-1)">/destinations  /recommend</text>
+			<text x="365" y="421.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,843) scale(1,-1)">/operator/login  /health</text>
+			<rect x="910" y="395" width="280" height="115" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="988.764892578125" y="482.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,964) scale(1,-1)">OneMap APIs</text>
+			<path d="M 923,468 L 1177,468 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="925" y="444.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,888) scale(1,-1)">Search and drive/walk routes</text>
+			<text x="925" y="423.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,846) scale(1,-1)">Public map tiles</text>
+			<rect x="0" y="200" width="235" height="125" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="62.601318359375" y="297.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,594) scale(1,-1)">PostgreSQL</text>
+			<path d="M 13,283 L 222,283 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="15" y="259.0" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,518) scale(1,-1)">Private parking_data schema</text>
+			<text x="15" y="239.5" style="font-family: Arial; font-size: 15px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,479) scale(1,-1)">Identities, readings, tariffs</text>
+			<rect x="350" y="200" width="340" height="125" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="394.904296875" y="297.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,594) scale(1,-1)">RecommendationController</text>
+			<path d="M 363,283 L 677,283 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="365" y="259.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,518) scale(1,-1)">Shortlist, quote and predict</text>
+			<text x="365" y="236.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,473) scale(1,-1)">Eligibility, score and rank</text>
+			<rect x="910" y="200" width="280" height="125" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="971.8662109375" y="297.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,594) scale(1,-1)">HDB model :8001</text>
+			<path d="M 923,283 L 1177,283 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="925" y="259.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,518) scale(1,-1)">Engine + calibrated model</text>
+			<text x="925" y="238.2" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,476) scale(1,-1)">Recent LiveFeed history</text>
+			<rect x="0" y="15" width="235" height="105" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="35.131103515625" y="92.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,184) scale(1,-1)">Separate collector</text>
+			<path d="M 13,78 L 222,78 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="15" y="54.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,108) scale(1,-1)">Clean and store source data</text>
+			<rect x="910" y="15" width="280" height="105" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="974.533447265625" y="92.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,184) scale(1,-1)">HDB / LTA / URA</text>
+			<path d="M 923,78 L 1177,78 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="925" y="54.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,108) scale(1,-1)">Public availability feeds</text>
+			<text x="350" y="160.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,320) scale(1,-1)">Phone: foreground GPS, OneMap tiles, external navigation URL.</text>
+			<text x="350" y="133.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,266) scale(1,-1)">Search does not start database collection or model training.</text>
+		</g>
+	</g>
+</svg>

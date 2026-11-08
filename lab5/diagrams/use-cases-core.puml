@@ -1,0 +1,58 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+left to right direction
+actor "Anonymous driver" as Driver
+actor Operator
+actor "Collection operator / scheduler" as Collector
+rectangle "ParkChoiceSG - implemented scope" {
+ usecase "UC-01\nRequest recommendation" as U1
+ usecase "UC-02\nInspect result information" as U2
+ usecase "UC-19\nView marker map" as U19
+ usecase "UC-03\nOpen external navigation" as U3
+ usecase "UC-05\nAuthenticate operator" as U5
+ usecase "UC-10\nCollect availability" as U10
+ U1 -[hidden]down- U2
+ U2 -[hidden]down- U19
+ U19 -[hidden]down- U3
+ U5 -[hidden]down- U10
+}
+actor OneMap
+actor "External navigation / OS" as Nav
+actor "HDB / LTA / URA feeds" as Feeds
+Driver -- U1
+Driver -- U2
+Driver -- U19
+Driver -- U3
+Operator -- U5
+Collector -- U10
+U1 -- OneMap
+U19 -- OneMap
+U3 -- Nav
+U10 -- Feeds
+note bottom of U1
+HDB forecast ranking and separate
+current-reading fallback have
+different eligibility conditions.
+end note
+
+@enduml

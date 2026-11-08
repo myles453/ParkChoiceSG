@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="580" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 580" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="580"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-580)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="580" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="80" y="385" width="430" height="145" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="240.602294921875" y="502.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1004) scale(1,-1)">Preferences</text>
+			<path d="M 93,488 L 497,488 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="95" y="464.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,928) scale(1,-1)">do / theme, saved labels, local controls</text>
+			<text x="95" y="441.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,883) scale(1,-1)">Appearance persists via SharedPreferences</text>
+			<text x="95" y="419.8" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,839) scale(1,-1)">Other values remain screen-local</text>
+			<rect x="730" y="385" width="430" height="145" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="910.669189453125" y="502.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,1004) scale(1,-1)">Tracker</text>
+			<path d="M 743,488 L 1147,488 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="745" y="464.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,928) scale(1,-1)">entry / sample history and active stay if present</text>
+			<text x="745" y="441.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,883) scale(1,-1)">do / elapsed time and linear cost</text>
+			<text x="745" y="419.8" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,839) scale(1,-1)">Internal session manager is process-local</text>
+			<rect x="15" y="115" width="245" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="79.975830078125" y="207.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,414) scale(1,-1)">Add location</text>
+			<path d="M 28,193 L 247,193 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="30" y="169.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">Save [nonblank fields]</text>
+			<text x="30" y="146.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,293) scale(1,-1)">/ local list entry</text>
+			<rect x="350" y="115" width="245" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="386.447998046875" y="207.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,414) scale(1,-1)">Erase confirmation</text>
+			<path d="M 363,193 L 582,193 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="365" y="169.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">Confirm / reset vehicle</text>
+			<text x="365" y="146.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,293) scale(1,-1)">and walking controls</text>
+			<rect x="660" y="115" width="245" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="704.389404296875" y="207.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,414) scale(1,-1)">End confirmation</text>
+			<path d="M 673,193 L 892,193 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="675" y="169.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">Confirm / clear session;</text>
+			<text x="675" y="146.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,293) scale(1,-1)">add screen-local entry</text>
+			<rect x="950" y="115" width="245" height="120" rx="8" ry="8" style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: rgb(94%,96%,96%); fill-rule: evenodd;"/>
+			<text x="1010.2119140625" y="207.0" style="font-family: Arial-Bold; font-size: 19px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,414) scale(1,-1)">Extend modal</text>
+			<path d="M 963,193 L 1182,193 Z" style="stroke: rgb(74%,80%,83%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="965" y="169.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">Apply / feedback only</text>
+			<text x="965" y="146.9" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,293) scale(1,-1)">No reminder scheduled</text>
+			<path d="M 170 385 L 170 315 L 120 315 L 120 235 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="120 235, 116 245, 124 245" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="99.765625" y="331.0" width="40.46875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="105.765625" y="335.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,670) scale(1,-1)">Add</text>
+			<path d="M 260 180 L 290 180 L 290 385 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="290 385, 294 375, 286 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="234.1953125" y="276.0" width="111.609375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="240.1953125" y="280.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,560) scale(1,-1)">Save / Cancel</text>
+			<path d="M 420 385 L 420 235 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="420 235, 416 245, 424 245" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="393.1015625" y="306.0" width="53.796875" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="399.1015625" y="310.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,620) scale(1,-1)">Erase</text>
+			<path d="M 500 235 L 500 385 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="500 385, 504 375, 496 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="464.42578125" y="346.0" width="131.1484375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="470.42578125" y="350.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,700) scale(1,-1)">Confirm / Cancel</text>
+			<path d="M 790 385 L 790 235 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="790 235, 786 245, 794 245" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="742.19921875" y="306.0" width="95.6015625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="748.19921875" y="310.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,620) scale(1,-1)">End [active]</text>
+			<path d="M 870 235 L 870 385 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="870 385, 874 375, 866 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="819.42578125" y="346.0" width="131.1484375" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="825.42578125" y="350.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,700) scale(1,-1)">Confirm / Cancel</text>
+			<path d="M 1040 385 L 1040 235 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1040 235, 1036 245, 1044 245" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="981.52734375" y="306.0" width="116.9453125" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="987.52734375" y="310.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,620) scale(1,-1)">Extend [active]</text>
+			<path d="M 1150 235 L 1150 385 " style="stroke: rgb(14%,23%,29%); stroke-linecap: butt; stroke-width: 1.6; fill: none; fill-rule: evenodd;"/>
+			<polygon points="1150 385, 1154 375, 1146 375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,23%,29%); fill-rule: evenodd;"/>
+			<rect x="1077.41796875" y="346.0" width="115.1640625" height="23.80000000000001" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="1083.41796875" y="350.0" style="font-family: Arial; font-size: 16px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,700) scale(1,-1)">Apply / Cancel</text>
+			<text x="261.228515625" y="45.0" style="font-family: Arial; font-size: 17px;fill: rgb(14%,23%,29%); stroke:none;" transform="translate(0,90) scale(1,-1)">Bottom navigation opens each screen; leaving/recreating it can discard local sample edits.</text>
+		</g>
+	</g>
+</svg>

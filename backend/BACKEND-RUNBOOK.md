@@ -2,7 +2,7 @@
 
 ## Trained HDB model (17 October integration)
 
-The teammate's commit `d05c1f8` is available in `ml/` and `ml_lta_ura/`.
+Model source and artifacts are in `ml/` and `ml_lta_ura/`.
 See [MODEL-INTEGRATION.md](MODEL-INTEGRATION.md) for scope and validation.
 The application reuses the supplied HDB inference service on localhost port 8001.
 It predicts **P(at least one free lot)**, not a future number of lots.
@@ -74,7 +74,7 @@ Private configuration is loaded from `backend/.env`:
 - `PARKCHOICE_MODEL_URL` connects the supplied HDB model service when set.
 
 If data or URA rates need refreshing, run one `collect_live.py` cycle from the separate `data-pipeline/` folder using its private collector configuration.
-The training teammate continues operating the periodic collector. Do not start a
+Periodic collection is operated separately. Do not start a
 second periodic instance from another machine. HDB/operator policy expiry is
 independent of availability refresh; collection does not automatically approve
 new commercial tariff facts.
@@ -116,7 +116,7 @@ Other screens remain the team's existing prototype work.
 
 ## Model boundary
 
-`HdbModelClient` now implements the boundary using the teammate's `/predict`
+`HdbModelClient` now implements the boundary using the model service's `/predict`
 endpoint. It restricts the shortlist to HDB, keeps the model's actual issue time,
 validates identity, arrival, probability and recent history, and preserves the
 service's high/medium/low probability bands. No per-forecast sample count is

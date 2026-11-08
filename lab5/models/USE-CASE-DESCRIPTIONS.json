@@ -1,0 +1,402 @@
+[
+  {
+    "id": "UC-01",
+    "name": "Request carpark recommendation",
+    "status": "Implemented with stated coverage",
+    "actors": "Anonymous driver; OneMap place/routing service; HDB inference service; parking database",
+    "goal": "Compare nearby carparks for the intended arrival, stay and ranking preference.",
+    "preconditions": "The driver has selected origin and destination coordinates. A valid stay duration is set. The backend, database and required external services are reachable.",
+    "flow": [
+      "Open Search without creating an account. Select both places using typed search, or obtain one foreground device fix for the origin.",
+      "Choose stay duration and Best overall, Prioritise cheaper or Prioritise closer; select Find carparks.",
+      "Validate inputs. Read the cleaned location view using a destination bounding box and facility/tariff filters; calculate Haversine distance and keep the three nearest candidates within 1,500 m.",
+      "For each candidate, request a driving route from origin and a walking route to destination. Derive each arrival from a common departure instant plus its driving duration.",
+      "Quote the stay at both neighbouring whole-minute arrival starts using verified schedule versions. Retain the supported range and score its higher amount.",
+      "Request and validate HDB short-mode arrival free-lot probability. Apply route, price, freshness, identity, confidence and probability gates before scoring.",
+      "Return ranked cards, score factors and exclusion reasons. Retain a separately labelled current-reading fallback when its rules permit."
+    ],
+    "alternatives": [
+      "Missing inputs, invalid values or a device fix older than two minutes: request correction without submitting an invalid search.",
+      "No route, unsupported price, stale evidence or invalid forecast: exclude that candidate and retain its reason. Do not automatically fetch replacement candidates.",
+      "Missing/unsupported forecast with an allowed fallback reason: show a separate fresh-current list. A known low probability cannot bypass the forecast gate through fallback.",
+      "No usable candidates or service failure: display an unavailable/error message and allow retry. Duplicate or late UI completions do not replace a newer screen state."
+    ],
+    "postconditions": "A supported ordered comparison, a labelled fallback, or a reasoned unavailable state is displayed; no bay is reserved.",
+    "limits": "Default shortlist: 3 within 1.5 km. API permits candidate_limit 1-5 and radius 100-3,000 m. Duration is 1-1,440 whole minutes. Enabled probability ranking is HDB short mode at 15-90 minutes and p_free >= 0.90. Saved-place integration, vehicle/walking preference filtering and effective operator overrides are deferred.",
+    "priority": "High",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-02",
+    "name": "Inspect carpark information",
+    "status": "Implemented in result cards",
+    "actors": "Anonymous driver",
+    "goal": "Understand the evidence and trade-offs of a returned carpark.",
+    "preconditions": "A recommendation or current-reading fallback response has been received.",
+    "flow": [
+      "Inspect the returned carpark card and canonical identity/name.",
+      "Read the full-stay cost or supported cost range, driving duration, walking distance, current reading and forecast where available.",
+      "Read the recommendation basis and unavailable/exclusion explanations. Open the map to inspect locations if required."
+    ],
+    "alternatives": [
+      "A field lacks supported evidence: display its unavailable status instead of a fabricated zero or forecast.",
+      "An outdated or malformed response is rejected by the client response checks; retain a recoverable error state."
+    ],
+    "postconditions": "The driver can compare the displayed evidence without modifying provider or database records.",
+    "limits": "The current implementation uses result cards rather than a separate complete CarparkDetailUI. A future probability is not an expected free-lot count.",
+    "priority": "High",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-03",
+    "name": "Open external navigation",
+    "status": "Implemented",
+    "actors": "Anonymous driver; device operating system; external navigation application/browser",
+    "goal": "Hand off the selected carpark coordinates for driving navigation.",
+    "preconditions": "A valid carpark marker is selected in the map view.",
+    "flow": [
+      "Select the carpark marker and choose external navigation.",
+      "Validate WGS84 destination coordinates and construct a Google Maps directions URL.",
+      "Ask the operating system to open the URL externally; the external application manages its own origin, location permission and navigation."
+    ],
+    "alternatives": [
+      "Missing or invalid coordinates: keep the map accessible and show a failure message.",
+      "The operating system rejects the handoff or no handler opens: display an error and permit retry.",
+      "Return from navigation: resume the existing app screen."
+    ],
+    "postconditions": "The URL opens externally or the driver receives an error; no parking session or reservation is created.",
+    "limits": "OneMap supplies in-app map tiles and route measurements. External Google Maps URL navigation uses no embedded Google SDK or paid Google routing API. Coordinates are not verified entrances.",
+    "priority": "High",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-04",
+    "name": "Submit error report",
+    "status": "Deferred",
+    "actors": "Anonymous driver; operator",
+    "goal": "Submit a source-data issue linked to a carpark.",
+    "preconditions": "Intended: a carpark is identified and reporting is available.",
+    "flow": [
+      "Intended: open a report form from the selected carpark.",
+      "Enter issue category/details; validate the carpark and input.",
+      "Persist the report and display its real reference number."
+    ],
+    "alternatives": [
+      "Intended: invalid input or unknown identity retains the form and requests correction.",
+      "Intended: save failure or quota rejection displays the actual error without claiming submission."
+    ],
+    "postconditions": "Intended: a persisted report is available for operator review.",
+    "limits": "No driver report-submission form or persistence endpoint is connected in the final baseline. This description records the deferred requirement and is excluded from implemented use-case views.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-05",
+    "name": "Authenticate operator",
+    "status": "Implemented credential check and app gate",
+    "actors": "Operator; recommendation API",
+    "goal": "Open the operator console after credential verification.",
+    "preconditions": "The operator opens Admin. Server-side OPERATOR_USERNAME and OPERATOR_PASSWORD_HASH are configured.",
+    "flow": [
+      "Display OperatorLoginScreen unless this app process already has a signed-in operator state.",
+      "Validate nonempty fields and submit POST /operator/login with username and password.",
+      "Verify the credential against the configured PBKDF2-SHA256 hash using constant-time comparisons.",
+      "On HTTP 200, if the login screen is still active, set OperatorSession.signedIn and open AdminPanelScreen."
+    ],
+    "alternatives": [
+      "Empty input: reject locally. Incorrect credentials return 401; schema-invalid input returns 422.",
+      "Missing/malformed server configuration returns 503. Timeout/network failure keeps the operator on login with an error.",
+      "Repeated taps send one request; leaving the login screen discards a late success.",
+      "Sign out clears the in-memory flag; app restart also clears it."
+    ],
+    "postconditions": "The app console gate is open for this process or remains closed.",
+    "limits": "This credential endpoint does not issue a server token/session or authorize administrative writes. No OperatorAccount database table or driver account system is implemented.",
+    "priority": "High",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-06",
+    "name": "Manage user error reports",
+    "status": "Prototype interface only",
+    "actors": "Operator",
+    "goal": "Inspect and resolve displayed sample alerts.",
+    "preconditions": "The app operator gate is open.",
+    "flow": [
+      "Open the sample alert list in the console.",
+      "Inspect an alert and choose its resolve action.",
+      "Update the alert status in the current screen state and display feedback."
+    ],
+    "alternatives": [
+      "Leaving/recreating the screen may restore its sample initial state."
+    ],
+    "postconditions": "Only the current console state changes.",
+    "limits": "Alerts are fixed sample records. A persisted report queue, reviewer audit and server-side resolution are deferred.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-07",
+    "name": "Apply manual carpark override",
+    "status": "Prototype interface only",
+    "actors": "Operator",
+    "goal": "Demonstrate local override controls.",
+    "preconditions": "The app operator gate is open.",
+    "flow": [
+      "Open Add override and choose the displayed carpark/status and optional reason.",
+      "Confirm to add a local override model to the screen list.",
+      "Remove a displayed override using its local action if required."
+    ],
+    "alternatives": [
+      "Cancel or close the modal: do not add a record.",
+      "Repeated close/submit actions and completion after leaving the screen are ignored."
+    ],
+    "postconditions": "The current console list changes without changing recommendation inputs.",
+    "limits": "No override database write, tariff replacement, effective-date reconciliation or closure filter is connected. Closure and rate correction remain separate deferred business rules; neither is applied by the sample console.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-08",
+    "name": "View API health and data freshness",
+    "status": "Prototype console display",
+    "actors": "Operator",
+    "goal": "Inspect the console health/freshness layout.",
+    "preconditions": "The app operator gate is open.",
+    "flow": [
+      "Open the console data-source section.",
+      "Inspect its displayed health, request, failure and cache-age fields."
+    ],
+    "alternatives": [
+      "The displayed records remain sample values rather than results of a feed-health query."
+    ],
+    "postconditions": "No provider or database record changes.",
+    "limits": "The console is not wired to live monitoring. GET /health reports backend process liveness only; it is not proof that providers, database, tariffs and model are all healthy.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-09",
+    "name": "Trigger manual source refresh",
+    "status": "Prototype console action",
+    "actors": "Operator",
+    "goal": "Demonstrate the manual-refresh control.",
+    "preconditions": "The app operator gate is open and a sample data source is displayed.",
+    "flow": [
+      "Select the source refresh control.",
+      "Display local action feedback."
+    ],
+    "alternatives": [
+      "Navigation away ends the interaction without starting collection."
+    ],
+    "postconditions": "No provider polling or database ingestion is started by this control.",
+    "limits": "A protected refresh endpoint and auditable refresh job are deferred. Actual refresh is performed by the separate collection scripts under UC-10.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-10",
+    "name": "Collect and log availability",
+    "status": "Implemented separate process",
+    "actors": "Collection operator or scheduler; HDB, LTA and URA feeds; parking database",
+    "goal": "Maintain timestamped, cleaned parking observations and source evidence.",
+    "preconditions": "The collection process has private provider/database configuration and network access.",
+    "flow": [
+      "Start collect_live.py for one cycle or collect_periodic.py for configured repeated availability cycles.",
+      "Fetch provider responses and archive compressed raw captures with run IDs, timestamps and hashes.",
+      "Validate identifiers/counts/timestamps and preserve rejected rows or quality flags. Map exact agency/source identities.",
+      "Load accepted reference, metadata and availability observations in transactions without replacing historical observations.",
+      "For the price-capable live collector, capture and compile URA rate details when due, preserving unsupported windows.",
+      "For periodic collection, record cycle results and continue at the configured start-to-start interval; skip elapsed slots rather than creating catch-up bursts."
+    ],
+    "alternatives": [
+      "Missing credentials or provider failure: stop/report the affected cycle using its manifest/log rather than load a fabricated success.",
+      "Duplicate periodic process in the same workspace: reject it using the collector lock.",
+      "Invalid counts, missing references or stale source observations retain explicit quality outcomes."
+    ],
+    "postconditions": "Accepted data and provenance are stored; historical evidence remains available for exports and comparison.",
+    "limits": "Periodic default: 5 minutes. HDB observation times differ from LTA/URA retrieval proxies. The model service independently maintains recent HDB history; recommendation requests do not start collection or training. Periodic availability collection does not approve HDB/commercial tariffs.",
+    "priority": "High",
+    "frequency": "Configured interval; default every five minutes"
+  },
+  {
+    "id": "UC-11",
+    "name": "Manage preferences",
+    "status": "Partial: appearance persistence; other controls local",
+    "actors": "Anonymous driver; device preference storage",
+    "goal": "Choose appearance and inspect preference controls.",
+    "preconditions": "The app is running; no driver account is required.",
+    "flow": [
+      "Open Preferences and select Light, Dark or System appearance.",
+      "Apply the theme immediately and save appearance_mode using SharedPreferences.",
+      "Optionally change vehicle and walking controls in the current screen. Select ranking mode on Search for actual recommendation scoring."
+    ],
+    "alternatives": [
+      "Reload the app: restore saved appearance.",
+      "Leave/recreate Preferences: other controls may return to their initial local values."
+    ],
+    "postconditions": "Appearance is persisted locally; other controls are local screen state.",
+    "limits": "Vehicle/height/walking-tolerance controls are not sent to the recommendation API. The three search modes are implemented but are not a persisted preference profile.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-12",
+    "name": "Manage saved locations and recent searches",
+    "status": "Partial saved-location interface",
+    "actors": "Anonymous driver",
+    "goal": "Maintain saved-place labels in the current Preferences screen.",
+    "preconditions": "Preferences is open.",
+    "flow": [
+      "Inspect the initial sample Home/Work entries.",
+      "Open Add location, enter a nonempty label and address, and confirm.",
+      "Add the local entry or remove an existing one from the displayed list."
+    ],
+    "alternatives": [
+      "Cancel or invalid/blank input: do not add the entry.",
+      "Screen recreation can restore the initial sample list."
+    ],
+    "postconditions": "The in-memory screen list changes.",
+    "limits": "No durable saved-location repository, geocoded saved-place selection in Search, or recent-search history is connected. The earlier maximum-ten recent-search requirement remains deferred.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-13",
+    "name": "Manage favourites",
+    "status": "Deferred",
+    "actors": "Anonymous driver",
+    "goal": "Keep preferred carparks for later access.",
+    "preconditions": "Intended: a valid carpark is displayed.",
+    "flow": [
+      "Intended: mark/unmark a carpark as a favourite.",
+      "Intended: store its canonical identity locally and reopen it from a favourites list."
+    ],
+    "alternatives": [
+      "Intended: a removed or unsupported carpark remains labelled unavailable rather than displaying stale invented measurements."
+    ],
+    "postconditions": "Intended: the device-local favourite list is updated.",
+    "limits": "No connected favourites list or durable Favourite repository is implemented.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-14",
+    "name": "Start parking session",
+    "status": "Partial internal session component",
+    "actors": "Anonymous driver",
+    "goal": "Track one active stay in memory.",
+    "preconditions": "An internal caller supplies carpark name, location and hourly rate; no session is active.",
+    "flow": [
+      "Call ParkingSessionManager.startSession with the supplied details.",
+      "Create ParkingSession with the current start time and notify listeners.",
+      "Tracker shows elapsed time and linear running cost when an active session exists."
+    ],
+    "alternatives": [
+      "If a session already exists, startSession returns false without replacing it."
+    ],
+    "postconditions": "At most one active session is stored in process memory.",
+    "limits": "Search/map/navigation do not automatically start a session. No complete user-facing start flow or durable session storage is connected. Linear hourly-rate display does not reuse the backend tariff engine.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-15",
+    "name": "Extend parking session",
+    "status": "Prototype modal only",
+    "actors": "Anonymous driver",
+    "goal": "Select a proposed extension interval.",
+    "preconditions": "Tracker displays an active session.",
+    "flow": [
+      "Open Extend session and choose an interval.",
+      "Confirm or cancel the modal."
+    ],
+    "alternatives": [
+      "Cancel/close leaves the screen unchanged."
+    ],
+    "postconditions": "Confirmation displays feedback; the underlying session timing is not extended.",
+    "limits": "No expiry adjustment, reminder scheduling, notification permission flow or backend repricing occurs. These remain deferred.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-16",
+    "name": "End parking session",
+    "status": "Partial in-memory behavior",
+    "actors": "Anonymous driver",
+    "goal": "Clear the current tracked stay.",
+    "preconditions": "An active in-memory session exists.",
+    "flow": [
+      "Select End session and confirm.",
+      "Create a recent-session display entry in the current tracker screen using its elapsed-time/linear-rate values.",
+      "Clear ParkingSessionManager and update the screen."
+    ],
+    "alternatives": [
+      "Cancel confirmation retains the active session."
+    ],
+    "postconditions": "The in-memory active session is cleared.",
+    "limits": "No payment is collected. The calculated display value is not an authoritative tariff charge, and the recent entry is not durable.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-17",
+    "name": "View session history",
+    "status": "Prototype/sample history",
+    "actors": "Anonymous driver",
+    "goal": "Inspect the tracker history layout and locally ended entries.",
+    "preconditions": "Tracker is open.",
+    "flow": [
+      "Inspect the sample grouped recent sessions.",
+      "If a session was ended in this screen instance, inspect the inserted local entry."
+    ],
+    "alternatives": [
+      "Screen recreation or app restart may restore sample state and lose local entries."
+    ],
+    "postconditions": "No persisted history is read or written.",
+    "limits": "Durable history, historical tariff receipts and reliable aggregate expenditure are deferred.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-18",
+    "name": "Erase local data",
+    "status": "Partial control; complete erasure deferred",
+    "actors": "Anonymous driver",
+    "goal": "Reset the implemented local preference controls.",
+    "preconditions": "Preferences is open.",
+    "flow": [
+      "Open the erase confirmation.",
+      "Confirm to reset the current walking-distance and vehicle controls to their defaults."
+    ],
+    "alternatives": [
+      "Cancel retains existing screen state."
+    ],
+    "postconditions": "Those two screen controls reset.",
+    "limits": "The current action does not erase saved appearance, saved-place sample lists, sessions or search/history repositories. It must not be treated as a complete privacy-data deletion feature.",
+    "priority": "Medium",
+    "frequency": "On demand"
+  },
+  {
+    "id": "UC-19",
+    "name": "View carparks on map",
+    "status": "Implemented marker map",
+    "actors": "Anonymous driver; OneMap tile service; device operating system",
+    "goal": "Inspect selected locations and returned carparks spatially.",
+    "preconditions": "Origin, destination and result candidate coordinates are available.",
+    "flow": [
+      "Choose View map from Search/results.",
+      "Validate and snapshot coordinates and candidate data for the map screen.",
+      "Render attributed OneMap tiles and markers for origin, destination and returned carparks.",
+      "Select a carpark marker to inspect it or open external navigation; return to the search screen when finished."
+    ],
+    "alternatives": [
+      "Invalid coordinates or no usable map data: show a recoverable error.",
+      "Tile/network or navigation failure does not change the recommendation records.",
+      "Repeated navigation taps do not open duplicate map screens."
+    ],
+    "postconditions": "The map is displayed or a clear unavailable state is shown.",
+    "limits": "The screen is a marker map, not embedded turn-by-turn navigation or continuous background GPS tracking.",
+    "priority": "High",
+    "frequency": "On demand"
+  }
+]

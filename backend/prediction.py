@@ -44,7 +44,7 @@ class AvailabilityPredictor(Protocol):
 
 
 class PendingPredictor:
-    """No fake forecasts or confidence while the model is being trained."""
+    """Return an explicit unavailable forecast when no predictor is configured."""
     ready = False
 
     def predict(self, request: PredictionRequest) -> Prediction:

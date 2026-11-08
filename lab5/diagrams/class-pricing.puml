@@ -1,0 +1,75 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+class CandidateStay <<frozen dataclass>> {
+ +agency, carpark_id: str
+ +arrival_at: datetime
+ +duration_minutes: int
+ +payment_method: str
+ +first_entry: bool?
+}
+class "comparison module" as C <<functions>> {
+ +compare_stay_options(connection, stays): list
+ +compare_candidate_stays(connection, stays): list
+ -_load_context(connection, earliest, latest, identities)
+}
+class "pricing module" as P <<functions>> {
+ +quote_schedule(schedule, rules, arrival, duration, holidays, years): PriceQuote
+ +window_at(rule, instant, holidays): interval?
+}
+class PriceQuote <<frozen dataclass>> {
+ +status: str
+ +amount_cents: int?
+ +payment_method, source_url: str?
+ +note: str?
+ +schedule_id: int?
+ +breakdown: tuple
+}
+class "rate_schedules" as S <<database record>> {
+ +schedule_id: bigint [PK]
+ +agency, carpark_id: text [FK]
+ +valid_from, valid_until: timestamptz
+ +review_status, calculator_key: text
+ +reviewed_at: timestamptz
+ +calculator_config: jsonb
+}
+class "rate_schedule_rules" as R <<database record>> {
+ +rule_id: bigint [PK]
+ +schedule_id: bigint [FK]
+ +day_type: text
+ +start_time, end_time: time
+ +rule_kind: text
+ +amount_cents, unit_minutes: int
+ +priority, review_status, calculation
+}
+CandidateStay ..> C : request options
+C ..> S : read version
+S "1" -- "0..*" R : rules
+C ..> P : calls per option
+P ..> PriceQuote : returns
+note bottom of P
+Unknown, stale, unsupported or conflicting rules
+produce an unavailable quote, not zero cost.
+end note
+
+@enduml

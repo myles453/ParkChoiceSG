@@ -1,0 +1,58 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+left to right direction
+state "Bottom navigation" as Tabs
+state "Preferences" as Pref
+Pref : do / choose theme; edit local controls
+state "Add saved location" as Add
+state "Erase confirmation" as Erase
+state "Tracker" as Track
+Track : entry / sample history; active session if present
+state "End confirmation" as End
+state "Extend modal" as Extend
+Tabs --> Pref : Preferences tab
+Pref --> Tabs : Other tab
+Pref --> Add : Add location
+Add --> Pref : Save [nonblank label/address] / add local entry
+Add --> Pref : Cancel
+Pref --> Erase : Erase data
+Erase --> Pref : Confirm / reset vehicle and walking controls
+Erase --> Pref : Cancel
+Tabs --> Track : Tracker tab
+Track --> Tabs : Other tab
+Track --> End : End [active session]
+End --> Track : Confirm / clear stay; add screen-local entry
+End --> Track : Cancel
+Track --> Extend : Extend [active session]
+Extend --> Track : Apply / feedback only
+Extend --> Track : Cancel
+note bottom of Pref
+Appearance persists; saved lists and other
+controls are screen-local. No complete erasure.
+end note
+note bottom of Track
+No complete UI start flow, durable history,
+notification scheduling or tariff repricing.
+end note
+
+@enduml

@@ -16,6 +16,7 @@ __pycache__/
 # Python environments and test caches
 .venv/
 .pytest_cache/
+.kotlin/
 
 # Local datasets, rebuilt by the scripts in ml/ and ml_lta_ura/
 ml/data/

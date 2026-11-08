@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/ranking_mode.dart';
 
-/// The app calls our backend; provider keys and database credentials stay there.
+/// HTTP client for the parking backend; credentials remain on the server.
 class ParkingApi {
   final http.Client _client;
   final String baseUrl;

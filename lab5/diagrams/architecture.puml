@@ -1,0 +1,65 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+left to right direction
+rectangle "Android / Flutter" as Phone {
+ component "Search, cards and map\nAnonymous driver" as UI
+ component "ParkingApi" as Client
+ component "Device GPS / permissions" as GPS
+ component "SharedPreferences\nappearance only" as Local
+ UI --> Client
+ UI --> GPS
+ UI --> Local
+}
+rectangle "Recommendation process :8000" as Backend {
+ component "FastAPI\n/destinations /recommend\n/operator/login /health" as API
+ component "RecommendationController\nshortlist -> routes -> quotes\n-> forecasts -> gate -> score" as Control
+ component "Pricing / comparison\nScoring / forecast audit" as Helpers
+ API --> Control
+ Control --> Helpers
+}
+rectangle "Inference process :8001" as Model {
+ component "HdbModelClient HTTP boundary\nEngine + calibrated artifacts" as Engine
+ component "LiveFeed cache\nrecent HDB history" as Cache
+ Engine --> Cache
+}
+database "Supabase PostgreSQL\nprivate parking_data schema" as DB
+component "OneMap\nsearch / drive / walk / tiles" as OM
+component "HDB / LTA / URA\npublic source feeds" as Feeds
+component "Separate collector\nclean -> archive -> ingest" as Collect
+component "External navigation\nGoogle Maps URL / OS" as Nav
+Client --> API : HTTP
+API --> OM : place search
+Control --> OM : drive/walk routes
+UI --> OM : map tiles
+UI --> Nav : explicit handoff
+Control --> DB : short read-only stages
+Control --> Engine : /predict and /current
+Cache --> Feeds : HDB only
+Feeds --> Collect : captures
+Collect --> DB : transactional writes
+note bottom of Backend
+Private keys stay server-side. A search does not
+start database collection or retrain the model.
+end note
+
+@enduml

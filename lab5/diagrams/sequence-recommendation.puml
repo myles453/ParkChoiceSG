@@ -1,0 +1,61 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+skinparam linetype polyline
+actor Driver
+boundary "Search / ParkingApi" as UI
+control "FastAPI / Controller" as API
+database "PostgreSQL / comparison" as DB
+participant OneMap
+participant "HdbModelClient / service" as ML
+Driver -> UI : choose places, stay and mode
+UI -> API : POST /recommend
+API -> API : validate TripRequest
+API -> DB : read eligible location pool
+DB --> API : canonical identities + coordinates
+API -> API : Haversine radius; keep nearest 3
+note over API,DB : Close read transaction before route calls
+loop each shortlisted candidate
+ API -> OneMap : drive(origin, carpark); walk(carpark, destination)
+ OneMap --> API : duration, distance, measurement times
+end
+API -> API : common departure + candidate driving duration
+API -> DB : quote floor/ceiling arrival and full stay
+DB --> API : supported price range or status
+API -> ML : /current for HDB shortlist
+ML --> API : source-timestamped current evidence
+loop each candidate with driving arrival
+ API -> ML : /predict(candidate ID, arrival_at)
+ ML --> API : p_free, mode, confidence, issue/history time or failure
+ API -> API : validate and audit forecast; collect exclusions
+end
+API -> API : eligibility gates; selected-mode scores; stable rank
+alt forecast candidates eligible
+ API --> UI : ranked forecasts + evidence + exclusions
+else no forecast ranks and current fallback permitted
+ API --> UI : separate current-reading list + explicit notice
+else no usable candidates
+ API --> UI : unavailable status + reasons
+end
+UI --> Driver : display cards / fallback / retry
+
+@enduml

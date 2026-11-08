@@ -1,0 +1,89 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+entity "carpark_identities" as I {
+ * agency: text [PK]
+ * carpark_id: text [PK]
+ --
+ display_name, address: text
+}
+entity "source_carpark_codes" as C {
+ * feed, source_agency, source_code [PK]
+ --
+ agency, carpark_id [FK]
+ match_method, verified_at
+}
+entity "ingestion_runs" as G {
+ * run_id: uuid [PK]
+ --
+ retrieved_at: timestamptz
+ manifest: jsonb
+}
+entity "carpark_metadata_evidence" as M {
+ * run_id, source, agency, carpark_id [PK]
+ --
+ agency, carpark_id [FK]
+ run_id [FK]
+ captured_at, location_status
+ location_points, latitude, longitude
+}
+entity "provider_availability_snapshots" as O {
+ * run_id, agency, carpark_id, lot_type [PK]
+ --
+ feed, retrieved_at, lots_available
+ attributes: jsonb
+}
+entity "rate_schedules" as S {
+ * schedule_id [PK]
+ --
+ agency, carpark_id [FK]
+ source_run_id [FK, optional]
+ source, validity, review, calculator
+}
+entity "rate_schedule_rules" as R {
+ * rule_id [PK]
+ --
+ schedule_id [FK]
+ day/time, amount_cents, calculation
+}
+entity "tariff_source_evidence" as T {
+ * evidence_id [PK]
+ --
+ agency, carpark_id [FK]
+ capture_key, captured_at, content_sha256
+ published_facts, review_status
+}
+I ||--o{ C : source mapping
+I ||--o{ M : metadata
+G ||--o{ M : capture
+G ||--o{ O : provider capture
+I ||--o{ S : tariff versions
+S ||--o{ R : rules
+I ||--o{ T : price provenance
+note bottom of O
+HDB direct history also uses carparks and
+availability_observations. Normalized views
+resolve canonical comparison/training inputs.
+end note
+
+@enduml

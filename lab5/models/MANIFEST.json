@@ -1,0 +1,186 @@
+{
+  "revision": "8 November 2026",
+  "pdf": "ParkChoiceSG-Final-SRS-Models.pdf",
+  "pages": 42,
+  "use_cases": 19,
+  "diagrams": 17,
+  "sha256": "25778ffa070351f994112cf7963e80ca8deb00302aaa3aae0375c5abe1e2a05a",
+  "sections": [
+    {
+      "title": "Final Use-Caseand Design Models",
+      "page": 1
+    },
+    {
+      "title": "ParkChoiceSG",
+      "page": 1
+    },
+    {
+      "title": "Reading order",
+      "page": 1
+    },
+    {
+      "title": "Final scope and model conventions",
+      "page": 2
+    },
+    {
+      "title": "Use-case inventory",
+      "page": 3
+    },
+    {
+      "title": "UC-01 - Request carpark recommendation",
+      "page": 4
+    },
+    {
+      "title": "UC-02 - Inspect carpark information",
+      "page": 5
+    },
+    {
+      "title": "UC-03 - Open external navigation",
+      "page": 6
+    },
+    {
+      "title": "UC-04 - Submit error report",
+      "page": 7
+    },
+    {
+      "title": "UC-05 - Authenticate operator",
+      "page": 8
+    },
+    {
+      "title": "UC-06 - Manage user error reports",
+      "page": 9
+    },
+    {
+      "title": "UC-07 - Apply manual carpark override",
+      "page": 10
+    },
+    {
+      "title": "UC-08 - View API health and data freshness",
+      "page": 11
+    },
+    {
+      "title": "UC-09 - Trigger manual source refresh",
+      "page": 12
+    },
+    {
+      "title": "UC-10 - Collect and log availability",
+      "page": 13
+    },
+    {
+      "title": "UC-11 - Manage preferences",
+      "page": 14
+    },
+    {
+      "title": "UC-12 - Manage saved locations and recent searches",
+      "page": 15
+    },
+    {
+      "title": "UC-13 - Manage favourites",
+      "page": 16
+    },
+    {
+      "title": "UC-14 - Start parking session",
+      "page": 17
+    },
+    {
+      "title": "UC-15 - Extend parking session",
+      "page": 18
+    },
+    {
+      "title": "UC-16 - End parking session",
+      "page": 19
+    },
+    {
+      "title": "UC-17 - View session history",
+      "page": 20
+    },
+    {
+      "title": "UC-18 - Erase local data",
+      "page": 21
+    },
+    {
+      "title": "UC-19 - View carparks on map",
+      "page": 22
+    },
+    {
+      "title": "Figure 1. Use-case model: connected application and collection",
+      "page": 23
+    },
+    {
+      "title": "Figure 2. Use-case model: partial and prototype functions",
+      "page": 24
+    },
+    {
+      "title": "Figure 3. Use-case model: deferred requirements",
+      "page": 25
+    },
+    {
+      "title": "Figure 4. Key classes: recommendation coordination",
+      "page": 26
+    },
+    {
+      "title": "Figure 5. Key classes: routing and prediction contracts",
+      "page": 27
+    },
+    {
+      "title": "Figure 6. Key classes and functions: stay pricing",
+      "page": 28
+    },
+    {
+      "title": "Figure 7. Key classes: Flutter boundaries and local state",
+      "page": 29
+    },
+    {
+      "title": "Figure 8. Key classes: operator access",
+      "page": 30
+    },
+    {
+      "title": "Figure 9. Persistent data model: identity, evidence and tariffs",
+      "page": 31
+    },
+    {
+      "title": "Figure 10. System architecture and process boundaries",
+      "page": 32
+    },
+    {
+      "title": "Figure 11. UC-01 request sequence",
+      "page": 33
+    },
+    {
+      "title": "Figure 12. UC-05 operator credential sequence",
+      "page": 34
+    },
+    {
+      "title": "Figure 13. Driver dialog map: input and search lifecycle",
+      "page": 35
+    },
+    {
+      "title": "Figure 14. Driver dialog map: results, fallback and navigation",
+      "page": 36
+    },
+    {
+      "title": "Figure 15. Driver dialog map: preferences and tracker",
+      "page": 37
+    },
+    {
+      "title": "Figure 16. Operator dialog map: access and prototype console",
+      "page": 38
+    },
+    {
+      "title": "Figure 17. Collection, cleaning and training evidence lifecycle",
+      "page": 39
+    },
+    {
+      "title": "Recommendation scoring and eligibility",
+      "page": 40
+    },
+    {
+      "title": "Evidence and data dictionary",
+      "page": 41
+    },
+    {
+      "title": "Implementation and test traceability",
+      "page": 42
+    }
+  ]
+}

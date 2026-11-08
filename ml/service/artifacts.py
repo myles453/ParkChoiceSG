@@ -1,4 +1,4 @@
-"""Load and validate the model artefacts shared with the training agent."""
+"""Load and validate the trained model artifacts and inference metadata."""
 from __future__ import annotations
 
 import json

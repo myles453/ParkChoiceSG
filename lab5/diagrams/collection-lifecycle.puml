@@ -1,0 +1,51 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+top to bottom direction
+component "HDB / LTA / URA responses" as Source
+artifact "Compressed raw capture\nrun ID + hash + retrieval time" as Raw
+component "Validation and canonical mapping\nagency + carpark_id; quality flags" as Clean
+database "Historical observations / metadata\nsource and retrieval timestamps" as DB
+artifact "Training export\nknown-at features; later labels" as Export
+component "Offline training / chronological evaluation" as Train
+artifact "Versioned model artifacts\nclassifier + calibration + model card" as Model
+component "Inference service\nrecent HDB history" as Service
+artifact "Issued forecast audit\nissue / target / history cutoff" as Issued
+artifact "Later outcome matching\ncoverage + Brier + calibration" as Eval
+Source --> Raw
+Raw --> Clean
+Clean --> DB : accepted rows; rejected evidence retained
+DB --> Export : generic count-target export
+Export ..> Train : optional export path
+Raw ..> Train : independent HDB backfill/file path
+Train --> Model
+Model --> Service
+Service --> Issued
+Issued --> Eval
+Source --> Eval : later source readings
+note right of Export
+The shipped HDB classifier used the independent
+backfill/file pipeline. Do not claim that it was
+trained exclusively from PostgreSQL exports.
+end note
+
+@enduml

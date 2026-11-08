@@ -1,0 +1,40 @@
+@startuml
+
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam ArrowColor #243B4A
+skinparam classBackgroundColor #F0F5F7
+skinparam classBorderColor #243B4A
+skinparam classAttributeIconSize 0
+skinparam packageBackgroundColor white
+skinparam packageBorderColor #A8BAC4
+skinparam stateBackgroundColor #F0F5F7
+skinparam stateBorderColor #243B4A
+skinparam noteBackgroundColor #FFF6DE
+skinparam noteBorderColor #C39A3B
+hide empty members
+
+left to right direction
+actor "Anonymous driver" as D
+rectangle "Deferred requirements" #FFF6DE {
+ usecase "UC-04\nSubmit error report" as R
+ usecase "UC-13\nManage favourites" as F
+}
+D -- R
+D -- F
+note right of R
+No connected submission form,
+report persistence or report ID.
+end note
+note right of F
+No connected favourites list
+or durable Favourite repository.
+end note
+
+@enduml
